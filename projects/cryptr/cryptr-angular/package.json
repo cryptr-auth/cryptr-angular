@@ -24,7 +24,7 @@
     "registry": "https://cryptr-npm.onrender.com"
   },
   "dependencies": {
-    "@cryptr/cryptr-spa-js": "^0.2.11-beta",
+    "@cryptr/cryptr-spa-js": "^0.1.0",
     "tslib": "^2.0.0"
   },
   "author": "Cryptr <thibaud@cryptr.co> (https://www.cryptr.co)",
