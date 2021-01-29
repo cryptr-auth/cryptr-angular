@@ -1,7 +1,6 @@
-| Statements                | Branches                | Functions                | Lines                |
-| ------------------------- | ----------------------- | ------------------------ | -------------------- |
-| ![Statements](#branches#) | ![Branches](#branches#) | ![Functions](#branches#) | ![Lines](#branches#) |
-
+| Statements                                                            | Branches                                                         | Functions                                                            | Lines                                                            |
+| --------------------------------------------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| ![Statements](https://img.shields.io/badge/Coverage-73.33%25-red.svg) | ![Branches](https://img.shields.io/badge/Coverage-60%25-red.svg) | ![Functions](https://img.shields.io/badge/Coverage-67.86%25-red.svg) | ![Lines](https://img.shields.io/badge/Coverage-71.43%25-red.svg) |
 
 # CleeckAngular
 
