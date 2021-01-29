@@ -1,0 +1,42 @@
+{
+  "name": "@cryptr/cryptr-angular",
+  "version": "0.0.5-beta",
+  "description": "Cryptr SDK for Angular SPA",
+  "keywords": [
+    "cryptr",
+    "login",
+    "passwordless",
+    "SPA",
+    "Authorization",
+    "PKCE",
+    "oAuth",
+    "angular"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^10.1.6",
+    "@angular/core": "^10.1.6"
+  },
+  "scripts": {
+    "make-badges": "istanbul-badges-readme"
+  },
+  "publishConfig": {
+    "registry": "https://cryptr-npm.onrender.com"
+  },
+  "dependencies": {
+    "@cryptr/cryptr-spa-js": "^0.2.11-beta",
+    "tslib": "^2.0.0"
+  },
+  "author": "Cryptr <thibaud@cryptr.co> (https://www.cryptr.co)",
+  "devDependencies": {
+    "istanbul-badges-readme": "^1.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shark-up/cryptr-angular.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shark-up/cryptr-angular/issues"
+  },
+  "homepage": "https://github.com/shark-up/cryptr-angular#readme"
+}
