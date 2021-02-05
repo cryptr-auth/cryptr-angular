@@ -1,5 +1,5 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
-import { Region } from './utils/types';
+import { Locale, Region } from './utils/types';
 
 /**
  * Defines a common set of HTTP methods.
@@ -38,6 +38,7 @@ export interface AuthConfig {
   audience: string;
   default_redirect_uri: string;
   region?: Region;
+  default_locale?: Locale;
   development?: boolean;
   httpInterceptor: HttpInterceptorConfig;
   other_key?: string;
