@@ -14,7 +14,7 @@ describe('AuthConfig', () => {
         audience: 'http://localhost:4200',
         tenant_domain: 'shark-academy',
         client_id: 'e8666cc0-647d-4e17-8961-27bd25159688',
-        development: true,
+        cryptr_base_url: 'http://localhost:4000',
         region: Region.eu,
         default_redirect_uri: 'http://localhost:4200',
         httpInterceptor

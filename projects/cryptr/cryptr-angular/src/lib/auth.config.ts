@@ -39,7 +39,7 @@ export interface AuthConfig {
   default_redirect_uri: string;
   region?: Region;
   default_locale?: Locale;
-  development?: boolean;
+  cryptr_base_url?: string;
   httpInterceptor: HttpInterceptorConfig;
   other_key?: string;
 }
