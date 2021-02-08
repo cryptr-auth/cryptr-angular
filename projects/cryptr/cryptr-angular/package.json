@@ -15,7 +15,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^10.1.6",
-    "@angular/core": "^10.1.6"
+    "@angular/core": "^10.2.4"
   },
   "scripts": {
     "make-badges": "istanbul-badges-readme"
