@@ -1,5 +1,3 @@
-import CleeckSpa from '@cryptr/cryptr-spa-js';
-import Client from '@cryptr/cryptr-spa-js/dist/types/client';
 import { CleeckClientFactory } from './auth.client';
 import { AuthClientConfig, AuthConfig, HttpInterceptorConfig } from './auth.config';
 
@@ -14,7 +12,7 @@ describe('CleeckClientFactory', () => {
         client_id: '123-xeab',
         audience: 'http://localhost:4200',
         default_redirect_uri: 'http://localhost:4200',
-        development: true,
+        cryptr_base_url: 'http://localhost:4000',
         httpInterceptor
       };
       const factory = new AuthClientConfig(config);
@@ -34,7 +32,7 @@ describe('CleeckClientFactory', () => {
         client_id: '123-xeab',
         audience: 'http://localhost:4200',
         default_redirect_uri: 'http://localhost:4200',
-        development: true,
+        cryptr_base_url: 'http://localhost:4000',
         httpInterceptor
       };
       const factory = new AuthClientConfig(config);
@@ -51,5 +49,84 @@ describe('CleeckClientFactory', () => {
         CleeckClientFactory.createClient(factory);
       }).toThrowError('Configuration must be specified either through AuthModule.forRoot or through AuthClientConfig.set');
     });
+    it('create an instance if config as chosen default locale', () => {
+      const httpInterceptor: HttpInterceptorConfig = {
+        apiRequestsToSecure: ['a']
+      };
+      const config: AuthConfig = {
+        tenant_domain: 'shark-academy',
+        client_id: '123-xeab',
+        audience: 'http://localhost:4200',
+        default_redirect_uri: 'http://localhost:4200',
+        cryptr_base_url: 'http://localhost:4000',
+        default_locale: 'fr',
+        httpInterceptor
+      };
+      const factory = new AuthClientConfig(config);
+
+      const client = CleeckClientFactory.createClient(factory);
+      expect(client).not.toBe(null);
+      expect(client.config.default_locale).toEqual('fr');
+    });
+
+    it('create an instance if config as eu chosen region', () => {
+      const httpInterceptor: HttpInterceptorConfig = {
+        apiRequestsToSecure: ['a']
+      };
+      const config: AuthConfig = {
+        tenant_domain: 'shark-academy',
+        client_id: '123-xeab',
+        audience: 'http://localhost:4200',
+        default_redirect_uri: 'http://localhost:4200',
+        cryptr_base_url: 'http://localhost:4000',
+        region: 'eu',
+        httpInterceptor
+      };
+      const factory = new AuthClientConfig(config);
+
+      const client = CleeckClientFactory.createClient(factory);
+      expect(client).not.toBe(null);
+      expect(client.config.region).toEqual('eu');
+    });
+
+    it('create an instance if config as us chosen region', () => {
+      const httpInterceptor: HttpInterceptorConfig = {
+        apiRequestsToSecure: ['a']
+      };
+      const config: AuthConfig = {
+        tenant_domain: 'shark-academy',
+        client_id: '123-xeab',
+        audience: 'http://localhost:4200',
+        default_redirect_uri: 'http://localhost:4200',
+        cryptr_base_url: 'http://localhost:4000',
+        region: 'us',
+        httpInterceptor
+      };
+      const factory = new AuthClientConfig(config);
+
+      const client = CleeckClientFactory.createClient(factory);
+      expect(client).not.toBe(null);
+      expect(client.config.region).toEqual('us');
+    });
+
+    // xit('create an instance if config as wrong region', () => {
+    //   const httpInterceptor: HttpInterceptorConfig = {
+    //     apiRequestsToSecure: ['a']
+    //   };
+    //   const config: AuthConfig = {
+    //     tenant_domain: 'shark-academy',
+    //     client_id: '123-xeab',
+    //     audience: 'http://localhost:4200',
+    //     default_redirect_uri: 'http://localhost:4200',
+    //     cryptr_base_url: 'http://localhost:4000',
+    //     region: 'de',
+    //     httpInterceptor
+    //   };
+    //   const factory = new AuthClientConfig(config);
+
+    //   const client = CleeckClientFactory.createClient(factory);
+    //   expect(client).not.toBe(null);
+    //   expect(client.config.region).toEqual('eu');
+    // });
   });
 });

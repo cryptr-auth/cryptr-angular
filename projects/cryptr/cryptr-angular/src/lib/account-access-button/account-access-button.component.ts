@@ -75,7 +75,7 @@ export class AccountAccessButtonComponent implements OnChanges {
   }
 
   currentLocale(): Locale {
-    return this.locale || this.auth.config().default_locale || Locale.En;
+    return this.locale || this.auth.config().default_locale || 'en';
   }
 
   localizedString(key: string): string {
