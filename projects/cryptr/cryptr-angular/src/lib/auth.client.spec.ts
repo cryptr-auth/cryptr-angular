@@ -69,7 +69,7 @@ describe('CleeckClientFactory', () => {
       expect(client.config.default_locale).toEqual('fr');
     });
 
-    it('create an instance if config as chosen region', () => {
+    it('create an instance if config as eu chosen region', () => {
       const httpInterceptor: HttpInterceptorConfig = {
         apiRequestsToSecure: ['a']
       };
@@ -89,7 +89,7 @@ describe('CleeckClientFactory', () => {
       expect(client.config.region).toEqual('eu');
     });
 
-    it('create an instance if config as chosen region', () => {
+    it('create an instance if config as us chosen region', () => {
       const httpInterceptor: HttpInterceptorConfig = {
         apiRequestsToSecure: ['a']
       };
@@ -99,14 +99,14 @@ describe('CleeckClientFactory', () => {
         audience: 'http://localhost:4200',
         default_redirect_uri: 'http://localhost:4200',
         cryptr_base_url: 'http://localhost:4000',
-        region: 'eu',
+        region: 'us',
         httpInterceptor
       };
       const factory = new AuthClientConfig(config);
 
       const client = CleeckClientFactory.createClient(factory);
       expect(client).not.toBe(null);
-      expect(client.config.region).toEqual('eu');
+      expect(client.config.region).toEqual('us');
     });
 
     // xit('create an instance if config as wrong region', () => {
