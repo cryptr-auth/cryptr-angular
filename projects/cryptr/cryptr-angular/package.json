@@ -33,10 +33,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shark-up/cryptr-angular.git"
+    "url": "git+https://github.com/cryptr-auth/cryptr-angular.git"
   },
   "bugs": {
-    "url": "https://github.com/shark-up/cryptr-angular/issues"
+    "url": "https://github.com/cryptr-auth/cryptr-angular/issues"
   },
-  "homepage": "https://github.com/shark-up/cryptr-angular#readme"
+  "homepage": "https://github.com/cryptr-auth/cryptr-angular#readme"
 }
