@@ -1,5 +1,5 @@
 
-import { CleeckClientFactory } from './auth.client';
+import { CryptrClientFactory } from './auth.client';
 import { AuthClientConfig, AuthConfig, HttpInterceptorConfig } from './auth.config';
 import { AuthService } from './auth.service';
 
@@ -15,12 +15,13 @@ describe('AuthConfig', () => {
         client_id: 'e8666cc0-647d-4e17-8961-27bd25159688',
         cryptr_base_url: 'http://localhost:4000',
         region: 'eu',
+        default_locale: 'fr',
         default_redirect_uri: 'http://localhost:4200',
         httpInterceptor
       };
       const factory = new AuthClientConfig(config);
 
-      const client = CleeckClientFactory.createClient(factory);
+      const client = CryptrClientFactory.createClient(factory);
 
       const authService = new AuthService(client, null, null, null, null);
       expect(authService).not.toBe(null);

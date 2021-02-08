@@ -1,5 +1,4 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
-import { Locale, Region } from './utils/types';
 
 /**
  * Defines a common set of HTTP methods.
@@ -37,8 +36,8 @@ export interface AuthConfig {
   client_id: string;
   audience: string;
   default_redirect_uri: string;
-  region?: Region;
-  default_locale?: Locale;
+  region?: string;
+  default_locale?: string;
   cryptr_base_url?: string;
   httpInterceptor: HttpInterceptorConfig;
   other_key?: string;
@@ -71,5 +70,5 @@ export class AuthClientConfig {
 }
 
 export const AuthConfigService = new InjectionToken<AuthConfig>(
-  'cleeck-angular.config'
+  'cryptr-angular.config'
 );

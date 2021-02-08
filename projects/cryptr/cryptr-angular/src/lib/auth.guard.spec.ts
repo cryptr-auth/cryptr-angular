@@ -1,4 +1,4 @@
-import { CleeckClientFactory } from './auth.client';
+import { CryptrClientFactory } from './auth.client';
 import { AuthClientConfig, AuthConfig, HttpInterceptorConfig } from './auth.config';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
@@ -19,7 +19,7 @@ describe('AuthGuard', () => {
       };
       const factory = new AuthClientConfig(config);
 
-      const client = CleeckClientFactory.createClient(factory);
+      const client = CryptrClientFactory.createClient(factory);
 
       const authService = new AuthService(client, null, null, null, null);
       const guard = new AuthGuard(authService);

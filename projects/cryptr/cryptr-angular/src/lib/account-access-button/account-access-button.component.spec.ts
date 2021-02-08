@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CleeckClientFactory } from '../auth.client';
+import { CryptrClientFactory } from '../auth.client';
 import { AuthClientConfig, AuthConfig, HttpInterceptorConfig } from '../auth.config';
 import { AuthService } from '../auth.service';
 
@@ -21,7 +21,7 @@ describe('AccountAccessButtonComponent', () => {
   };
   const factory = new AuthClientConfig(config);
 
-  const client = CleeckClientFactory.createClient(factory);
+  const client = CryptrClientFactory.createClient(factory);
 
   const authService = new AuthService(client, null, null, null, null);
 

@@ -1,10 +1,10 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { AuthService } from './auth.service';
 import { AuthConfig, AuthConfigService, AuthClientConfig } from './auth.config';
-import { CleeckClientService, CleeckClientFactory } from './auth.client';
 import { AuthGuard } from './auth.guard';
 import { AccountAccessButtonComponent } from './account-access-button/account-access-button.component';
 import { CommonModule } from '@angular/common';
+import { CryptrClientFactory, CryptrClientService } from './auth.client';
 
 @NgModule({
   imports: [CommonModule],
@@ -24,8 +24,8 @@ export class AuthModule {
           useValue: config,
         },
         {
-          provide: CleeckClientService,
-          useFactory: CleeckClientFactory.createClient,
+          provide: CryptrClientService,
+          useFactory: CryptrClientFactory.createClient,
           deps: [AuthClientConfig],
         },
       ],

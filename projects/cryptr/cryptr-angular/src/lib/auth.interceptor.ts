@@ -16,21 +16,21 @@ import {
   isHttpInterceptorRouteConfig,
 } from './auth.config';
 
-import { CleeckClientService } from './auth.client';
 import { first } from 'rxjs/operators';
+import { CryptrClientService } from './auth.client';
 
 @Injectable()
 export class AuthHttpInterceptor implements HttpInterceptor {
   constructor(
     @Inject(AuthConfigService) private config: AuthConfig,
-    @Inject(CleeckClientService) private cleeckClient: any
+    @Inject(CryptrClientService) private cryptrClient: any
   ) { }
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const aToken = this.cleeckClient.getCurrentAccessToken();
+    const aToken = this.cryptrClient.getCurrentAccessToken();
     let finalReq = req;
 
     if (this.config.httpInterceptor?.apiRequestsToSecure !== undefined && aToken !== undefined) {
