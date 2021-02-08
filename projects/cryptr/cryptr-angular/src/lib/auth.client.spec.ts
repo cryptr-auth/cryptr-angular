@@ -1,7 +1,7 @@
-import { CleeckClientFactory } from './auth.client';
+import { CryptrClientFactory } from './auth.client';
 import { AuthClientConfig, AuthConfig, HttpInterceptorConfig } from './auth.config';
 
-describe('CleeckClientFactory', () => {
+describe('CryptrClientFactory', () => {
   describe('createclient', () => {
     it('create an instance if proper config', () => {
       const httpInterceptor: HttpInterceptorConfig = {
@@ -17,7 +17,7 @@ describe('CleeckClientFactory', () => {
       };
       const factory = new AuthClientConfig(config);
 
-      const client = CleeckClientFactory.createClient(factory);
+      const client = CryptrClientFactory.createClient(factory);
       expect(client).not.toBe(null);
       expect(client.memory).not.toBe(null);
       expect(client.config).toEqual(config);
@@ -38,7 +38,7 @@ describe('CleeckClientFactory', () => {
       const factory = new AuthClientConfig(config);
 
       expect(() => {
-        CleeckClientFactory.createClient(factory);
+        CryptrClientFactory.createClient(factory);
       }).toThrowError('You must specify at least one item in config.httpInterceptor.apiRequestsToSecure . Mainly use your Resource server url');
     });
 
@@ -46,7 +46,7 @@ describe('CleeckClientFactory', () => {
       const factory = new AuthClientConfig(null);
 
       expect(() => {
-        CleeckClientFactory.createClient(factory);
+        CryptrClientFactory.createClient(factory);
       }).toThrowError('Configuration must be specified either through AuthModule.forRoot or through AuthClientConfig.set');
     });
     it('create an instance if config as chosen default locale', () => {
@@ -64,7 +64,7 @@ describe('CleeckClientFactory', () => {
       };
       const factory = new AuthClientConfig(config);
 
-      const client = CleeckClientFactory.createClient(factory);
+      const client = CryptrClientFactory.createClient(factory);
       expect(client).not.toBe(null);
       expect(client.config.default_locale).toEqual('fr');
     });
@@ -84,7 +84,7 @@ describe('CleeckClientFactory', () => {
       };
       const factory = new AuthClientConfig(config);
 
-      const client = CleeckClientFactory.createClient(factory);
+      const client = CryptrClientFactory.createClient(factory);
       expect(client).not.toBe(null);
       expect(client.config.region).toEqual('eu');
     });
@@ -104,7 +104,7 @@ describe('CleeckClientFactory', () => {
       };
       const factory = new AuthClientConfig(config);
 
-      const client = CleeckClientFactory.createClient(factory);
+      const client = CryptrClientFactory.createClient(factory);
       expect(client).not.toBe(null);
       expect(client.config.region).toEqual('us');
     });
@@ -124,7 +124,7 @@ describe('CleeckClientFactory', () => {
     //   };
     //   const factory = new AuthClientConfig(config);
 
-    //   const client = CleeckClientFactory.createClient(factory);
+    //   const client = CryptrClientFactory.createClient(factory);
     //   expect(client).not.toBe(null);
     //   expect(client.config.region).toEqual('eu');
     // });

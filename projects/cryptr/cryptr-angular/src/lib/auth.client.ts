@@ -1,9 +1,9 @@
 import { InjectionToken } from '@angular/core';
-import CleeckSpa from '@cryptr/cryptr-spa-js';
+import CryptrSpa from '@cryptr/cryptr-spa-js';
 
 import { AuthClientConfig } from './auth.config';
 
-export class CleeckClientFactory {
+export class CryptrClientFactory {
   static createClient(configFactory: AuthClientConfig): any {
     const config = configFactory.get();
 
@@ -21,10 +21,10 @@ export class CleeckClientFactory {
       console.warn(`The path ${default_redirect_uri} have to be decorated with 'canActivate: [AuthGuard]' options`);
     }
 
-    return new CleeckSpa.client(config);
+    return new CryptrSpa.client(config);
   }
 }
 
-export const CleeckClientService = new InjectionToken<any>(
-  'cleeck.client'
+export const CryptrClientService = new InjectionToken<any>(
+  'cryptr.client'
 );

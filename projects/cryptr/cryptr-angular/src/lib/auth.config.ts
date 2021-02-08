@@ -71,5 +71,5 @@ export class AuthClientConfig {
 }
 
 export const AuthConfigService = new InjectionToken<AuthConfig>(
-  'cleeck-angular.config'
+  'cryptr-angular.config'
 );
