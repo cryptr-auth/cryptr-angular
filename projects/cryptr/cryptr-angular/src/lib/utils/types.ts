@@ -4,9 +4,6 @@ export enum Sign {
   Up = 'signup',
   Refresh = 'refresh'
 }
-export type Locale = 'en' | 'fr';
-
-export type Region = 'eu' | 'us';
 export interface Authorization {
   id: string;
   code: string;
@@ -17,25 +14,25 @@ export interface Config {
   client_id: string;
   audience: string;
   default_redirect_uri: string;
-  default_locale?: Locale;
-  region?: Region;
+  default_locale?: string;
+  region?: string;
   cryptr_base_url?: string;
   telemetry?: boolean;
 }
 
 export interface CryptrClient {
   config: Config;
-  getCurrentAccessToken(): string;
-  getCurrentIdToken(): string;
+  getCurrentAccessToken(): string | undefined;
+  getCurrentIdToken(): string | undefined;
   isAuthenticated(): Promise<boolean>;
   handleRefreshTokens(response: any): void;
   refreshTokens(): Promise<void>;
-  signInWithoutRedirect(scope?: string, redirectUri?: string, locale?: Locale): Promise<void>;
-  signUpWithoutRedirect(scope?: string, redirectUri?: string, locale?: Locale): Promise<void>;
-  inviteWithoutRedirect(scope?: string, redirectUri?: string, locale?: Locale): Promise<void>;
-  signInWithRedirect(scope?: string, redirectUri?: string, locale?: Locale): Promise<void>;
-  signUpWithRedirect(scope?: string, redirectUri?: string, locale?: Locale): Promise<void>;
-  inviteWithRedirect(scope?: string, redirectUri?: string, locale?: Locale): Promise<void>;
+  signInWithoutRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
+  signUpWithoutRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
+  inviteWithoutRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
+  signInWithRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
+  signUpWithRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
+  inviteWithRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
   handleInvitationState(scope?: string): Promise<void>;
   handleRedirectCallback(): Promise<any>;
   getUser(): object | undefined;

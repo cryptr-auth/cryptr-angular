@@ -1,11 +1,11 @@
 import { Inject, Injectable, OnDestroy } from '@angular/core';
-import CleeckSpa from '@cryptr/cryptr-spa-js';
+import CryptrSpa from '@cryptr/cryptr-spa-js';
 import { from, Observable, Subject } from 'rxjs';
-import { CleeckClientService } from './auth.client';
 import { AbstractNavigator } from './abstract-navigator';
 import { Location } from '@angular/common';
-import { Config, CryptrClient, Locale } from './utils/types';
+import { Config, CryptrClient } from './utils/types';
 import { ActivatedRoute, Router, UrlTree } from '@angular/router';
+import { CryptrClientService } from './auth.client';
 
 @Injectable({
   providedIn: 'root'
@@ -16,17 +16,17 @@ export class AuthService implements OnDestroy {
   private user;
 
   constructor(
-    @Inject(CleeckClientService) private cleeckClient: CryptrClient,
+    @Inject(CryptrClientService) private cryptrClient: CryptrClient,
     private location: Location,
     private navigator: AbstractNavigator,
     private router: Router,
     private route: ActivatedRoute,
   ) {
     this.checkAuthentication();
-    window.addEventListener(CleeckSpa.events.REFRESH_INVALID_GRANT, (RigError) => {
+    window.addEventListener(CryptrSpa.events.REFRESH_INVALID_GRANT, (RigError) => {
       this.logOut(null);
     });
-    window.addEventListener(CleeckSpa.events.REFRESH_EXPIRED, (ReError) => {
+    window.addEventListener(CryptrSpa.events.REFRESH_EXPIRED, (ReError) => {
       this.logOut(null);
     });
   }
@@ -49,14 +49,14 @@ export class AuthService implements OnDestroy {
     this.user = null;
   }
 
-  signInWithRedirect(scope?: string, locale?: Locale, redirectUri?: string): Observable<any> {
-    if (this.cleeckClient) {
-      return from(this.cleeckClient.signInWithRedirect(scope, redirectUri, locale));
+  signInWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
+    if (this.cryptrClient) {
+      return from(this.cryptrClient.signInWithRedirect(scope, redirectUri, locale));
     }
   }
 
-  signUpWithRedirect(scope?: string, locale?: Locale, redirectUri?: string): Observable<any> {
-    return from(this.cleeckClient.signUpWithRedirect(scope, redirectUri, locale));
+  signUpWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
+    return from(this.cryptrClient.signUpWithRedirect(scope, redirectUri, locale));
   }
 
   preLogOutCallBack(callback: () => void): () => void {
@@ -65,16 +65,16 @@ export class AuthService implements OnDestroy {
     return callback;
   }
   logOut(callback: () => void, location: any = window.location): Observable<any> {
-    return from(this.cleeckClient.logOut(this.preLogOutCallBack(callback), location));
+    return from(this.cryptrClient.logOut(this.preLogOutCallBack(callback), location));
   }
 
   canHandleAuthentication(): boolean {
-    return this.cleeckClient.canHandleAuthentication();
+    return this.cryptrClient.canHandleAuthentication();
   }
 
   handleRedirectCallback(): Promise<any> {
     try {
-      return this.cleeckClient.handleRedirectCallback();
+      return this.cryptrClient.handleRedirectCallback();
     } catch (error) {
       console.error(error);
     }
@@ -92,26 +92,26 @@ export class AuthService implements OnDestroy {
   }
 
   observableAuthenticated(): Observable<boolean> {
-    return from(this.cleeckClient.isAuthenticated());
+    return from(this.cryptrClient.isAuthenticated());
   }
   isAuthenticated(): Promise<boolean> {
-    return this.cleeckClient.isAuthenticated();
+    return this.cryptrClient.isAuthenticated();
   }
 
   getAccessToken(): any {
-    return this.cleeckClient.getCurrentAccessToken();
+    return this.cryptrClient.getCurrentAccessToken();
   }
 
   getIdToken(): any {
-    return this.cleeckClient.getCurrentIdToken();
+    return this.cryptrClient.getCurrentIdToken();
   }
 
   getUser(): any {
-    return this.cleeckClient.getUser();
+    return this.cryptrClient.getUser();
   }
 
   userAccountAccess(): Promise<any> {
-    return this.cleeckClient.userAccountAccess();
+    return this.cryptrClient.userAccountAccess();
   }
 
   ngOnDestroy(): void {
@@ -120,11 +120,11 @@ export class AuthService implements OnDestroy {
   }
 
   refreshTokens(): void {
-    this.cleeckClient.refreshTokens();
+    this.cryptrClient.refreshTokens();
   }
 
   config(): Config {
-    return this.cleeckClient.config;
+    return this.cryptrClient.config;
   }
 
   // TODO: enhance this tomake a proper reload with query params
