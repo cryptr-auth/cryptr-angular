@@ -4,15 +4,9 @@ export enum Sign {
   Up = 'signup',
   Refresh = 'refresh'
 }
-export enum Locale {
-  En = 'en',
-  Fr = 'fr'
-}
+export type Locale = 'en' | 'fr';
 
-export enum Region {
-  eu = 'eu',
-  us = 'us',
-}
+export type Region = 'eu' | 'us';
 export interface Authorization {
   id: string;
   code: string;
@@ -25,7 +19,7 @@ export interface Config {
   default_redirect_uri: string;
   default_locale?: Locale;
   region?: Region;
-  development?: boolean;
+  cryptr_base_url?: string;
   telemetry?: boolean;
 }
 

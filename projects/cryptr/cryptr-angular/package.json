@@ -15,7 +15,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^10.1.6",
-    "@angular/core": "^10.1.6"
+    "@angular/core": "^10.2.4"
   },
   "scripts": {
     "make-badges": "istanbul-badges-readme"
@@ -24,7 +24,7 @@
     "registry": "https://cryptr-npm.onrender.com"
   },
   "dependencies": {
-    "@cryptr/cryptr-spa-js": "^0.1.0",
+    "@cryptr/cryptr-spa-js": "^0.1.2",
     "tslib": "^2.0.0"
   },
   "author": "Cryptr <thibaud@cryptr.co> (https://www.cryptr.co)",
@@ -33,10 +33,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shark-up/cryptr-angular.git"
+    "url": "git+https://github.com/cryptr-auth/cryptr-angular.git"
   },
   "bugs": {
-    "url": "https://github.com/shark-up/cryptr-angular/issues"
+    "url": "https://github.com/cryptr-auth/cryptr-angular/issues"
   },
-  "homepage": "https://github.com/shark-up/cryptr-angular#readme"
+  "homepage": "https://github.com/cryptr-auth/cryptr-angular#readme"
 }
