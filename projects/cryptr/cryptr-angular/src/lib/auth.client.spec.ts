@@ -69,7 +69,7 @@ describe('CryptrClientFactory', () => {
       expect(client.config.default_locale).toEqual('fr');
     });
 
-    it('create an instance if config as eu chosen region', () => {
+    it('create an instance if config has eu chosen region', () => {
       const httpInterceptor: HttpInterceptorConfig = {
         apiRequestsToSecure: ['a']
       };
@@ -89,7 +89,7 @@ describe('CryptrClientFactory', () => {
       expect(client.config.region).toEqual('eu');
     });
 
-    it('create an instance if config as us chosen region', () => {
+    it('create an instance if config has us chosen region', () => {
       const httpInterceptor: HttpInterceptorConfig = {
         apiRequestsToSecure: ['a']
       };
@@ -109,24 +109,41 @@ describe('CryptrClientFactory', () => {
       expect(client.config.region).toEqual('us');
     });
 
-    // xit('create an instance if config as wrong region', () => {
-    //   const httpInterceptor: HttpInterceptorConfig = {
-    //     apiRequestsToSecure: ['a']
-    //   };
-    //   const config: AuthConfig = {
-    //     tenant_domain: 'shark-academy',
-    //     client_id: '123-xeab',
-    //     audience: 'http://localhost:4200',
-    //     default_redirect_uri: 'http://localhost:4200',
-    //     cryptr_base_url: 'http://localhost:4000',
-    //     region: 'de',
-    //     httpInterceptor
-    //   };
-    //   const factory = new AuthClientConfig(config);
+    it('throws error if config has wrong region', () => {
+      const httpInterceptor: HttpInterceptorConfig = {
+        apiRequestsToSecure: ['a']
+      };
+      const config: AuthConfig = {
+        tenant_domain: 'shark-academy',
+        client_id: '123-xeab',
+        audience: 'http://localhost:4200',
+        default_redirect_uri: 'http://localhost:4200',
+        cryptr_base_url: 'http://localhost:4000',
+        region: 'de',
+        httpInterceptor
+      };
+      const factory = new AuthClientConfig(config);
 
-    //   const client = CryptrClientFactory.createClient(factory);
-    //   expect(client).not.toBe(null);
-    //   expect(client.config.region).toEqual('eu');
-    // });
+      expect(() => CryptrClientFactory.createClient(factory)).toThrowError('You must provide region in values eu,us found \'de\', if not provide your cryptr_base_url');
+    });
+
+    it('throws error if config has wrong locale', () => {
+      const httpInterceptor: HttpInterceptorConfig = {
+        apiRequestsToSecure: ['a']
+      };
+      const config: AuthConfig = {
+        tenant_domain: 'shark-academy',
+        client_id: '123-xeab',
+        audience: 'http://localhost:4200',
+        default_redirect_uri: 'http://localhost:4200',
+        cryptr_base_url: 'http://localhost:4000',
+        region: 'eu',
+        default_locale: 'de',
+        httpInterceptor
+      };
+      const factory = new AuthClientConfig(config);
+
+      expect(() => CryptrClientFactory.createClient(factory)).toThrowError('\'de\' locale not valid, possible values en,fr');
+    });
   });
 });

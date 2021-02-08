@@ -3,7 +3,7 @@ import CryptrSpa from '@cryptr/cryptr-spa-js';
 import { from, Observable, Subject } from 'rxjs';
 import { AbstractNavigator } from './abstract-navigator';
 import { Location } from '@angular/common';
-import { Config, CryptrClient, Locale } from './utils/types';
+import { Config, CryptrClient } from './utils/types';
 import { ActivatedRoute, Router, UrlTree } from '@angular/router';
 import { CryptrClientService } from './auth.client';
 
@@ -49,13 +49,13 @@ export class AuthService implements OnDestroy {
     this.user = null;
   }
 
-  signInWithRedirect(scope?: string, locale?: Locale, redirectUri?: string): Observable<any> {
+  signInWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
     if (this.cryptrClient) {
       return from(this.cryptrClient.signInWithRedirect(scope, redirectUri, locale));
     }
   }
 
-  signUpWithRedirect(scope?: string, locale?: Locale, redirectUri?: string): Observable<any> {
+  signUpWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
     return from(this.cryptrClient.signUpWithRedirect(scope, redirectUri, locale));
   }
 

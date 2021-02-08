@@ -12,7 +12,7 @@ import {
   USER_ACCOUNT_BTN_CLASS
 } from '../utils/constants';
 import { LocalizedStrings } from '../utils/enums';
-import { Locale, Sign, User } from '../utils/types';
+import { Sign, User } from '../utils/types';
 import { find, get } from 'lodash';
 
 @Component({
@@ -26,7 +26,7 @@ export class AccountAccessButtonComponent implements OnChanges {
   @Input() defaultSignType: Sign.In | Sign.Up;
   @Input() defaultSignText: string;
   @Input() unauthenticatedPath: string;
-  @Input() locale: Locale;
+  @Input() locale: string;
   @Input() redirectUri: string;
   @Input() logoSrc: string;
   @Input() buttonLabel: string;
@@ -74,7 +74,7 @@ export class AccountAccessButtonComponent implements OnChanges {
     });
   }
 
-  currentLocale(): Locale {
+  currentLocale(): string {
     return this.locale || this.auth.config().default_locale || 'en';
   }
 
