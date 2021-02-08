@@ -4,15 +4,9 @@ export enum Sign {
   Up = 'signup',
   Refresh = 'refresh'
 }
-export enum Locale {
-  En = 'en',
-  Fr = 'fr'
-}
+export type Locale = 'en' | 'fr'
 
-export enum Region {
-  eu = 'eu',
-  us = 'us',
-}
+export type Region = 'eu' | 'us'
 export interface Authorization {
   id: string;
   code: string;

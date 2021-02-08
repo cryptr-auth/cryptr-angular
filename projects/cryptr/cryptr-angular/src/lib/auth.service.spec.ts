@@ -2,7 +2,6 @@
 import { CleeckClientFactory } from './auth.client';
 import { AuthClientConfig, AuthConfig, HttpInterceptorConfig } from './auth.config';
 import { AuthService } from './auth.service';
-import { Region } from './utils/types';
 
 describe('AuthConfig', () => {
   describe('create', () => {
@@ -15,7 +14,7 @@ describe('AuthConfig', () => {
         tenant_domain: 'shark-academy',
         client_id: 'e8666cc0-647d-4e17-8961-27bd25159688',
         cryptr_base_url: 'http://localhost:4000',
-        region: Region.eu,
+        region: 'eu',
         default_redirect_uri: 'http://localhost:4200',
         httpInterceptor
       };
