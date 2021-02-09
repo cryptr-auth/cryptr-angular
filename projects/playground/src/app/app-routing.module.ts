@@ -11,8 +11,7 @@ import { AuthGuard } from '@cryptr/cryptr-angular';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    canActivate: [AuthGuard]
+    component: HomeComponent
   },
   {
     path: 'react',
