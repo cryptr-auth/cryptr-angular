@@ -35,6 +35,7 @@ export class AuthService implements OnDestroy {
     this.isAuthenticated().then((isAuthenticated: boolean) => {
       this.authenticated = isAuthenticated;
       this.resetAuthentication(isAuthenticated);
+      this.authenticate();
     }).catch((error) => {
       console.error(error);
       this.resetAuthentication(false);
@@ -129,37 +130,40 @@ export class AuthService implements OnDestroy {
 
   // TODO: enhance this tomake a proper reload with query params
   routeCleanedPath(): string {
-    return this.location.path().split('?')[0];
+    const splittedQuery = this.location.path().split('?');
+    return splittedQuery[0] === '' ? '/' : splittedQuery[0];
   }
 
   currentAuthenticationState(): boolean {
     return this.authenticated;
   }
 
-  async fullAuthenticateProcess(): Promise<boolean | UrlTree> {
+  async authenticate(): Promise<boolean | UrlTree> {
+    if (this.authenticated) {
+      return;
+    }
+    this.resetAuthentication(false);
+    if (this.canHandleAuthentication()) {
+      return this.handleRedirectCallback().then((tokens) => {
+        const handled = this.handleTokens(tokens);
+        this.authenticated = handled;
+        if (handled) {
+          this.refreshTokens();
+          this.location.replaceState(this.routeCleanedPath(), '');
+        } else {
+          return handled;
+        }
+      });
+    }
+  }
+
+  async fullAuthenticateProcess(stateUrl?: string): Promise<boolean | UrlTree> {
     return this.isAuthenticated().then((isAuthenticated: boolean) => {
       this.authenticated = isAuthenticated;
       if (isAuthenticated) {
         return true;
       } else {
-        this.resetAuthentication(isAuthenticated);
-        if (this.canHandleAuthentication()) {
-          return this.handleRedirectCallback().then((tokens) => {
-            const handled = this.handleTokens(tokens);
-            this.authenticated = handled;
-            if (handled) {
-              this.refreshTokens();
-              return this.router.createUrlTree([this.routeCleanedPath()]);
-            } else {
-              return handled;
-            }
-          }).catch((error) => {
-            console.error(error);
-            return false;
-          });
-        } else {
-          this.signInWithRedirect();
-        }
+        this.signInWithRedirect();
       }
     });
   }

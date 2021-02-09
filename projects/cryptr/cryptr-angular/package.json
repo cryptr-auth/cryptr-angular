@@ -14,7 +14,7 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^10.1.6",
+    "@angular/common": "^10.2.4",
     "@angular/core": "^10.2.4"
   },
   "scripts": {
