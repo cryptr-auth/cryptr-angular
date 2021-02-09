@@ -18,7 +18,7 @@ export class NavComponent implements OnInit {
   //  O: normal, 1: invalid_grant, 2: expired
   logOutPopupStyle = 0;
   locale = 'fr';
-  redirectUri = "http://localhost:4200/"
+  redirectUri = 'http://localhost:4200/';
 
   constructor(public auth: AuthService, private router: Router) {
   }

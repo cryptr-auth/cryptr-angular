@@ -77,12 +77,12 @@ export class AccountAccessButtonComponent implements OnChanges {
     try {
       return this.locale || this.auth.config().default_locale || 'en';
     } catch (e) {
-      return 'en'
+      return 'en';
     }
   }
 
   localizedString(key: string): string {
-    return LocalizedStrings[this.currentLocale()][key]
+    return LocalizedStrings[this.currentLocale()][key];
   }
 
   setDefaults(): void {
@@ -105,21 +105,25 @@ export class AccountAccessButtonComponent implements OnChanges {
   }
 
   ngOnChanges(_changes: SimpleChanges): void {
-    const { config: routerConfig } = this.router;
-    if (this.redirectUri) {
-      const redirectUriPath = new URL(this.redirectUri).pathname;
-      let match = false;
-      routerConfig.forEach(({ path, canActivate }) => {
-        if (canActivate !== undefined && `/${path}` === redirectUriPath) {
-          match = true;
-        }
-      });
-      if (match) {
-        this.errorMessage = `The path '${redirectUriPath}' MUST BE Configured in your router with 'canActivate: [AuthGuard]'`;
-        throw new Error(this.errorMessage);
-      }
-    }
+    this.checkConfig();
     this.setDefaults();
+  }
+
+  checkConfig(): void {
+    // const { config: routerConfig } = this.router;
+    // if (this.redirectUri) {
+    //   const redirectUriPath = new URL(this.redirectUri).pathname;
+    //   let match = false;
+    //   routerConfig.forEach(({ path, canActivate }) => {
+    //     if (canActivate !== undefined && `/${path}` === redirectUriPath) {
+    //       match = true;
+    //     }
+    //   });
+    //   if (!match) {
+    //     this.errorMessage = `The path '${redirectUriPath}' MUST BE Configured in your router with 'canActivate: [AuthGuard]'`;
+    //     throw new Error(this.errorMessage);
+    //   }
+    // }
   }
 
   toggleOpen(): void {

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'cryptr-angular-demo';
 
-  ngOnInit() {
-    console.debug(this)
+  ngOnInit(): void {
+    // console.debug(this)
   }
 }

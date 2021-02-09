@@ -14,7 +14,9 @@ export class MyCoursesComponent implements OnInit, OnChanges {
   coursesError: string;
   tabIndex = 1;
 
-  constructor(public auth: AuthService, public http: HttpClient) { }
+  constructor(public auth: AuthService, public http: HttpClient) {
+    console.log('my courses component');
+  }
 
   setTabIndex(newIndex: number): void {
     this.tabIndex = newIndex;
@@ -30,12 +32,12 @@ export class MyCoursesComponent implements OnInit, OnChanges {
 
   securedRoute(): string {
     const { resource_server_url } = environment;
-    return `${resource_server_url}/api/v1/courses`
+    return `${resource_server_url}/api/v1/courses`;
   }
 
   ngOnInit(): void {
     if (this.auth.currentAuthenticationState()) {
-      this.fetchSecuredData()
+      this.fetchSecuredData();
     } else {
       this.coursesError = 'Vous n\'êtes pas authentifié';
     }

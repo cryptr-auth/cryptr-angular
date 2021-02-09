@@ -38,22 +38,6 @@ import { AuthHttpInterceptor } from 'projects/cryptr/cryptr-angular/src/lib/auth
   ],
   providers: [
     AccountAccessButtonComponent,
-    // {
-    //   provide: ErrorHandler,
-    //   useValue: Sentry.createErrorHandler({
-    //     showDialog: true,
-    //   }),
-    // },
-    // {
-    //   provide: Sentry.TraceService,
-    //   deps: [Router],
-    // },
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: () => () => { },
-    //   deps: [Sentry.TraceService],
-    //   multi: true,
-    // },
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
