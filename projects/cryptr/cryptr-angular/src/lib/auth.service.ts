@@ -22,9 +22,7 @@ export class AuthService implements OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
   ) {
-    console.debug(`authService constructor`);
     this.checkAuthentication();
-    console.debug(`before listeners`);
     window.addEventListener(CryptrSpa.events.REFRESH_INVALID_GRANT, (RigError) => {
       this.logOut(null);
     });
@@ -34,9 +32,7 @@ export class AuthService implements OnDestroy {
   }
 
   checkAuthentication(): void {
-    console.debug(`checkAuhentication`);
     this.isAuthenticated().then((isAuthenticated: boolean) => {
-      console.debug(`isAuthenticated ${isAuthenticated}`);
       this.authenticated = isAuthenticated;
       this.resetAuthentication(isAuthenticated);
       this.authenticate();
@@ -47,7 +43,6 @@ export class AuthService implements OnDestroy {
   }
 
   resetAuthentication(isAuthenticated: boolean): void {
-    console.debug(`resetAuthentication ${isAuthenticated}`);
     if (isAuthenticated) {
       return;
     }
@@ -135,8 +130,8 @@ export class AuthService implements OnDestroy {
 
   // TODO: enhance this tomake a proper reload with query params
   routeCleanedPath(): string {
-    const splittedQuery = this.location.path().split('?')
-    return splittedQuery[0] == '' ? '/' : splittedQuery[0];
+    const splittedQuery = this.location.path().split('?');
+    return splittedQuery[0] === '' ? '/' : splittedQuery[0];
   }
 
   currentAuthenticationState(): boolean {
@@ -144,23 +139,17 @@ export class AuthService implements OnDestroy {
   }
 
   async authenticate(): Promise<boolean | UrlTree> {
-    console.debug('authenticate');
     if (this.authenticated) {
       return;
     }
-    // this.resetAuthentication(false)
+    this.resetAuthentication(false);
     if (this.canHandleAuthentication()) {
-      console.debug('canHandleAuthentication');
       return this.handleRedirectCallback().then((tokens) => {
-        console.debug(`tokens`);
-        console.debug(tokens);
         const handled = this.handleTokens(tokens);
-        console.debug(handled);
         this.authenticated = handled;
         if (handled) {
           this.refreshTokens();
-          console.debug(this.routeCleanedPath());
-          return this.router.createUrlTree([this.routeCleanedPath()]);
+          this.location.replaceState(this.routeCleanedPath(), '');
         } else {
           return handled;
         }
@@ -168,35 +157,13 @@ export class AuthService implements OnDestroy {
     }
   }
 
-  async fullAuthenticateProcess(): Promise<boolean | UrlTree> {
-    console.debug('fullAuthenticateProcess')
+  async fullAuthenticateProcess(stateUrl?: string): Promise<boolean | UrlTree> {
     return this.isAuthenticated().then((isAuthenticated: boolean) => {
-      console.debug(`isAuthenticated ${isAuthenticated}`)
       this.authenticated = isAuthenticated;
       if (isAuthenticated) {
         return true;
       } else {
-        console.debug(`redirect to root`)
-        // redirect to root
-        this.router.createUrlTree(['/']);
-        // this.resetAuthentication(isAuthenticated);
-        // if (this.canHandleAuthentication()) {
-        //   return this.handleRedirectCallback().then((tokens) => {
-        //     const handled = this.handleTokens(tokens);
-        //     this.authenticated = handled;
-        //     if (handled) {
-        //       this.refreshTokens();
-        //       return this.router.createUrlTree([this.routeCleanedPath()]);
-        //     } else {
-        //       return handled;
-        //     }
-        //   }).catch((error) => {
-        //     console.error(error);
-        //     return false;
-        //   });
-        // } else {
-        //   this.signInWithRedirect();
-        // }
+        this.signInWithRedirect();
       }
     });
   }
