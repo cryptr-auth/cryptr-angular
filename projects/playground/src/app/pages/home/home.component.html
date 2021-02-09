@@ -1,0 +1,172 @@
+<div class="home">
+  <main
+    class="mt-8 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-20 xl:mt-24"
+  >
+    <!-- Angular badge  -->
+    <div
+      class="mb-3 flex flex-row justify-center lg:justify-start items-center"
+    >
+      <img
+        class="h-8 mr-3 w-auto"
+        src="https://prismic-io.s3.amazonaws.com/cryptrfront/26cbffff-b4c8-48fa-bd7c-c733ecd6d5a8_Angular_full_color_logo.svg"
+        alt="Angular logo"
+      />
+      <span [style.color]="'#DD0031'" class="font-bold text-xs"
+        >Built with Angular</span
+      >
+    </div>
+    <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+      <div
+        class="text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left"
+      >
+        <h2
+          class="mt-1 text-3xl tracking-tight text-gray-900 font-normal sm:leading-snug sm:text-5xl lg:text-3xl xl:text-4xl"
+        >
+          Change de vie,
+          <br class="hidden md:inline" />
+          <span class="capitalize font-black">Deviens expert tech </span>
+        </h2>
+        <p
+          class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl"
+        >
+          Les compétences des personnes et des entreprises évoluent. Peu importe
+          où vous êtes dans votre carrière ou dans quel domaine vous travaillez,
+          vous aurez besoin de comprendre la langue des données.
+        </p>
+        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+          <div
+            *ngIf="!authenticated"
+            (click)="signUpWithRedirect()"
+            class="cursor-pointer sm:mr-8 md:mr-10"
+          >
+            <div class="rounded-md shadow">
+              <a
+                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-sm leading-6 font-bold shadow-md rounded-md uppercase text-gray-900 bg-yellow-500 hover:bg-yellow-400 focus:outline-none focus:border-yellow-600 focus:shadow-outline-yellow transition duration-150 ease-in-out md:py-4 md:text-base md:px-10"
+              >
+                M'inscrire
+              </a>
+            </div>
+          </div>
+          <div class="mt-3 sm:mt-0">
+            <a
+              href="mailto:hamid@sharkup.studio?subject=A propos de Shark academy&body=Bonjour Hamid,"
+              class="w-full flex justify-center lg:justify-start py-3 underline text-sm leading-6 font-bold uppercase text-gray-800 hover:text-gray-600 focus:outline-none transition duration-150 ease-in-out md:py-4 md:text-base"
+            >
+              Nous contacter
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center"
+      >
+        <div class="relative mx-auto w-full lg:max-w-md">
+          <div type="button" class="relative block w-full overflow-hidden">
+            <img
+              class="w-full"
+              src="https://images.prismic.io/shark-academy%2Fd4e6dd24-d3bb-4a24-8f8c-c208bdc9d70e_home_page__illustration_header_home.svg?auto=compress,format"
+              alt="Shark academy home"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Available demos  -->
+    <div class="w-full flex flex-col justify-center mt-8">
+      <a href="https://www.cryptr.co/" class="mx-auto cursor-pointer">
+        <img
+          class="h-12"
+          src="https://prismic-io.s3.amazonaws.com/cryptrfront/77a9da58-aed9-4db1-b625-8b289726e767_cryptr_logo_authentication.svg"
+          alt="Cryptr logo authentication"
+        />
+      </a>
+      <p class="text-center text-sm text-gray-500 mb-3 mt-4">
+        Available SDKs for
+      </p>
+      <div class="flex flex-row justify-center space-x-8">
+        <a href="/">
+          <img
+            class="h-6"
+            src="https://prismic-io.s3.amazonaws.com/cryptrfront/474fe2f5-fae7-49f2-949f-37c158319aa7_react_gray_logo.svg"
+            alt="React logo"
+          />
+        </a>
+        <a href="/">
+          <img
+            class="h-6"
+            src="https://prismic-io.s3.amazonaws.com/cryptrfront/beb75fb2-d750-4b11-ad9c-5cfc656a93c9_vue_gray_logo.svg"
+            alt="Vue logo"
+          />
+        </a>
+        <a href="/">
+          <img
+            class="h-6"
+            src="https://prismic-io.s3.amazonaws.com/cryptrfront/5c22a6f6-6306-492b-bbdc-9bbcb9e54c08_angular_gray_logo.svg"
+            alt="Angular logo"
+          />
+        </a>
+      </div>
+    </div>
+  </main>
+  <div class="mt-12 py-12 bg-gray-100">
+    <div class="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-screen-xl">
+      <div class="lg:grid lg:grid-cols-3 lg:gap-24">
+        <div>
+          <div class="flex justify-center lg:justify-start">
+            <img
+              class="w-3/5"
+              src="https://images.prismic.io/shark-academy%2F1849eb4d-55b4-4d65-80cb-c48ded8cb9c6_home_page__illustration_pas_besoin_code.svg?auto=compress,format"
+              alt="Shark academy - Pas besoin de savoir coder"
+            />
+          </div>
+          <div class="text-center mt-5 lg:text-left">
+            <h5 class="text-lg leading-6 font-bold text-gray-900">
+              Pas besoin de savoir coder
+            </h5>
+            <p class="mt-2 text-base leading-6 text-gray-500">
+              Obtiens les bases de React, l'un des frameworks les plus en vogue
+              : une excellente introduction au monde du code.
+            </p>
+          </div>
+        </div>
+        <div class="mt-10 lg:mt-0">
+          <div class="flex justify-center lg:justify-start">
+            <img
+              class="w-3/5"
+              src="https://images.prismic.io/shark-academy%2Fc26ecbe0-eb54-4a4d-aa35-febe599eb2b6_home_page__illustration_apprends_bonnes_competences.svg?auto=compress,format"
+              alt="Shark academy - Apprends les bonnes compétences"
+            />
+          </div>
+          <div class="text-center mt-5 lg:text-left">
+            <h5 class="text-lg leading-6 font-bold text-gray-900">
+              Apprends les bonnes compétences
+            </h5>
+            <p class="mt-2 text-base leading-6 text-gray-500">
+              Acquiers de nouvelles compétences en adéquation avec les attentes
+              du marché du travail. Des cours sur GraphQL, Apollo, Hasura, ...
+            </p>
+          </div>
+        </div>
+        <div class="mt-10 lg:mt-0">
+          <div class="flex justify-center lg:justify-start">
+            <img
+              class="w-3/5"
+              src="https://images.prismic.io/shark-academy%2Fedafd5a6-8021-46d0-97aa-a12d6f05e026_home_page__illustration_debouches_assures.svg?auto=compress,format"
+              alt="Shark academy - Des débouchés assurés"
+            />
+          </div>
+          <div class="text-center mt-5 lg:text-left">
+            <h5 class="text-lg leading-6 font-bold text-gray-900">
+              Des débouchés assurés
+            </h5>
+            <p class="mt-2 text-base leading-6 text-gray-500">
+              Il existe de multiples opportunités dans la Tech. On peut par
+              exemple travailler dans différents secteurs comme la finance, le
+              commerce ou encore l'industrie.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
