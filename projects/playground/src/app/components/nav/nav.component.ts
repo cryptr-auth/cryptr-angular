@@ -13,6 +13,7 @@ export class NavComponent implements OnInit {
   unauthenticatedPath = '/';
   showLogoutModal = false;
   user: any;
+  authenticated = false;
 
   logoSrc = 'https://images.prismic.io/shark-academy%2F76b9fccf-b146-4c3d-a068-a96c07d61085_logo_shark_academy__no_spacing.svg?auto=compress,format';
   //  O: normal, 1: invalid_grant, 2: expired
@@ -25,6 +26,9 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this.cryptrListeners();
+    this.auth.currentAuthenticationObservable().subscribe((isAuthenticated: boolean) => {
+      this.authenticated = isAuthenticated;
+    });
   }
 
   // CRYPTR BLOCK
