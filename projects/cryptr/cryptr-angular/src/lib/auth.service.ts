@@ -13,7 +13,7 @@ import { CryptrClientService } from './auth.client';
 export class AuthService implements OnDestroy {
   private ngUnsubscribe$ = new Subject();
   private authenticated$ = new BehaviorSubject(false);
-  private user;
+  private user$ = new BehaviorSubject(null);
 
   constructor(
     @Inject(CryptrClientService) private cryptrClient: CryptrClient,
@@ -47,7 +47,7 @@ export class AuthService implements OnDestroy {
       return;
     }
     this.updateCurrentAuthState(false);
-    this.user = null;
+    this.setUser(null);
   }
 
   signInWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
@@ -62,7 +62,7 @@ export class AuthService implements OnDestroy {
 
   preLogOutCallBack(callback: () => void): () => void {
     this.updateCurrentAuthState(false);
-    this.user = null;
+    this.setUser(null);
     return callback;
   }
   logOut(callback: () => void, location: any = window.location): Observable<any> {
@@ -85,7 +85,7 @@ export class AuthService implements OnDestroy {
     const { valid, accessToken } = tokens;
     this.updateCurrentAuthState(valid && accessToken !== undefined);
     if (this.authenticated$.value) {
-      this.user = this.getUser();
+      this.setUser(this.getClientUser());
     } else {
       alert('failure, please check Javascript console');
     }
@@ -107,8 +107,20 @@ export class AuthService implements OnDestroy {
     return this.cryptrClient.getCurrentIdToken();
   }
 
-  getUser(): any {
+  setUser(newUser: any) {
+    this.user$.next(newUser)
+  }
+
+  getClientUser(): any {
     return this.cryptrClient.getUser();
+  }
+
+  getUser(): any {
+    return this.user$.value;
+  }
+
+  getObservableUser(): Observable<any> {
+    return this.user$.asObservable()
   }
 
   userAccountAccess(): Promise<any> {
