@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { AuthService } from '@cryptr/cryptr-angular';
+import { AuthService } from 'projects/cryptr/cryptr-angular/src/lib/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   constructor(public auth: AuthService) { }
 
   ngOnInit(): void {
-    this.auth.observableAuthenticated().subscribe((isAuthenticated: boolean) => {
+    this.auth.currentAuthenticationObservable().subscribe((isAuthenticated: boolean) => {
       this.authenticated = isAuthenticated;
     });
   }

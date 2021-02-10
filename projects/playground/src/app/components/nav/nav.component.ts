@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '@cryptr/cryptr-angular';
 import CryptrSpa from '@cryptr/cryptr-spa-js';
+import { AuthService } from 'projects/cryptr/cryptr-angular/src/lib/auth.service';
 
 @Component({
   selector: 'app-nav',
