@@ -1,6 +1,6 @@
 import { Inject, Injectable, OnDestroy } from '@angular/core';
 import CryptrSpa from '@cryptr/cryptr-spa-js';
-import { from, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, from, Observable, Subject } from 'rxjs';
 import { AbstractNavigator } from './abstract-navigator';
 import { Location } from '@angular/common';
 import { Config, CryptrClient, Tokens } from './utils/types';
@@ -12,7 +12,7 @@ import { CryptrClientService } from './auth.client';
 })
 export class AuthService implements OnDestroy {
   private ngUnsubscribe$ = new Subject();
-  private authenticated = false;
+  private authenticated$ = new BehaviorSubject(false);
   private user;
 
   constructor(
@@ -33,7 +33,7 @@ export class AuthService implements OnDestroy {
 
   checkAuthentication(): void {
     this.isAuthenticated().then((isAuthenticated: boolean) => {
-      this.authenticated = isAuthenticated;
+      this.updateCurrentAuthState(isAuthenticated);
       this.resetAuthentication(isAuthenticated);
       this.authenticate();
     }).catch((error) => {
@@ -46,7 +46,7 @@ export class AuthService implements OnDestroy {
     if (isAuthenticated) {
       return;
     }
-    this.authenticated = false;
+    this.updateCurrentAuthState(false);
     this.user = null;
   }
 
@@ -61,7 +61,7 @@ export class AuthService implements OnDestroy {
   }
 
   preLogOutCallBack(callback: () => void): () => void {
-    this.authenticated = false;
+    this.updateCurrentAuthState(false);
     this.user = null;
     return callback;
   }
@@ -83,13 +83,13 @@ export class AuthService implements OnDestroy {
 
   handleTokens(tokens: Tokens): boolean {
     const { valid, accessToken } = tokens;
-    this.authenticated = valid && accessToken !== undefined;
-    if (this.authenticated) {
+    this.updateCurrentAuthState(valid && accessToken !== undefined);
+    if (this.authenticated$.value) {
       this.user = this.getUser();
     } else {
       alert('failure, please check Javascript console');
     }
-    return this.authenticated;
+    return this.authenticated$.value;
   }
 
   observableAuthenticated(): Observable<boolean> {
@@ -135,18 +135,26 @@ export class AuthService implements OnDestroy {
   }
 
   currentAuthenticationState(): boolean {
-    return this.authenticated;
+    return this.authenticated$.value;
+  }
+
+  private updateCurrentAuthState(newAuthenticated: boolean): void {
+    this.authenticated$.next(newAuthenticated);
+  }
+
+  currentAuthenticationObservable(): Observable<boolean> {
+    return this.authenticated$.asObservable();
   }
 
   async authenticate(): Promise<boolean | UrlTree> {
-    if (this.authenticated) {
+    if (this.authenticated$.value) {
       return;
     }
     this.resetAuthentication(false);
     if (this.canHandleAuthentication()) {
       return this.handleRedirectCallback().then((tokens) => {
         const handled = this.handleTokens(tokens);
-        this.authenticated = handled;
+        this.updateCurrentAuthState(handled);
         if (handled) {
           this.refreshTokens();
           this.location.replaceState(this.routeCleanedPath(), '');
@@ -159,7 +167,7 @@ export class AuthService implements OnDestroy {
 
   async fullAuthenticateProcess(stateUrl?: string): Promise<boolean | UrlTree> {
     return this.isAuthenticated().then((isAuthenticated: boolean) => {
-      this.authenticated = isAuthenticated;
+      this.updateCurrentAuthState(isAuthenticated);
       if (isAuthenticated) {
         return true;
       } else {
