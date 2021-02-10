@@ -13,6 +13,8 @@
     "publish-force": "npm run unpublish && npm run build:prod:clean && ls && npm run publish:lib",
     "publish": "npm run build:prod:clean && ls && npm run publish:lib",
     "publish:lib": "cd dist/cryptr/cryptr-angular && npm publish",
+    "playground-run": "ng serve playground",
+    "playground-run:lib": "npm run build:prod:clean && ng serve playground",
     "test": "ng test",
     "lint": "ng lint"
   },
