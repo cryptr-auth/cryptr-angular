@@ -107,8 +107,8 @@ export class AuthService implements OnDestroy {
     return this.cryptrClient.getCurrentIdToken();
   }
 
-  setUser(newUser: any) {
-    this.user$.next(newUser)
+  setUser(newUser: any): void {
+    this.user$.next(newUser);
   }
 
   getClientUser(): any {
@@ -120,7 +120,7 @@ export class AuthService implements OnDestroy {
   }
 
   getObservableUser(): Observable<any> {
-    return this.user$.asObservable()
+    return this.user$.asObservable();
   }
 
   userAccountAccess(): Promise<any> {
