@@ -9,6 +9,11 @@ export interface Authorization {
   code: string;
 }
 
+export interface Tokens {
+  valid: boolean;
+  accessToken?: string;
+}
+
 export interface Config {
   tenant_domain: string;
   client_id: string;

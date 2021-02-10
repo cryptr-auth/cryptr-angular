@@ -3,7 +3,7 @@ import CryptrSpa from '@cryptr/cryptr-spa-js';
 import { from, Observable, Subject } from 'rxjs';
 import { AbstractNavigator } from './abstract-navigator';
 import { Location } from '@angular/common';
-import { Config, CryptrClient } from './utils/types';
+import { Config, CryptrClient, Tokens } from './utils/types';
 import { ActivatedRoute, Router, UrlTree } from '@angular/router';
 import { CryptrClientService } from './auth.client';
 
@@ -81,7 +81,7 @@ export class AuthService implements OnDestroy {
     }
   }
 
-  handleTokens(tokens: any): boolean {
+  handleTokens(tokens: Tokens): boolean {
     const { valid, accessToken } = tokens;
     this.authenticated = valid && accessToken !== undefined;
     if (this.authenticated) {
