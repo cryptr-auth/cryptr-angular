@@ -55,7 +55,6 @@ export class AccountAccessButtonComponent implements OnChanges {
   errorMessage: string = null;
   errorBtnClass = ERROR_BTN_CLASS;
   user;
-  authenticated = false;
 
   closeAccountPopup(): void {
     if (this.accountPopup !== undefined) {
@@ -112,9 +111,6 @@ export class AccountAccessButtonComponent implements OnChanges {
     this.auth.getObservableUser().subscribe((newUser) => {
       this.user = newUser;
     });
-    this.auth.observableAuthenticated().subscribe((isAuthenticated) => {
-      this.authenticated = isAuthenticated
-    })
   }
 
   checkConfig(): void {
@@ -162,7 +158,7 @@ export class AccountAccessButtonComponent implements OnChanges {
   }
 
   isAuthenticated(): boolean {
-    return this.authenticated;
+    return this.auth.currentAuthenticationState();
   }
 
   email(): any {
