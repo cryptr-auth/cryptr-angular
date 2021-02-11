@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build @cryptr/cryptr-angular",
+    "build:playground": "ng build playground --prod",
     "build:prod": "ng build @cryptr/cryptr-angular --prod",
+    "build:all:clean": "rm -rf dist && ng build @cryptr/cryptr-angular --prod && ng build playground --prod",
     "build:prod:clean": "rm -rf dist && ng build @cryptr/cryptr-angular --prod",
     "build:watch": "ng build @cryptr/cryptr-angular --watch",
     "make-badges": "istanbul-badges-readme",
@@ -14,7 +16,7 @@
     "publish": "npm run build:prod:clean && ls && npm run publish:lib",
     "publish:lib": "cd dist/cryptr/cryptr-angular && npm publish",
     "playground-run": "ng serve playground",
-    "playground-run:lib": "npm run build:prod:clean && ng serve playground",
+    "playground-run:lib": "npm run build:all:clean && ng serve playground",
     "test": "ng test",
     "lint": "ng lint"
   },
