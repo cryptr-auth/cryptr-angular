@@ -157,11 +157,11 @@ export class AccountAccessButtonComponent implements OnChanges {
     return this.auth.currentAuthenticationState();
   }
 
-  user() {
-    return this.auth.getClientUser()
+  user(): User | undefined {
+    return this.auth.getClientUser();
   }
 
-  email(): any {
+  email(): string | undefined {
     if (!!this.user()) {
       return this.user().email;
     }
