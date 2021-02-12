@@ -54,7 +54,6 @@ export class AccountAccessButtonComponent implements OnChanges {
   accountPopup: Window;
   errorMessage: string = null;
   errorBtnClass = ERROR_BTN_CLASS;
-  user;
 
   closeAccountPopup(): void {
     if (this.accountPopup !== undefined) {
@@ -108,9 +107,6 @@ export class AccountAccessButtonComponent implements OnChanges {
   ngOnChanges(_changes: SimpleChanges): void {
     this.checkConfig();
     this.setDefaults();
-    this.auth.getObservableUser().subscribe((newUser) => {
-      this.user = newUser;
-    });
   }
 
   checkConfig(): void {
@@ -161,21 +157,25 @@ export class AccountAccessButtonComponent implements OnChanges {
     return this.auth.currentAuthenticationState();
   }
 
+  user() {
+    return this.auth.getClientUser()
+  }
+
   email(): any {
-    if (!!this.user) {
-      return this.user.email;
+    if (!!this.user()) {
+      return this.user().email;
     }
   }
 
   initials(): any {
-    if (!this.isAuthenticated() || this.user === undefined || this.fullName() === undefined) {
+    if (!this.isAuthenticated() || this.user() === undefined || this.fullName() === undefined) {
       return;
     }
     return this.fullName().match(/\b(\w)/g).join('');
   }
 
   fullName(): any {
-    if (!this.isAuthenticated() || this.user === undefined || this.email() === undefined) {
+    if (!this.isAuthenticated() || this.user() === undefined || this.email() === undefined) {
       return;
     }
     const emailName = this.email().split('@')[0];
