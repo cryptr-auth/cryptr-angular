@@ -9,7 +9,7 @@ import {
   CanActivateChild,
   UrlTree,
 } from '@angular/router';
-import { from, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -26,13 +26,13 @@ export class AuthGuard implements CanActivate, CanLoad, CanActivateChild {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> {
-    return from(this.auth.fullAuthenticateProcess(state.url));
+    return this.auth.fullAuthenticateProcess(state.url);
   }
 
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> {
-    return from(this.auth.fullAuthenticateProcess());
+    return this.auth.fullAuthenticateProcess(state.url);
   }
 }

@@ -1,11 +1,12 @@
 import { Inject, Injectable, OnDestroy } from '@angular/core';
 import CryptrSpa from '@cryptr/cryptr-spa-js';
-import { BehaviorSubject, from, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, from, Observable, of, Subject } from 'rxjs';
 import { AbstractNavigator } from './abstract-navigator';
 import { Location } from '@angular/common';
 import { Config, CryptrClient, Tokens } from './utils/types';
 import { ActivatedRoute, Router, UrlTree } from '@angular/router';
 import { CryptrClientService } from './auth.client';
+import { catchError, map, timeout } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class AuthService implements OnDestroy {
   private ngUnsubscribe$ = new Subject();
   private authenticated$ = new BehaviorSubject(false);
   private user$ = new BehaviorSubject(null);
+  private isLoading$ = new BehaviorSubject(false);
 
   constructor(
     @Inject(CryptrClientService) private cryptrClient: CryptrClient,
@@ -22,6 +24,7 @@ export class AuthService implements OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
   ) {
+    this.isLoading$.next(true);
     this.checkAuthentication();
     window.addEventListener(CryptrSpa.events.REFRESH_INVALID_GRANT, (RigError) => {
       this.logOut(null);
@@ -29,6 +32,11 @@ export class AuthService implements OnDestroy {
     window.addEventListener(CryptrSpa.events.REFRESH_EXPIRED, (ReError) => {
       this.logOut(null);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.ngUnsubscribe$.next();
+    this.ngUnsubscribe$.complete();
   }
 
   checkAuthentication(): void {
@@ -39,6 +47,7 @@ export class AuthService implements OnDestroy {
     }).catch((error) => {
       console.error(error);
       this.resetAuthentication(false);
+      this.isLoading$.next(false);
     });
   }
 
@@ -92,9 +101,6 @@ export class AuthService implements OnDestroy {
     return this.authenticated$.value;
   }
 
-  observableAuthenticated(): Observable<boolean> {
-    return from(this.cryptrClient.isAuthenticated());
-  }
   isAuthenticated(): Promise<boolean> {
     return this.cryptrClient.isAuthenticated();
   }
@@ -115,21 +121,8 @@ export class AuthService implements OnDestroy {
     return this.cryptrClient.getUser();
   }
 
-  getUser(): any {
-    return this.user$.value;
-  }
-
-  getObservableUser(): Observable<any> {
-    return this.user$.asObservable();
-  }
-
   userAccountAccess(): Promise<any> {
     return this.cryptrClient.userAccountAccess();
-  }
-
-  ngOnDestroy(): void {
-    this.ngUnsubscribe$.next();
-    this.ngUnsubscribe$.complete();
   }
 
   refreshTokens(): void {
@@ -138,6 +131,18 @@ export class AuthService implements OnDestroy {
 
   config(): Config {
     return this.cryptrClient.config;
+  }
+
+  getUser(): any {
+    return this.user$.value;
+  }
+
+  observableAuthenticated(): Observable<boolean> {
+    return from(this.cryptrClient.isAuthenticated());
+  }
+
+  getObservableUser(): Observable<any> {
+    return this.user$.asObservable();
   }
 
   // TODO: enhance this tomake a proper reload with query params
@@ -159,32 +164,48 @@ export class AuthService implements OnDestroy {
   }
 
   async authenticate(): Promise<boolean | UrlTree> {
+    console.log('>>> authenticate');
     if (this.authenticated$.value) {
-      return;
+      console.log('<<< authenticate authenticated');
+      this.isLoading$.next(false);
+      return true;
     }
     this.resetAuthentication(false);
     if (this.canHandleAuthentication()) {
+      console.log('can authenticate');
       return this.handleRedirectCallback().then((tokens) => {
         const handled = this.handleTokens(tokens);
         this.updateCurrentAuthState(handled);
         if (handled) {
+          console.log('<<< authenticate handled');
           this.refreshTokens();
           this.location.replaceState(this.routeCleanedPath(), '');
+          this.isLoading$.next(false);
+          return true;
         } else {
+          console.log('<<< authenticate !handled');
+          this.isLoading$.next(false);
           return handled;
         }
       });
+    } else {
+      console.log('cannot authenticate');
+      this.isLoading$.next(false);
+      return false;
     }
   }
 
-  async fullAuthenticateProcess(stateUrl?: string): Promise<boolean | UrlTree> {
-    return this.isAuthenticated().then((isAuthenticated: boolean) => {
-      this.updateCurrentAuthState(isAuthenticated);
-      if (isAuthenticated) {
-        return true;
-      } else {
-        this.signInWithRedirect();
-      }
-    });
+  fullAuthenticateProcess(stateUrl?: string): Observable<boolean | UrlTree> {
+    console.log('fullAuthenticationProcess');
+    return this.isLoading$
+      .pipe(
+        timeout(10000), // wait for 10 seconds before fail.
+        map((isLoading: boolean) => {
+
+          if (!isLoading && !this.authenticated$.value) { this.signInWithRedirect(); return false; }
+          if (!isLoading && this.authenticated$.value) { return true; }
+        }),
+        catchError(() => { console.log('fullAuthenticationProcess'); return of(false); })
+      );
   }
 }
