@@ -20,8 +20,8 @@ const DEFAULT_CONFIG = {
 
 export class CryptrClientFactory {
   static createClient(configFactory: AuthClientConfig): any {
-    console.debug(configFactory)
-    console.debug(DEFAULT_CONFIG)
+    console.debug(configFactory);
+    console.debug(DEFAULT_CONFIG);
     const config = configFactory !== null ? configFactory.get() : DEFAULT_CONFIG;
 
     if (!config) {
