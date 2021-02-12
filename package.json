@@ -1,18 +1,23 @@
 {
   "name": "cryptr-angular",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build @cryptr/cryptr-angular",
+    "build:playground": "ng build playground --prod",
     "build:prod": "ng build @cryptr/cryptr-angular --prod",
+    "build:all:clean": "rm -rf dist && ng build @cryptr/cryptr-angular --prod && ng build playground --prod",
     "build:prod:clean": "rm -rf dist && ng build @cryptr/cryptr-angular --prod",
     "build:watch": "ng build @cryptr/cryptr-angular --watch",
+    "config": "ts-node set-env.ts",
     "make-badges": "istanbul-badges-readme",
     "unpublish": "npm unpublish @cryptr/cryptr-angular@$npm_package_version --force",
     "publish-force": "npm run unpublish && npm run build:prod:clean && ls && npm run publish:lib",
     "publish": "npm run build:prod:clean && ls && npm run publish:lib",
     "publish:lib": "cd dist/cryptr/cryptr-angular && npm publish",
+    "playground-run": "ng serve playground",
+    "playground-run:lib": "npm run build:all:clean && ng serve playground",
     "test": "ng test",
     "lint": "ng lint"
   },
@@ -27,6 +32,7 @@
     "@angular/platform-browser-dynamic": "^10.2.4",
     "@angular/router": "^10.2.4",
     "@cryptr/cryptr-spa-js": "^0.1.3",
+    "dotenv": "^8.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "^0.10.3"

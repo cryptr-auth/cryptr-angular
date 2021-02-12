@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@cryptr/cryptr-angular';
+import { AuthService } from 'projects/cryptr/cryptr-angular/src/lib/auth.service';
 
 @Component({
   selector: 'app-react',

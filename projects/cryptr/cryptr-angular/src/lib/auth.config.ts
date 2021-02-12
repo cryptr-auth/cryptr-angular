@@ -40,6 +40,7 @@ export interface AuthConfig {
   default_locale?: string;
   cryptr_base_url?: string;
   httpInterceptor: HttpInterceptorConfig;
+  has_ssr?: boolean;
   other_key?: string;
 }
 

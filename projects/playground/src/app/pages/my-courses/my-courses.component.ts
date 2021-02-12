@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { AuthService } from '@cryptr/cryptr-angular';
+import { AuthService } from 'projects/cryptr/cryptr-angular/src/lib/auth.service';
 import { environment } from 'projects/playground/src/environments/environment';
 import { Course } from '../../interfaces';
 

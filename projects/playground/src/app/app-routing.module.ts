@@ -5,7 +5,7 @@ import { ReactComponent } from './pages/react/react.component';
 import { GraphqlComponent } from './pages/graphql/graphql.component';
 import { GrowthHackerComponent } from './pages/growth-hacker/growth-hacker.component';
 import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
-import { AuthGuard } from '@cryptr/cryptr-angular';
+import { AuthGuard } from 'projects/cryptr/cryptr-angular/src/lib/auth.guard';
 
 
 const routes: Routes = [

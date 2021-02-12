@@ -71,8 +71,18 @@
           >
           <a
             routerLink="/mes-formations"
-            class="ml-4 px-3 py-2 rounded-md text-base font-medium leading-5 text-red-200 hover:text-gray-900 focus:outline-none focus:text-gray-700 transition duration-150 ease-in-out"
-            >Secured page</a
+            class="ml-4 px-3 py-2 rounded-md text-base font-medium leading-5 text-red-400 hover:text-gray-900 focus:outline-none focus:text-gray-700 transition duration-150 ease-in-out"
+            >Mes cours</a
+          >
+          <span
+            *ngIf="!authenticated"
+            class="ml-4 px-3 py-2 rounded-md text-base font-medium leading-5 text-blue-200 hover:text-gray-900 focus:outline-none focus:text-gray-700 transition duration-150 ease-in-out"
+            >Non connecté</span
+          >
+          <span
+            *ngIf="authenticated"
+            class="ml-4 px-3 py-2 rounded-md text-base font-medium leading-5 text-blue-600 hover:text-gray-900 focus:outline-none focus:text-gray-700 transition duration-150 ease-in-out"
+            >Bienvenue {{ user.email }}</span
           >
         </div>
       </div>
@@ -83,7 +93,6 @@
             [auth]="auth"
             [logoSrc]="logoSrc"
             [unauthenticatedPath]="unauthenticatedPath"
-            [redirectUri]="redirectUri"
           >
             <a cryptrWidgetChild routerLink="{{ securedPath }}">
               <div class="-m-3 p-3 flex items-start space-x-4">

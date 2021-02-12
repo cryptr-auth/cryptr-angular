@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '@cryptr/cryptr-angular';
 import CryptrSpa from '@cryptr/cryptr-spa-js';
+import { AuthService } from 'projects/cryptr/cryptr-angular/src/lib/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -13,6 +13,7 @@ export class NavComponent implements OnInit {
   unauthenticatedPath = '/';
   showLogoutModal = false;
   user: any;
+  authenticated = false;
 
   logoSrc = 'https://images.prismic.io/shark-academy%2F76b9fccf-b146-4c3d-a068-a96c07d61085_logo_shark_academy__no_spacing.svg?auto=compress,format';
   //  O: normal, 1: invalid_grant, 2: expired
@@ -25,6 +26,13 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this.cryptrListeners();
+    this.auth.currentAuthenticationObservable().subscribe((isAuthenticated: boolean) => {
+      console.log(isAuthenticated);
+      this.authenticated = isAuthenticated;
+    });
+    this.auth.getObservableUser().subscribe((user) => {
+      this.user = user;
+    });
   }
 
   // CRYPTR BLOCK

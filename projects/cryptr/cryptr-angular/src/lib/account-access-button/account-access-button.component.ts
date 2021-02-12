@@ -153,30 +153,29 @@ export class AccountAccessButtonComponent implements OnChanges {
     });
   }
 
-  user(): User {
-    return this.auth.getUser();
-  }
-
   isAuthenticated(): boolean {
     return this.auth.currentAuthenticationState();
   }
 
-  email(): any {
-    if (this.user() === undefined) {
-      return;
+  user(): User | undefined {
+    return this.auth.getClientUser();
+  }
+
+  email(): string | undefined {
+    if (!!this.user()) {
+      return this.user().email;
     }
-    return this.user().email;
   }
 
   initials(): any {
-    if (!this.isAuthenticated || this.user === undefined || this.fullName() === undefined) {
+    if (!this.isAuthenticated() || this.user() === undefined || this.fullName() === undefined) {
       return;
     }
     return this.fullName().match(/\b(\w)/g).join('');
   }
 
   fullName(): any {
-    if (!this.isAuthenticated() || this.user === undefined || this.email() === undefined) {
+    if (!this.isAuthenticated() || this.user() === undefined || this.email() === undefined) {
       return;
     }
     const emailName = this.email().split('@')[0];
