@@ -115,7 +115,7 @@ export class AuthService implements OnDestroy {
     return this.cryptrClient.getCurrentIdToken();
   }
 
-  setUser(newUser: any): void {
+  private setUser(newUser: any): void {
     this.user$.next(newUser);
   }
 
