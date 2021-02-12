@@ -4,10 +4,6 @@ import CryptrSpa from '@cryptr/cryptr-spa-js';
 import { AuthClientConfig } from './auth.config';
 export class CryptrClientFactory {
   static createClient(configFactory: AuthClientConfig): any {
-    if (!!configFactory) {
-      console.log('factory')
-      console.debug(configFactory.get())
-    }
     const config = configFactory.get();
 
     if (!config) {
