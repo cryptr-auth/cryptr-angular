@@ -11,7 +11,7 @@ describe('AuthModule', () => {
           audience: 'http://localhost:4200',
           tenant_domain: 'shark-academy',
           client_id: '724b141a-e1eb-4f5b-bfca-22eca8ae3cc4',
-          default_redirect_uri: 'http://localhost:4200/mes-formations',
+          default_redirect_uri: 'http://localhost:4200/',
           region: 'eu',
           default_locale: 'fr',
           httpInterceptor: {
