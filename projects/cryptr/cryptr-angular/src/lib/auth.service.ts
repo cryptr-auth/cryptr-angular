@@ -8,6 +8,7 @@ import { ActivatedRoute, Router, UrlTree } from '@angular/router';
 import { CryptrClientService } from './auth.client';
 import { filter, map } from 'rxjs/operators';
 import { DEFAULT_SCOPE } from './utils/constants';
+import { AuthClientConfig } from './auth.config';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,7 @@ export class AuthService implements OnDestroy {
     private navigator: AbstractNavigator,
     private router: Router,
     private route: ActivatedRoute,
+    private configFactory: AuthClientConfig,
   ) {
     this.checkAuthentication();
     window.addEventListener(CryptrSpa.events.REFRESH_INVALID_GRANT, (RigError) => {
@@ -223,7 +225,11 @@ export class AuthService implements OnDestroy {
           this.cleanRouteState();
           return true;
         } else {
-          this.signInWithRedirect(DEFAULT_SCOPE, default_locale, redirectUri);
+          if (this.configFactory.get().has_ssr) {
+            this.signInWithRedirect(DEFAULT_SCOPE, default_locale, redirectUri);
+          } else {
+            this.signInWithRedirect();
+          }
           return false;
         }
       })

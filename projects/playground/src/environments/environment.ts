@@ -18,7 +18,8 @@ export const environment = {
         'http://localhost:5000/*',
       ]
     },
-    telemetry: false
+    telemetry: false,
+    has_ssr: true,
   },
   resource_server_url: 'http://localhost:5000',
 };
