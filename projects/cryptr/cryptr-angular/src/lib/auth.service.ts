@@ -152,6 +152,7 @@ export class AuthService implements OnDestroy {
 
   private updateCurrentAuthState(newAuthenticated: boolean): void {
     this.authenticated$.next(newAuthenticated);
+    this.setUser(this.getClientUser());
   }
 
   currentAuthenticationObservable(): Observable<boolean> {
