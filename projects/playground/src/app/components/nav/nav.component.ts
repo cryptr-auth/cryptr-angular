@@ -31,8 +31,8 @@ export class NavComponent implements OnInit {
       this.authenticated = isAuthenticated;
     });
     this.auth.getObservableUser().subscribe((user) => {
-      this.user = user
-    })
+      this.user = user;
+    });
   }
 
   // CRYPTR BLOCK
