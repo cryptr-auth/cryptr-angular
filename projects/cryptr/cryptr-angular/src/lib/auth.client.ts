@@ -24,6 +24,4 @@ export class CryptrClientFactory {
   }
 }
 
-export const CryptrClientService = new InjectionToken<any>(
-  'cryptr.client', { providedIn: 'root', factory: () => CryptrClientFactory.createClient(null) }
-);
+export const CryptrClientService = new InjectionToken<any>('cryptr.client');
