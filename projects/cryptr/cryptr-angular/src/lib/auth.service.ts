@@ -169,10 +169,11 @@ export class AuthService implements OnDestroy {
     }
   }
 
-  // TODO: enhance this tomake a proper reload with query params
   private routeCleanedPath(): string {
-    const splittedQuery = this.location.path().split('?');
-    return splittedQuery[0] === '' ? '/' : splittedQuery[0];
+    const path = this.location.path();
+    const currentUrlTree = this.router.parseUrl(path);
+    const newPath = this.cleanUrlTree(currentUrlTree, path).toString();
+    return !!newPath ? newPath : '/';
   }
 
   private cleanRouteState(): void {
