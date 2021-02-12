@@ -1,4 +1,4 @@
-import { writeFile } from 'fs'
+const fs = require('fs');
 require('dotenv').config();
 
 if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefined && process.env.RS_URL !== undefined) {
@@ -15,7 +15,7 @@ if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefi
   console.log(envConfigFile);
 
 
-  writeFile(targetPath, envConfigFile, function (err) {
+  fs.writeFile(targetPath, envConfigFile, function (err) {
     if (err) {
       throw console.error(err)
     } else {
