@@ -10,6 +10,7 @@
     "build:all:clean": "rm -rf dist && ng build @cryptr/cryptr-angular --prod && ng build playground --prod",
     "build:prod:clean": "rm -rf dist && ng build @cryptr/cryptr-angular --prod",
     "build:watch": "ng build @cryptr/cryptr-angular --watch",
+    "config": "ts-node set-env.ts",
     "make-badges": "istanbul-badges-readme",
     "unpublish": "npm unpublish @cryptr/cryptr-angular@$npm_package_version --force",
     "publish-force": "npm run unpublish && npm run build:prod:clean && ls && npm run publish:lib",
