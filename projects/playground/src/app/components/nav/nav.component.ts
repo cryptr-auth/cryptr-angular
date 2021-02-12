@@ -27,8 +27,12 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.cryptrListeners();
     this.auth.currentAuthenticationObservable().subscribe((isAuthenticated: boolean) => {
+      console.log(isAuthenticated);
       this.authenticated = isAuthenticated;
     });
+    this.auth.getObservableUser().subscribe((user) => {
+      this.user = user
+    })
   }
 
   // CRYPTR BLOCK
