@@ -56,7 +56,7 @@ export class AccountAccessButtonComponent implements OnChanges {
   errorBtnClass = ERROR_BTN_CLASS;
 
   closeAccountPopup(): void {
-    if (this.accountPopup !== undefined) {
+    if (typeof this.accountPopup !== 'undefined' && this.accountPopup !== null) {
       this.accountPopup.close();
     }
   }
@@ -168,14 +168,14 @@ export class AccountAccessButtonComponent implements OnChanges {
   }
 
   initials(): any {
-    if (!this.isAuthenticated() || this.user() === undefined || this.fullName() === undefined) {
+    if (!this.isAuthenticated() || typeof this.user() === 'undefined' || typeof this.fullName() === 'undefined') {
       return;
     }
     return this.fullName().match(/\b(\w)/g).join('');
   }
 
   fullName(): any {
-    if (!this.isAuthenticated() || this.user() === undefined || this.email() === undefined) {
+    if (!this.isAuthenticated() || typeof this.user() === 'undefined' || typeof this.email() === 'undefined') {
       return;
     }
     const emailName = this.email().split('@')[0];
