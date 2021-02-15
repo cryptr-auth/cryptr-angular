@@ -56,7 +56,7 @@ export class AccountAccessButtonComponent implements OnChanges {
   errorBtnClass = ERROR_BTN_CLASS;
 
   closeAccountPopup(): void {
-    if (this.accountPopup !== undefined && this.accountPopup !== null) {
+    if (typeof this.accountPopup !== "undefined" && this.accountPopup !== null) {
       this.accountPopup.close();
     }
   }
