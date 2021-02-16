@@ -217,7 +217,7 @@ export class AuthService implements OnDestroy {
         this.updateCurrentAuthState(false);
       }).finally(() => {
         this.isLoading$.next(false);
-      })
+      });
     }
   }
 
