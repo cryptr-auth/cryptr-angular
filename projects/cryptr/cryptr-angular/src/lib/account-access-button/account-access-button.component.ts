@@ -161,21 +161,26 @@ export class AccountAccessButtonComponent implements OnChanges {
     return this.auth.getClientUser();
   }
 
+  cannotDisplayUser(): boolean {
+    return !this.isAuthenticated() || typeof this.user() === 'undefined' || typeof this.fullName() === 'undefined'
+  }
+
   email(): string | undefined {
-    if (!!this.user()) {
-      return this.user().email;
+    if (this.cannotDisplayUser()) {
+      return;
     }
+    return this.user().email
   }
 
   initials(): any {
-    if (!this.isAuthenticated() || typeof this.user() === 'undefined' || typeof this.fullName() === 'undefined') {
+    if (this.cannotDisplayUser()) {
       return;
     }
     return this.fullName().match(/\b(\w)/g).join('');
   }
 
   fullName(): any {
-    if (!this.isAuthenticated() || typeof this.user() === 'undefined' || typeof this.email() === 'undefined') {
+    if (this.cannotDisplayUser()) {
       return;
     }
     const emailName = this.email().split('@')[0];
