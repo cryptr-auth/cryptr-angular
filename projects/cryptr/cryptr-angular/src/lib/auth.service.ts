@@ -128,7 +128,7 @@ export class AuthService implements OnDestroy {
   }
 
   refreshTokens(): void {
-    this.cryptrClient.refreshTokens();
+    this.cryptrClient.handleRefreshTokens();
   }
 
   config(): Config {
