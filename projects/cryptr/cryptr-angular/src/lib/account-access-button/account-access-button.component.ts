@@ -161,7 +161,7 @@ export class AccountAccessButtonComponent implements OnChanges {
   }
 
   cannotDisplayUser(): boolean {
-    return !this.isAuthenticated() || typeof this.user() === 'undefined' || typeof this.fullName() === 'undefined';
+    return !this.isAuthenticated() || typeof this.user() === 'undefined';
   }
 
   email(): string | undefined {
