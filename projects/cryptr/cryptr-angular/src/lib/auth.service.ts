@@ -196,16 +196,28 @@ export class AuthService implements OnDestroy {
         const handled = this.handleTokens(tokens);
         this.updateCurrentAuthState(handled);
         if (handled) {
-          this.refreshTokens();
           this.cleanRouteState();
           this.isLoading$.next(false);
         } else {
           this.isLoading$.next(false);
         }
         return handled;
+      }).catch((error) => {
+        return false;
+      }).finally(() => {
+        this.isLoading$.next(false);
       });
+      // TODO: handle invitation process
+      // } else if (this.cryptrClient.canHandleInvitation()) {
+      //   console.log('can handle invite')
     } else {
-      this.isLoading$.next(false);
+      this.cryptrClient.handleRefreshTokens().then((res) => {
+        this.updateCurrentAuthState(res === true);
+      }).catch((error) => {
+        this.updateCurrentAuthState(false);
+      }).finally(() => {
+        this.isLoading$.next(false);
+      })
     }
   }
 
