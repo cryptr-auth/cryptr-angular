@@ -23,7 +23,7 @@ describe('AccountAccessButtonComponent', () => {
 
   const client = CryptrClientFactory.createClient(factory);
 
-  const authService = new AuthService(client, null, null, null, null);
+  const authService = new AuthService(client, null, null, null, null, null);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
