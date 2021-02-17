@@ -9,7 +9,7 @@
 
 # dependencies
 /node_modules
-projects/cryptr/cryptr-angular/node_modules
+# projects/cryptr/cryptr-angular/node_modules
 
 # profiling files
 chrome-profiler-events*.json
