@@ -43,7 +43,6 @@ export class AuthService implements OnDestroy {
 
   checkAuthentication(): void {
     this.isAuthenticated().then((isAuthenticated: boolean) => {
-      console.log(`isAuthenticated ${isAuthenticated}`);
       this.updateCurrentAuthState(isAuthenticated);
       this.resetAuthentication(isAuthenticated);
       this.authenticate();
@@ -150,12 +149,10 @@ export class AuthService implements OnDestroy {
 
 
   currentAuthenticationState(): boolean {
-    console.log(`currentAuthenticationState ${this.authenticated$.value}`);
     return this.authenticated$.value;
   }
 
   private updateCurrentAuthState(newAuthenticated: boolean): void {
-    console.log(`updateCurrentAuthState ${newAuthenticated}`);
     this.authenticated$.next(newAuthenticated);
     this.setUser(this.getClientUser());
   }
@@ -197,7 +194,6 @@ export class AuthService implements OnDestroy {
     if (this.canHandleAuthentication()) {
       return this.handleRedirectCallback().then((tokens) => {
         const handled = this.handleTokens(tokens);
-        console.log(`authenticate handled ${handled}`);
         this.updateCurrentAuthState(handled);
         if (handled) {
           this.cleanRouteState();
