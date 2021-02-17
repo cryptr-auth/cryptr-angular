@@ -9,10 +9,10 @@ export const environment = {
     default_locale: "fr",
     httpInterceptor: {
       apiRequestsToSecure: [
-        'https://cryptr-angular-express-staging-backend.onrender.com/*',
+        'https://cryptr-express-staging-backend.onrender.com/*',
       ]
     },
     telemetry: false
   },
-  resource_server_url: 'https://cryptr-angular-express-staging-backend.onrender.com',
+  resource_server_url: 'https://cryptr-express-staging-backend.onrender.com',
 };
