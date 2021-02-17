@@ -14,6 +14,8 @@ import { CryptrClientFactory, CryptrClientService } from './auth.client';
 })
 export class AuthModule {
   static forRoot(config?: AuthConfig): ModuleWithProviders<AuthModule> {
+    console.log('Authmodule config');
+    console.log(config);
     return {
       ngModule: AuthModule,
       providers: [

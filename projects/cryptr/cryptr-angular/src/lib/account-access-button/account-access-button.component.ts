@@ -148,7 +148,7 @@ export class AccountAccessButtonComponent implements OnChanges {
         const { data: { data: { url } } } = accountAccessData;
         this.accountPopup = window.open(url, '_blank', this.popupParams());
       } catch (err) {
-        console.error(err.message)
+        console.error(err.message);
       }
     });
   }
