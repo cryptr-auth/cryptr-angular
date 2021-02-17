@@ -6,4 +6,4 @@ export const BADGE_CLASS = 'uppercase rounded-full h-6 w-6 flex items-center jus
 export const TOGGLE_CASS_CLOSED = 'bg-white shadow-lg px-6 py-2 rounded-md text-gray-500 flex flex-row items-center space-x-2 text-base leading-6 font-medium hover:bg-gray-100 transition ease-in-out duration-150 focus:outline-none';
 export const TOGGLE_CASS_OPENED = 'bg-white shadow-lg px-6 py-2 rounded-md text-gray-500 flex flex-row items-center space-x-2 text-base leading-6 font-medium hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:shadow-none transition ease-in-out duration-150';
 
-export const DEFAULT_SCOPE = 'openid email';
+export const DEFAULT_SCOPE = 'openid email profile';

@@ -23,7 +23,7 @@ describe('AuthConfig', () => {
 
       const client = CryptrClientFactory.createClient(factory);
 
-      const authService = new AuthService(client, null, null, null, null);
+      const authService = new AuthService(client, null, null, null, null, null);
       expect(authService).not.toBe(null);
       expect(authService.getIdToken).not.toBe(null);
       expect(authService.getIdToken()).toBe(undefined);
