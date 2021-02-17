@@ -149,7 +149,7 @@ export class AuthService implements OnDestroy {
 
 
   currentAuthenticationState(): boolean {
-    console.log(`currentAuthenticationState ${this.authenticated$.value}`)
+    console.log(`currentAuthenticationState ${this.authenticated$.value}`);
     return this.authenticated$.value;
   }
 
