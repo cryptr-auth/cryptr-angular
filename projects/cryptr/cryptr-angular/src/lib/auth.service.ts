@@ -43,6 +43,7 @@ export class AuthService implements OnDestroy {
 
   checkAuthentication(): void {
     this.isAuthenticated().then((isAuthenticated: boolean) => {
+      console.log(`isAuthenticated ${isAuthenticated}`);
       this.updateCurrentAuthState(isAuthenticated);
       this.resetAuthentication(isAuthenticated);
       this.authenticate();
@@ -154,6 +155,7 @@ export class AuthService implements OnDestroy {
   }
 
   private updateCurrentAuthState(newAuthenticated: boolean): void {
+    console.log(`updateCurrentAuthState ${newAuthenticated}`);
     this.authenticated$.next(newAuthenticated);
     this.setUser(this.getClientUser());
   }
@@ -195,6 +197,7 @@ export class AuthService implements OnDestroy {
     if (this.canHandleAuthentication()) {
       return this.handleRedirectCallback().then((tokens) => {
         const handled = this.handleTokens(tokens);
+        console.log(`authenticate handled ${handled}`);
         this.updateCurrentAuthState(handled);
         if (handled) {
           this.cleanRouteState();
@@ -213,6 +216,8 @@ export class AuthService implements OnDestroy {
       //   console.log('can handle invite')
     } else {
       this.cryptrClient.handleRefreshTokens().then((res) => {
+        console.log(`handlerefreshTokens ${res === true}`);
+        console.log(res);
         this.updateCurrentAuthState(res === true);
       }).catch((error) => {
         this.updateCurrentAuthState(false);
