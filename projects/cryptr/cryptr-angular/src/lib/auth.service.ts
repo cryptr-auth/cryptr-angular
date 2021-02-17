@@ -216,6 +216,8 @@ export class AuthService implements OnDestroy {
         this.updateCurrentAuthState(isAuthenticated);
       }).catch((err) => {
         this.updateCurrentAuthState(false);
+      }).finally(() => {
+        this.isLoading$.next(false);
       });
       // this.cryptrClient.handleRefreshTokens().then((res) => {
       //   console.log(`handlerefreshTokens ${res === true}`);
