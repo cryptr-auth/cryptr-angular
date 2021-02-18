@@ -221,7 +221,7 @@ export class AccountAccessButtonComponent implements OnChanges {
   }
 
   signUpWithRedirect(): void {
-    this.auth.signInWithRedirect(DEFAULT_SCOPE, this.locale, this.redirectUri);
+    this.auth.signUpWithRedirect(DEFAULT_SCOPE, this.locale, this.redirectUri);
   }
 
   currentToggleBtnClass(): string {
