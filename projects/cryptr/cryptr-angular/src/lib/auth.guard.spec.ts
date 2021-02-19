@@ -21,7 +21,7 @@ describe('AuthGuard', () => {
 
       const client = CryptrClientFactory.createClient(factory);
 
-      const authService = new AuthService(client, null, null, null, null);
+      const authService = new AuthService(client, null, null, null, null, null);
       const guard = new AuthGuard(authService);
       expect(guard).not.toBe(null);
     });

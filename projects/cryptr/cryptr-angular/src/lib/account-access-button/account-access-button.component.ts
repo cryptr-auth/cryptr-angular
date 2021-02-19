@@ -56,7 +56,7 @@ export class AccountAccessButtonComponent implements OnChanges {
   errorBtnClass = ERROR_BTN_CLASS;
 
   closeAccountPopup(): void {
-    if (this.accountPopup !== undefined) {
+    if (typeof this.accountPopup !== 'undefined' && this.accountPopup !== null) {
       this.accountPopup.close();
     }
   }
@@ -148,7 +148,7 @@ export class AccountAccessButtonComponent implements OnChanges {
         const { data: { data: { url } } } = accountAccessData;
         this.accountPopup = window.open(url, '_blank', this.popupParams());
       } catch (err) {
-        console.error(err);
+        console.error(err.message);
       }
     });
   }
@@ -161,21 +161,26 @@ export class AccountAccessButtonComponent implements OnChanges {
     return this.auth.getClientUser();
   }
 
+  cannotDisplayUser(): boolean {
+    return !this.isAuthenticated() || typeof this.user() === 'undefined';
+  }
+
   email(): string | undefined {
-    if (!!this.user()) {
-      return this.user().email;
+    if (this.cannotDisplayUser()) {
+      return;
     }
+    return this.user().email;
   }
 
   initials(): any {
-    if (!this.isAuthenticated() || this.user() === undefined || this.fullName() === undefined) {
+    if (this.cannotDisplayUser()) {
       return;
     }
     return this.fullName().match(/\b(\w)/g).join('');
   }
 
   fullName(): any {
-    if (!this.isAuthenticated() || this.user() === undefined || this.email() === undefined) {
+    if (this.cannotDisplayUser()) {
       return;
     }
     const emailName = this.email().split('@')[0];
@@ -216,7 +221,7 @@ export class AccountAccessButtonComponent implements OnChanges {
   }
 
   signUpWithRedirect(): void {
-    this.auth.signInWithRedirect(DEFAULT_SCOPE, this.locale, this.redirectUri);
+    this.auth.signUpWithRedirect(DEFAULT_SCOPE, this.locale, this.redirectUri);
   }
 
   currentToggleBtnClass(): string {

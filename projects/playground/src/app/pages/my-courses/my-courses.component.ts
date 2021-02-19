@@ -15,7 +15,6 @@ export class MyCoursesComponent implements OnInit, OnChanges {
   tabIndex = 1;
 
   constructor(public auth: AuthService, public http: HttpClient) {
-    console.log('my courses component');
   }
 
   setTabIndex(newIndex: number): void {

@@ -19,6 +19,7 @@ export class NavComponent implements OnInit {
   //  O: normal, 1: invalid_grant, 2: expired
   logOutPopupStyle = 0;
   locale = 'fr';
+  signType = 'signin';
   redirectUri = 'http://localhost:4200/';
 
   constructor(public auth: AuthService, private router: Router) {
@@ -27,7 +28,6 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.cryptrListeners();
     this.auth.currentAuthenticationObservable().subscribe((isAuthenticated: boolean) => {
-      console.log(isAuthenticated);
       this.authenticated = isAuthenticated;
     });
     this.auth.getObservableUser().subscribe((user) => {
@@ -38,7 +38,6 @@ export class NavComponent implements OnInit {
   // CRYPTR BLOCK
   cryptrListeners(): void {
     window.addEventListener(CryptrSpa.events.REFRESH_INVALID_GRANT, (e) => {
-      console.error(e);
       this.logOut(1);
     });
     window.addEventListener(CryptrSpa.events.REFRESH_EXPIRED, (e) => {
