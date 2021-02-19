@@ -1,6 +1,6 @@
 {
   "name": "@cryptr/cryptr-angular",
-  "version": "0.1.6-rc1",
+  "version": "0.1.6-rc2",
   "description": "Cryptr SDK for Angular SPA",
   "keywords": [
     "cryptr",
@@ -21,7 +21,7 @@
     "make-badges": "istanbul-badges-readme"
   },
   "dependencies": {
-    "@cryptr/cryptr-spa-js": "github:cryptr-auth/cryptr-spa-js#release/v0.1.5",
+    "@cryptr/cryptr-spa-js": "^0.1.5",
     "tslib": "^2.0.0"
   },
   "author": "Cryptr <thibaud@cryptr.co> (https://www.cryptr.co)",
