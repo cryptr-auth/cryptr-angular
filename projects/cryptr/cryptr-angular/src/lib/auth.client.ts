@@ -5,6 +5,13 @@ import { AuthClientConfig } from './auth.config';
 export class CryptrClientFactory {
   static createClient(configFactory: AuthClientConfig): any {
     const config = configFactory.get();
+
+    try {
+      console.log(CryptrSpa)
+    } catch (error) {
+      console.error('cryptr spa seems not to be loaded')
+      console.error(error)
+    }
     try {
       if (!config) {
         throw new Error(
@@ -21,7 +28,6 @@ export class CryptrClientFactory {
         console.warn(`The path ${default_redirect_uri} have to be decorated with 'canActivate: [AuthGuard]' options`);
       }
       console.log('before client creation');
-      console.log(CryptrSpa)
       const client = new CryptrSpa.client(config);
       console.log('after client creation');
       return client;
