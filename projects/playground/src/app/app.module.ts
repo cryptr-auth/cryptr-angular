@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,16 +11,11 @@ import { GraphqlComponent } from './pages/graphql/graphql.component';
 import { GrowthHackerComponent } from './pages/growth-hacker/growth-hacker.component';
 import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { environment } from '../environments/environment';
 import { AuthModule } from 'projects/cryptr/cryptr-angular/src/lib/auth.module';
 import { AccountAccessButtonComponent } from 'projects/cryptr/cryptr-angular/src/lib/account-access-button/account-access-button.component';
 import { AuthHttpInterceptor } from 'projects/cryptr/cryptr-angular/src/lib/auth.interceptor';
-import CryptrSpa from '@cryptr/cryptr-spa-js';
 
-console.log('appmodule before client');
-const client = new CryptrSpa.client(environment.cryptrConfig);
-console.log('appmodule after client');
 @NgModule({
   declarations: [
     AppComponent,
