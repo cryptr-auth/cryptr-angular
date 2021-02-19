@@ -7,10 +7,10 @@ export class CryptrClientFactory {
     const config = configFactory.get();
 
     try {
-      console.log(CryptrSpa)
+      console.log(CryptrSpa);
     } catch (error) {
-      console.error('cryptr spa seems not to be loaded')
-      console.error(error)
+      console.error('cryptr spa seems not to be loaded');
+      console.error(error);
     }
     try {
       if (!config) {
@@ -18,7 +18,7 @@ export class CryptrClientFactory {
           'Configuration must be specified either through AuthModule.forRoot or through AuthClientConfig.set'
         );
       } else {
-        console.debug(config)
+        console.log(config);
         const { default_redirect_uri, httpInterceptor: { apiRequestsToSecure } } = config;
         if (apiRequestsToSecure === undefined || apiRequestsToSecure.length === 0) {
           throw new Error(
