@@ -38,7 +38,6 @@ export class NavComponent implements OnInit {
   // CRYPTR BLOCK
   cryptrListeners(): void {
     window.addEventListener(CryptrSpa.events.REFRESH_INVALID_GRANT, (e) => {
-      console.error(e);
       this.logOut(1);
     });
     window.addEventListener(CryptrSpa.events.REFRESH_EXPIRED, (e) => {
