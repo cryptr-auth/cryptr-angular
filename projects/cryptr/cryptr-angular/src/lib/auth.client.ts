@@ -11,6 +11,7 @@ export class CryptrClientFactory {
           'Configuration must be specified either through AuthModule.forRoot or through AuthClientConfig.set'
         );
       } else {
+        console.debug(config)
         const { default_redirect_uri, httpInterceptor: { apiRequestsToSecure } } = config;
         if (apiRequestsToSecure === undefined || apiRequestsToSecure.length === 0) {
           throw new Error(
