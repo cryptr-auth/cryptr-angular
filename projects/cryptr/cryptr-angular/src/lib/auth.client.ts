@@ -20,7 +20,9 @@ export class CryptrClientFactory {
         }
         console.warn(`The path ${default_redirect_uri} have to be decorated with 'canActivate: [AuthGuard]' options`);
       }
+      console.log('before client creation');
       const client = new CryptrSpa.client(config);
+      console.log('before client creation');
       return client;
     } catch (error) {
       console.error('authclient error');
