@@ -21,7 +21,7 @@
     "make-badges": "istanbul-badges-readme"
   },
   "dependencies": {
-    "@cryptr/cryptr-spa-js": "git://github.com/cryptr-auth/cryptr-spa-js.git#enhancement/rotation-tokens",
+    "@cryptr/cryptr-spa-js": "git://github.com/cryptr-auth/cryptr-spa-js.git#release/v0.1.5",
     "tslib": "^2.0.0"
   },
   "author": "Cryptr <thibaud@cryptr.co> (https://www.cryptr.co)",
