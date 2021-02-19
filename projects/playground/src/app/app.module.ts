@@ -16,11 +16,11 @@ import { environment } from '../environments/environment';
 import { AuthModule } from 'projects/cryptr/cryptr-angular/src/lib/auth.module';
 import { AccountAccessButtonComponent } from 'projects/cryptr/cryptr-angular/src/lib/account-access-button/account-access-button.component';
 import { AuthHttpInterceptor } from 'projects/cryptr/cryptr-angular/src/lib/auth.interceptor';
-import CryptrSpa from 'projects/cryptr/cryptr-angular/node_modules/@cryptr/cryptr-spa-js/dist/types/main';
+import CryptrSpa from '@cryptr/cryptr-spa-js';
 
-console.log('appmodule before client')
+console.log('appmodule before client');
 const client = new CryptrSpa.client(environment.cryptrConfig);
-console.log('appmodule after client')
+console.log('appmodule after client');
 @NgModule({
   declarations: [
     AppComponent,

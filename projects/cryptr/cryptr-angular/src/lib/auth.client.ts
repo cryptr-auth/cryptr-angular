@@ -29,6 +29,7 @@ export class CryptrClientFactory {
       }
       console.log('before client creation');
       const client = new CryptrSpa.client(config);
+      console.log(client);
       console.log('after client creation');
       return client;
     } catch (error) {
