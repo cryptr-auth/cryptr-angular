@@ -139,6 +139,10 @@ export class AuthService implements OnDestroy {
     return this.user$.value;
   }
 
+  authenticationInProgress(): Observable<boolean> {
+    return this.isLoading$.asObservable();
+  }
+
   observableAuthenticated(): Observable<boolean> {
     return from(this.cryptrClient.isAuthenticated());
   }
