@@ -42,10 +42,10 @@ export class AuthService implements OnDestroy {
   }
 
   checkAuthentication(): void {
-    this.isAuthenticated().then((isAuthenticated: boolean) => {
+    this.isAuthenticated().then(async (isAuthenticated: boolean) => {
       this.updateCurrentAuthState(isAuthenticated);
       this.resetAuthentication(isAuthenticated);
-      this.authenticate();
+      await this.authenticate();
     }).catch((error) => {
       console.error(error);
       this.resetAuthentication(false);
