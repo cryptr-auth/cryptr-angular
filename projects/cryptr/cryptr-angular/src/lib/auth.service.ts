@@ -140,7 +140,7 @@ export class AuthService implements OnDestroy {
   }
 
   authenticationInProgress(): Observable<boolean> {
-    return this.isLoading$.asObservable()
+    return this.isLoading$.asObservable();
   }
 
   observableAuthenticated(): Observable<boolean> {
