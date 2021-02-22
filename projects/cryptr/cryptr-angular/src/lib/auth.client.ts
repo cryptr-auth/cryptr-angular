@@ -7,12 +7,6 @@ export class CryptrClientFactory {
     const config = configFactory.get();
 
     try {
-      console.log(CryptrSpa);
-    } catch (error) {
-      console.error('cryptr spa seems not to be loaded');
-      console.error(error);
-    }
-    try {
       if (!config) {
         throw new Error(
           'Configuration must be specified either through AuthModule.forRoot or through AuthClientConfig.set'
@@ -27,10 +21,7 @@ export class CryptrClientFactory {
         }
         console.warn(`The path ${default_redirect_uri} have to be decorated with 'canActivate: [AuthGuard]' options`);
       }
-      console.log('before client creation');
       const client = new CryptrSpa.client(config);
-      console.log(client);
-      console.log('after client creation');
       return client;
     } catch (error) {
       console.error('authclient error');
