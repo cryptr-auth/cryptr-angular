@@ -98,8 +98,8 @@ export class AuthService implements OnDestroy {
     if (this.authenticated$.value) {
       this.setUser(this.getClientUser());
     } else {
-      console.error("handling tokens failed")
-      console.error(tokens)
+      console.error('handling tokens failed');
+      console.error(tokens);
     }
     return this.authenticated$.value;
   }
