@@ -1,6 +1,6 @@
 {
   "name": "@cryptr/cryptr-angular",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Cryptr SDK for Angular SPA",
   "keywords": [
     "cryptr",
