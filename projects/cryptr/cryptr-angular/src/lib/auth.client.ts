@@ -18,7 +18,7 @@ export class CryptrClientFactory {
             'You must specify at least one item in config.httpInterceptor.apiRequestsToSecure . Mainly use your Resource server url'
           );
         }
-        console.warn(`Secured paths have to be decorated with 'canActivate: [AuthGuard]' options`);
+        console.warn('Secured paths have to be decorated with \'canActivate: [AuthGuard]\' options');
       }
       return new CryptrSpa.client(config);
     } catch (error) {
