@@ -12,17 +12,15 @@ export class CryptrClientFactory {
           'Configuration must be specified either through AuthModule.forRoot or through AuthClientConfig.set'
         );
       } else {
-        console.log(config);
-        const { default_redirect_uri, httpInterceptor: { apiRequestsToSecure } } = config;
+        const { httpInterceptor: { apiRequestsToSecure } } = config;
         if (apiRequestsToSecure === undefined || apiRequestsToSecure.length === 0) {
           throw new Error(
             'You must specify at least one item in config.httpInterceptor.apiRequestsToSecure . Mainly use your Resource server url'
           );
         }
-        console.warn(`The path ${default_redirect_uri} have to be decorated with 'canActivate: [AuthGuard]' options`);
+        console.warn('Secured paths have to be decorated with \'canActivate: [AuthGuard]\' options');
       }
-      const client = new CryptrSpa.client(config);
-      return client;
+      return new CryptrSpa.client(config);
     } catch (error) {
       console.error('authclient error');
       console.error(error);
