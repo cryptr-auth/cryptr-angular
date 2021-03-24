@@ -21,7 +21,7 @@
     "make-badges": "istanbul-badges-readme"
   },
   "dependencies": {
-    "@cryptr/cryptr-spa-js": "github:cryptr-auth/cryptr-spa-js#master",
+    "@cryptr/cryptr-spa-js": "^0.1.9",
     "tslib": "^2.0.0"
   },
   "author": "Cryptr <thibaud@cryptr.co> (https://www.cryptr.co)",
