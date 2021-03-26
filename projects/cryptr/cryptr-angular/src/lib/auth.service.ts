@@ -93,6 +93,8 @@ export class AuthService implements OnDestroy {
   }
 
   handleTokens(tokens: Tokens): boolean {
+    // console.log('tokens');
+    // console.log(tokens);
     const { valid, accessToken } = tokens;
     this.updateCurrentAuthState(valid && accessToken !== undefined);
     if (this.authenticated$.value) {

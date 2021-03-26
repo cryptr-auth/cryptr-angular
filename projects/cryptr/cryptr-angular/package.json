@@ -1,6 +1,6 @@
 {
   "name": "@cryptr/cryptr-angular",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Cryptr SDK for Angular SPA",
   "keywords": [
     "cryptr",
@@ -14,14 +14,14 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^10.2.4",
-    "@angular/core": "^10.2.4"
+    "@angular/common": ">=9 <=11",
+    "@angular/core": ">=9 <=11"
   },
   "scripts": {
     "make-badges": "istanbul-badges-readme"
   },
   "dependencies": {
-    "@cryptr/cryptr-spa-js": "github:cryptr-auth/cryptr-spa-js#master",
+    "@cryptr/cryptr-spa-js": "^0.1.9",
     "tslib": "^2.0.0"
   },
   "author": "Cryptr <thibaud@cryptr.co> (https://www.cryptr.co)",
