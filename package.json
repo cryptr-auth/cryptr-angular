@@ -1,6 +1,6 @@
 {
   "name": "cryptr-angular",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -31,7 +31,7 @@
     "@angular/platform-browser": "^11.0.4",
     "@angular/platform-browser-dynamic": "^11.0.4",
     "@angular/router": "^11.0.4",
-    "@cryptr/cryptr-spa-js": "^0.1.9",
+    "@cryptr/cryptr-spa-js": "^0.1.10",
     "dotenv": "^8.2.0",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
