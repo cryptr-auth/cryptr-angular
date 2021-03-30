@@ -244,7 +244,10 @@ export class AuthService implements OnDestroy {
     }
   }
 
-  fullAuthenticateProcess(stateUrl?: string, callback?: (isAuthenticated: boolean, stateUrl?: string) => boolean): Observable<boolean | UrlTree> {
+  fullAuthenticateProcess(
+    stateUrl?: string,
+    callback?: (isAuthenticated: boolean, stateUrl?: string) => boolean
+  ): Observable<boolean | UrlTree> {
     return combineLatest(
       [this.isLoading$, this.authenticated$]
     ).pipe(
@@ -253,9 +256,9 @@ export class AuthService implements OnDestroy {
       }),
       map(([isLoading, isAuthenticated]) => {
         if (callback) {
-          return callback(isAuthenticated, stateUrl)
+          return callback(isAuthenticated, stateUrl);
         } else {
-          return this.defaultAuthenticationCallback(isAuthenticated, stateUrl)
+          return this.defaultAuthenticationCallback(isAuthenticated, stateUrl);
         }
       })
     );
