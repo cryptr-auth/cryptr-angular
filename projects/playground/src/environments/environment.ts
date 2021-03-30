@@ -8,7 +8,7 @@ export const environment = {
   cryptrConfig: {
     audience: 'http://localhost:4200',
     tenant_domain: 'shark-academy',
-    client_id: '79742198-b3d6-4565-bca2-276f63162129',
+    client_id: 'fea92afe-3bf5-4f55-b772-1d0fa14d325f',
     default_redirect_uri: 'http://localhost:4200/',
     // region: 'us',
     cryptr_base_url: 'http://localhost:4000',
