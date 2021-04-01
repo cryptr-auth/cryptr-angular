@@ -90,7 +90,7 @@ export class AuthService implements OnDestroy {
   * Usage with custom locale
   * signInWithRedirect("email openid profile", "en", "http://localhsot:4201")
   *
-  * @param {string} [scope= email openid profile] - Scopes requested for this sign in process (whitespace separator), Minimum/Default: `"email openid profile"`
+  * @param {string} [scope=email openid profile] - Scopes requested for this sign in process (whitespace separator), Minimum/Default: `"email openid profile"`
   * @param {string} locale - locale for this sign in process. Default: `config.default_locale` value
   * @param {string} redirectUri - URI where to redirect after sign in process. Default: `config.default_redirect_uri` value
   * @returns Redirects to Cryptr Sign in page
@@ -101,6 +101,28 @@ export class AuthService implements OnDestroy {
     }
   }
 
+  /**
+  * @example
+  * Default usage
+  * signUpWithRedirect()
+  *
+  * @example
+  * Usage with custom scope
+  * signUpWithRedirect("email openid profile read:invoices")
+  *
+  * @example
+  * Usage with custom locale
+  * signUpWithRedirect("email openid profile", "fr")
+  *
+  * @example
+  * Usage with custom locale
+  * signUpWithRedirect("email openid profile", "en", "http://localhsot:4201")
+  *
+  * @param {string} [scope="email openid profile"] - Scopes requested for this sign up process (whitespace separator), Minimum/Default: `"email openid profile"`
+  * @param {string} locale - locale for this sign up process. Default: `config.default_locale` value
+  * @param {string} redirectUri - URI where to redirect after sign up process. Default: `config.default_redirect_uri` value
+  * @returns Redirects to Cryptr Sign up page
+  */
   signUpWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
     return from(this.cryptrClient.signUpWithRedirect(scope, redirectUri, locale));
   }
