@@ -62,7 +62,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
   }
 
   /**
-   * @param ignore
+   * @ignore
    */
   private canAttachToken(
     route: ApiRouteDefinition,

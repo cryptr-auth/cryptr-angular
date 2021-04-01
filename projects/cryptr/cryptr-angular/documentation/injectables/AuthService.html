@@ -1292,7 +1292,9 @@
 
 
                                     <td>
-                                        <p>openid profile] - Scopes requested for this sign in process (whitespace separator), Minimum/Default: <code>&quot;email openid profile&quot;</code></p>
+                                        <ul>
+<li>Default: <code>&quot;email openid profile&quot;</code>, Scopes requested for this sign in process (whitespace separator)</li>
+</ul>
 
                                     </td>
                                 </tr>
@@ -1309,7 +1311,7 @@
 
                                     <td>
                                         <ul>
-<li>locale for this sign in process. Default: <code>config.default_locale</code> value</li>
+<li>Default: <code>config.default_locale</code> value. locale for this sign in process.</li>
 </ul>
 
                                     </td>
@@ -1327,7 +1329,7 @@
 
                                     <td>
                                         <ul>
-<li>URI where to redirect after sign in process. Default: <code>config.default_redirect_uri</code> value</li>
+<li>Default: <code>config.default_redirect_uri</code> value. URI where to redirect after sign in process.</li>
 </ul>
 
                                     </td>
@@ -1559,20 +1561,20 @@ import { AuthClientConfig } from &#x27;./auth.config&#x27;;
 })
 export class AuthService implements OnDestroy {
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private ngUnsubscribe$ &#x3D; new Subject();
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private authenticated$ &#x3D; new BehaviorSubject(false);
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private user$ &#x3D; new BehaviorSubject(null);
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private isLoading$ &#x3D; new BehaviorSubject(true);
 
   constructor(
@@ -1618,27 +1620,27 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @example
-  * Default usage
-  * signInWithRedirect()
-  *
-  * @example
-  * Usage with custom scope
-  * signInWithRedirect(&quot;email openid profile read:invoices&quot;)
-  *
-  * @example
-  * Usage with custom locale
-  * signInWithRedirect(&quot;email openid profile&quot;, &quot;fr&quot;)
-  *
-  * @example
-  * Usage with custom locale
-  * signInWithRedirect(&quot;email openid profile&quot;, &quot;en&quot;, &quot;http://localhsot:4201&quot;)
-  *
-  * @param {string} [scope&#x3D;email openid profile] - Scopes requested for this sign in process (whitespace separator), Minimum/Default: &#x60;&quot;email openid profile&quot;&#x60;
-  * @param {string} locale - locale for this sign in process. Default: &#x60;config.default_locale&#x60; value
-  * @param {string} redirectUri - URI where to redirect after sign in process. Default: &#x60;config.default_redirect_uri&#x60; value
-  * @returns Redirects to Cryptr Sign in page
-  */
+   * @example
+   * Default usage
+   * signInWithRedirect()
+   *
+   * @example
+   * Usage with custom scope
+   * signInWithRedirect(&quot;email openid profile read:invoices&quot;)
+   *
+   * @example
+   * Usage with custom locale
+   * signInWithRedirect(&quot;email openid profile&quot;, &quot;fr&quot;)
+   *
+   * @example
+   * Usage with custom locale
+   * signInWithRedirect(&quot;email openid profile&quot;, &quot;en&quot;, &quot;http://localhsot:4201&quot;)
+   *
+   * @param scope - Default: &#x60;&quot;email openid profile&quot;&#x60;, Scopes requested for this sign in process (whitespace separator)
+   * @param locale - Default: &#x60;config.default_locale&#x60; value. locale for this sign in process.
+   * @param redirectUri - Default: &#x60;config.default_redirect_uri&#x60; value. URI where to redirect after sign in process.
+   * @returns Redirects to Cryptr Sign in page
+   */
   signInWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable&lt;any&gt; {
     if (this.cryptrClient) {
       return from(this.cryptrClient.signInWithRedirect(scope, redirectUri, locale));
@@ -1646,27 +1648,27 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @example
-  * Default usage
-  * signUpWithRedirect()
-  *
-  * @example
-  * Usage with custom scope
-  * signUpWithRedirect(&quot;email openid profile read:invoices&quot;)
-  *
-  * @example
-  * Usage with custom locale
-  * signUpWithRedirect(&quot;email openid profile&quot;, &quot;fr&quot;)
-  *
-  * @example
-  * Usage with custom locale
-  * signUpWithRedirect(&quot;email openid profile&quot;, &quot;en&quot;, &quot;http://localhsot:4201&quot;)
-  *
-  * @param {string} [scope&#x3D;&quot;email openid profile&quot;] - Scopes requested for this sign up process (whitespace separator), Minimum/Default: &#x60;&quot;email openid profile&quot;&#x60;
-  * @param {string} locale - locale for this sign up process. Default: &#x60;config.default_locale&#x60; value
-  * @param {string} redirectUri - URI where to redirect after sign up process. Default: &#x60;config.default_redirect_uri&#x60; value
-  * @returns Redirects to Cryptr Sign up page
-  */
+   * @example
+   * Default usage
+   * signUpWithRedirect()
+   *
+   * @example
+   * Usage with custom scope
+   * signUpWithRedirect(&quot;email openid profile read:invoices&quot;)
+   *
+   * @example
+   * Usage with custom locale
+   * signUpWithRedirect(&quot;email openid profile&quot;, &quot;fr&quot;)
+   *
+   * @example
+   * Usage with custom locale
+   * signUpWithRedirect(&quot;email openid profile&quot;, &quot;en&quot;, &quot;http://localhsot:4201&quot;)
+   *
+   * @param scope - Scopes requested for this sign up process (whitespace separator), Minimum/Default: &#x60;&quot;email openid profile&quot;&#x60;
+   * @param locale - locale for this sign up process. Default: &#x60;config.default_locale&#x60; value
+   * @param redirectUri - URI where to redirect after sign up process. Default: &#x60;config.default_redirect_uri&#x60; value
+   * @returns Redirects to Cryptr Sign up page
+   */
   signUpWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable&lt;any&gt; {
     return from(this.cryptrClient.signUpWithRedirect(scope, redirectUri, locale));
   }
@@ -1719,8 +1721,8 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private setUser(newUser: any): void {
     this.user$.next(newUser);
   }
@@ -1763,8 +1765,8 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private updateCurrentAuthState(newAuthenticated: boolean): void {
     this.authenticated$.next(newAuthenticated);
     this.setUser(this.getClientUser());
@@ -1775,8 +1777,8 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private cleanUrlTree(sourceUrlTree: UrlTree, stateUrl?: string): UrlTree {
     try {
       const path &#x3D; !!stateUrl ? stateUrl.split(&#x27;?&#x27;)[0] : &#x27;&#x27;;
@@ -1789,8 +1791,8 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private routeCleanedPath(): string {
     const path &#x3D; this.location.path();
     const currentUrlTree &#x3D; this.router.parseUrl(path);
@@ -1799,8 +1801,8 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private cleanRouteState(): void {
     setTimeout(() &#x3D;&gt; {
       this.location.replaceState(this.routeCleanedPath(), &#x27;&#x27;);
@@ -1863,8 +1865,8 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   fullAuthenticateProcess(
     stateUrl?: string,
     callback?: (isAuthenticated: boolean, stateUrl?: string) &#x3D;&gt; boolean

@@ -15,20 +15,20 @@ import { AuthClientConfig } from './auth.config';
 })
 export class AuthService implements OnDestroy {
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private ngUnsubscribe$ = new Subject();
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private authenticated$ = new BehaviorSubject(false);
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private user$ = new BehaviorSubject(null);
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private isLoading$ = new BehaviorSubject(true);
 
   constructor(
@@ -65,7 +65,10 @@ export class AuthService implements OnDestroy {
     });
   }
 
-  resetAuthentication(isAuthenticated: boolean): void {
+  /**
+   * @ignore
+   */
+  private resetAuthentication(isAuthenticated: boolean): void {
     if (isAuthenticated) {
       return;
     }
@@ -74,27 +77,27 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @example
-  * Default usage
-  * signInWithRedirect()
-  *
-  * @example
-  * Usage with custom scope
-  * signInWithRedirect("email openid profile read:invoices")
-  *
-  * @example
-  * Usage with custom locale
-  * signInWithRedirect("email openid profile", "fr")
-  *
-  * @example
-  * Usage with custom locale
-  * signInWithRedirect("email openid profile", "en", "http://localhsot:4201")
-  *
-  * @param {string} [scope=email openid profile] - Scopes requested for this sign in process (whitespace separator), Minimum/Default: `"email openid profile"`
-  * @param {string} locale - locale for this sign in process. Default: `config.default_locale` value
-  * @param {string} redirectUri - URI where to redirect after sign in process. Default: `config.default_redirect_uri` value
-  * @returns Redirects to Cryptr Sign in page
-  */
+   * @example
+   * Default usage
+   * signInWithRedirect()
+   *
+   * @example
+   * Usage with custom scope
+   * signInWithRedirect("email openid profile read:invoices")
+   *
+   * @example
+   * Usage with custom locale
+   * signInWithRedirect("email openid profile", "fr")
+   *
+   * @example
+   * Usage with custom locale
+   * signInWithRedirect("email openid profile", "en", "http://localhsot:4201")
+   *
+   * @param scope - Default: `"email openid profile"`. Scopes requested for this sign in process (whitespace separator)
+   * @param locale - Default: `config.default_locale` value. locale for this sign in process.
+   * @param redirectUri - Default: `config.default_redirect_uri` value. URI where to redirect after sign in process.
+   * @returns Redirects to Cryptr Sign in page
+   */
   signInWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
     if (this.cryptrClient) {
       return from(this.cryptrClient.signInWithRedirect(scope, redirectUri, locale));
@@ -102,27 +105,27 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @example
-  * Default usage
-  * signUpWithRedirect()
-  *
-  * @example
-  * Usage with custom scope
-  * signUpWithRedirect("email openid profile read:invoices")
-  *
-  * @example
-  * Usage with custom locale
-  * signUpWithRedirect("email openid profile", "fr")
-  *
-  * @example
-  * Usage with custom locale
-  * signUpWithRedirect("email openid profile", "en", "http://localhsot:4201")
-  *
-  * @param {string} [scope="email openid profile"] - Scopes requested for this sign up process (whitespace separator), Minimum/Default: `"email openid profile"`
-  * @param {string} locale - locale for this sign up process. Default: `config.default_locale` value
-  * @param {string} redirectUri - URI where to redirect after sign up process. Default: `config.default_redirect_uri` value
-  * @returns Redirects to Cryptr Sign up page
-  */
+   * @example
+   * Default usage
+   * signUpWithRedirect()
+   *
+   * @example
+   * Usage with custom scope
+   * signUpWithRedirect("email openid profile read:invoices")
+   *
+   * @example
+   * Usage with custom locale
+   * signUpWithRedirect("email openid profile", "fr")
+   *
+   * @example
+   * Usage with custom locale
+   * signUpWithRedirect("email openid profile", "en", "http://localhsot:4201")
+   *
+   * @param scope - Default: `"email openid profile"`. Scopes requested for this sign up process (whitespace separator).
+   * @param locale - Default: `config.default_locale` value. locale for this sign up process.
+   * @param redirectUri - Default: `config.default_redirect_uri` value. URI where to redirect after sign up process.
+   * @returns Redirects to Cryptr Sign up page
+   */
   signUpWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
     return from(this.cryptrClient.signUpWithRedirect(scope, redirectUri, locale));
   }
@@ -175,8 +178,8 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private setUser(newUser: any): void {
     this.user$.next(newUser);
   }
@@ -219,8 +222,8 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private updateCurrentAuthState(newAuthenticated: boolean): void {
     this.authenticated$.next(newAuthenticated);
     this.setUser(this.getClientUser());
@@ -231,8 +234,8 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private cleanUrlTree(sourceUrlTree: UrlTree, stateUrl?: string): UrlTree {
     try {
       const path = !!stateUrl ? stateUrl.split('?')[0] : '';
@@ -245,8 +248,8 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private routeCleanedPath(): string {
     const path = this.location.path();
     const currentUrlTree = this.router.parseUrl(path);
@@ -255,8 +258,8 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   private cleanRouteState(): void {
     setTimeout(() => {
       this.location.replaceState(this.routeCleanedPath(), '');
@@ -319,8 +322,8 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   fullAuthenticateProcess(
     stateUrl?: string,
     callback?: (isAuthenticated: boolean, stateUrl?: string) => boolean
