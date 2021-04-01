@@ -229,6 +229,9 @@ export class AuthService implements OnDestroy {
     }
   }
 
+  /**
+   * @ignore
+   */
   private defaultAuthenticationCallback(isAuthenticated: boolean, stateUrl?: string): boolean {
     const { audience, default_locale } = this.config();
     const redirectUri = audience.concat(stateUrl || '');
@@ -244,6 +247,9 @@ export class AuthService implements OnDestroy {
     }
   }
 
+  /**
+  * @ignore
+  */
   fullAuthenticateProcess(
     stateUrl?: string,
     callback?: (isAuthenticated: boolean, stateUrl?: string) => boolean
