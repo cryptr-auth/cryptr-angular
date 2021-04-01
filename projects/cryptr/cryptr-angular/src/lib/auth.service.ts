@@ -226,23 +226,28 @@ export class AuthService implements OnDestroy {
       }).finally(() => {
         this.isLoading$.next(false);
       });
-      // this.cryptrClient.handleRefreshTokens().then((res) => {
-      //   console.log(`handlerefreshTokens ${res === true}`);
-      //   console.log(res);
-      //   this.updateCurrentAuthState(res === true);
-      // }).catch((error) => {
-      //   this.updateCurrentAuthState(false);
-      // }).finally(() => {
-      //   this.isLoading$.next(false);
-      // });
     }
   }
 
-  fullAuthenticateProcess(stateUrl?: string): Observable<boolean | UrlTree> {
+  private defaultAuthenticationCallback(isAuthenticated: boolean, stateUrl?: string): boolean {
     const { audience, default_locale } = this.config();
     const redirectUri = audience.concat(stateUrl || '');
-    // const tree = this.router.parseUrl(stateUrl)
-    // const newTree = this.cleanUrlTree(tree, stateUrl)
+    if (isAuthenticated) {
+      return true;
+    } else {
+      if (this.configFactory.get().has_ssr) {
+        this.signInWithRedirect(DEFAULT_SCOPE, default_locale, redirectUri);
+      } else {
+        this.signInWithRedirect();
+      }
+      return false;
+    }
+  }
+
+  fullAuthenticateProcess(
+    stateUrl?: string,
+    callback?: (isAuthenticated: boolean, stateUrl?: string) => boolean
+  ): Observable<boolean | UrlTree> {
     return combineLatest(
       [this.isLoading$, this.authenticated$]
     ).pipe(
@@ -250,16 +255,10 @@ export class AuthService implements OnDestroy {
         return !isLoading;
       }),
       map(([isLoading, isAuthenticated]) => {
-        if (isAuthenticated) {
-          this.cleanRouteState();
-          return true;
+        if (callback) {
+          return callback(isAuthenticated, stateUrl);
         } else {
-          if (this.configFactory.get().has_ssr) {
-            this.signInWithRedirect(DEFAULT_SCOPE, default_locale, redirectUri);
-          } else {
-            this.signInWithRedirect();
-          }
-          return false;
+          return this.defaultAuthenticationCallback(isAuthenticated, stateUrl);
         }
       })
     );
