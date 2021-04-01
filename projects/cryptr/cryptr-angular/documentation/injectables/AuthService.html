@@ -59,6 +59,13 @@
             <code>src/lib/auth.service.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>AuthService - Cryptr Authentication Service</p>
+
+            </p>
 
 
 
@@ -76,17 +83,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#authenticate">authenticate</a>
-                            </li>
-                            <li>
                                 <a href="#authenticationInProgress">authenticationInProgress</a>
-                            </li>
-                            <li>
-                                <a href="#canHandleAuthentication">canHandleAuthentication</a>
-                            </li>
-                            <li>
-                                <a href="#checkAuthentication">checkAuthentication</a>
                             </li>
                             <li>
                                 <a href="#config">config</a>
@@ -101,9 +98,6 @@
                                 <a href="#getAccessToken">getAccessToken</a>
                             </li>
                             <li>
-                                <a href="#getClientUser">getClientUser</a>
-                            </li>
-                            <li>
                                 <a href="#getIdToken">getIdToken</a>
                             </li>
                             <li>
@@ -113,31 +107,16 @@
                                 <a href="#getUser">getUser</a>
                             </li>
                             <li>
-                                <a href="#handleRedirectCallback">handleRedirectCallback</a>
-                            </li>
-                            <li>
-                                <a href="#handleTokens">handleTokens</a>
-                            </li>
-                            <li>
                                 <a href="#isAuthenticated">isAuthenticated</a>
                             </li>
                             <li>
                                 <a href="#logOut">logOut</a>
                             </li>
                             <li>
-                                <a href="#ngOnDestroy">ngOnDestroy</a>
-                            </li>
-                            <li>
                                 <a href="#observableAuthenticated">observableAuthenticated</a>
                             </li>
                             <li>
-                                <a href="#preLogOutCallBack">preLogOutCallBack</a>
-                            </li>
-                            <li>
                                 <a href="#refreshTokens">refreshTokens</a>
-                            </li>
-                            <li>
-                                <a href="#resetAuthentication">resetAuthentication</a>
                             </li>
                             <li>
                                 <a href="#signInWithRedirect">signInWithRedirect</a>
@@ -160,161 +139,12 @@
     </table>
 </section>
 
-            <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(cryptrClient: <a href="../interfaces/CryptrClient.html">CryptrClient</a>, location: <a href="https://angular.io/api/common/Location" target="_blank">Location</a>, navigator: <a href="../injectables/AbstractNavigator.html">AbstractNavigator</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, configFactory: <a href="../injectables/AuthClientConfig.html">AuthClientConfig</a>)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/lib/auth.service.ts:32</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>cryptrClient</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../interfaces/CryptrClient.html" target="_self" >CryptrClient</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>location</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/common/Location" target="_blank" >Location</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>navigator</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/AbstractNavigator.html" target="_self" >AbstractNavigator</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>router</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>route</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>configFactory</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/AuthClientConfig.html" target="_self" >AuthClientConfig</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
 
             <section>
     
     <h3 id="methods">
         Methods
     </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="authenticate"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Async</span>
-                            authenticate
-                        </b>
-                        <a href="#authenticate"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>authenticate()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="266"
-                            class="link-to-prism">src/lib/auth.service.ts:266</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;boolean | UrlTree&gt;</code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -337,95 +167,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="204"
-                            class="link-to-prism">src/lib/auth.service.ts:204</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="275"
+                            class="link-to-prism">src/lib/auth.service.ts:275</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Check if authentication check still in progress</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
 
                     </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="canHandleAuthentication"></a>
-                    <span class="name">
-                        <b>
-                            canHandleAuthentication
-                        </b>
-                        <a href="#canHandleAuthentication"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>canHandleAuthentication()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="139"
-                            class="link-to-prism">src/lib/auth.service.ts:139</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="checkAuthentication"></a>
-                    <span class="name">
-                        <b>
-                            checkAuthentication
-                        </b>
-                        <a href="#checkAuthentication"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>checkAuthentication()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">src/lib/auth.service.ts:56</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <p>Boolean observable of authentication progress state</p>
 
                     </div>
                 </td>
@@ -454,17 +214,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="196"
-                            class="link-to-prism">src/lib/auth.service.ts:196</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="259"
+                            class="link-to-prism">src/lib/auth.service.ts:259</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Retrieve Cryptr current configuration</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../interfaces/Config.html" target="_self" >Config</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Current Cryptr configuration settings</p>
 
                     </div>
                 </td>
@@ -493,17 +261,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="229"
-                            class="link-to-prism">src/lib/auth.service.ts:229</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="316"
+                            class="link-to-prism">src/lib/auth.service.ts:316</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Retrieve current authentication state as Observable</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>boolean observable of authentiation state</p>
 
                     </div>
                 </td>
@@ -532,17 +308,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="217"
-                            class="link-to-prism">src/lib/auth.service.ts:217</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="300"
+                            class="link-to-prism">src/lib/auth.service.ts:300</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Retrieve current authentication state.</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>boolean of authentiation state</p>
 
                     </div>
                 </td>
@@ -571,56 +355,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="169"
-                            class="link-to-prism">src/lib/auth.service.ts:169</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="213"
+                            class="link-to-prism">src/lib/auth.service.ts:213</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Retrieve current stored access token</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>string | undefined</code>
 
                     </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getClientUser"></a>
-                    <span class="name">
-                        <b>
-                            getClientUser
-                        </b>
-                        <a href="#getClientUser"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getClientUser()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="184"
-                            class="link-to-prism">src/lib/auth.service.ts:184</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <p>Current session access_token or undefined if no live session</p>
 
                     </div>
                 </td>
@@ -649,17 +402,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="173"
-                            class="link-to-prism">src/lib/auth.service.ts:173</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="221"
+                            class="link-to-prism">src/lib/auth.service.ts:221</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>retrieve current stored id token</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>string | undefined</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Current session id_token or undefined if no live session.</p>
 
                     </div>
                 </td>
@@ -688,17 +449,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="212"
-                            class="link-to-prism">src/lib/auth.service.ts:212</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="291"
+                            class="link-to-prism">src/lib/auth.service.ts:291</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Retrieve current user as observable</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Current user as Observable</p>
 
                     </div>
                 </td>
@@ -727,127 +496,26 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="200"
-                            class="link-to-prism">src/lib/auth.service.ts:200</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="267"
+                            class="link-to-prism">src/lib/auth.service.ts:267</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Retrieve current user</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="handleRedirectCallback"></a>
-                    <span class="name">
-                        <b>
-                            handleRedirectCallback
-                        </b>
-                        <a href="#handleRedirectCallback"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>handleRedirectCallback()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="143"
-                            class="link-to-prism">src/lib/auth.service.ts:143</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+                        <p>User object</p>
 
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="handleTokens"></a>
-                    <span class="name">
-                        <b>
-                            handleTokens
-                        </b>
-                        <a href="#handleTokens"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>handleTokens(tokens: <a href="../interfaces/Tokens.html">Tokens</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="151"
-                            class="link-to-prism">src/lib/auth.service.ts:151</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>tokens</td>
-                                    <td>
-                                                <code><a href="../interfaces/Tokens.html" target="_self" >Tokens</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -875,17 +543,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="165"
-                            class="link-to-prism">src/lib/auth.service.ts:165</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="205"
+                            class="link-to-prism">src/lib/auth.service.ts:205</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Retrieve authentication state</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>authentication state in a Promise</p>
 
                     </div>
                 </td>
@@ -914,14 +590,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="135"
-                            class="link-to-prism">src/lib/auth.service.ts:135</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="162"
+                            class="link-to-prism">src/lib/auth.service.ts:162</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Destroy current session with specific action</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -932,6 +610,7 @@
                                     <td>Type</td>
                                     <td>Optional</td>
                                     <td>Default value</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -948,6 +627,12 @@
                                     <td>
                                     </td>
 
+                                    <td>
+                                        <ul>
+<li>Action to call at the end of logout process</li>
+</ul>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>location</td>
@@ -963,6 +648,12 @@
                                         <code>window.location</code>
                                     </td>
 
+                                    <td>
+                                        <ul>
+<li><strong>Default:</strong> <code>window.location</code>. Where to redirect after logout process</li>
+</ul>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -974,45 +665,7 @@
 
                     </div>
                     <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnDestroy"></a>
-                    <span class="name">
-                        <b>
-                            ngOnDestroy
-                        </b>
-                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>ngOnDestroy()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="51"
-                            class="link-to-prism">src/lib/auth.service.ts:51</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <p>process logout of session with callback call</p>
 
                     </div>
                 </td>
@@ -1041,88 +694,26 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="208"
-                            class="link-to-prism">src/lib/auth.service.ts:208</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="283"
+                            class="link-to-prism">src/lib/auth.service.ts:283</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Retrieve authentication state</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
 
                     </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="preLogOutCallBack"></a>
-                    <span class="name">
-                        <b>
-                            preLogOutCallBack
-                        </b>
-                        <a href="#preLogOutCallBack"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>preLogOutCallBack(callback: () => void)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="130"
-                            class="link-to-prism">src/lib/auth.service.ts:130</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
                     <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>callback</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
-                                    </td>
+                        <p>Boolean observable of authentication state</p>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -1150,80 +741,17 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="192"
-                            class="link-to-prism">src/lib/auth.service.ts:192</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="251"
+                            class="link-to-prism">src/lib/auth.service.ts:251</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Refresh current tokens.</p>
+</div>
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="resetAuthentication"></a>
-                    <span class="name">
-                        <b>
-                            resetAuthentication
-                        </b>
-                        <a href="#resetAuthentication"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>resetAuthentication(isAuthenticated: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">src/lib/auth.service.ts:68</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>isAuthenticated</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                     <div>
                     </div>
                     <div class="io-description">
@@ -1231,7 +759,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>void</p>
+
                     </div>
                 </td>
             </tr>
@@ -1259,14 +788,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">src/lib/auth.service.ts:98</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/lib/auth.service.ts:114</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Performs redirection to Cryptr for signin process with chosen args</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -1293,7 +824,7 @@
 
                                     <td>
                                         <ul>
-<li>Default: <code>&quot;email openid profile&quot;</code>, Scopes requested for this sign in process (whitespace separator)</li>
+<li>Default: <code>&quot;email openid profile&quot;</code>. Scopes requested for this sign in process (whitespace separator)</li>
 </ul>
 
                                     </td>
@@ -1361,7 +892,7 @@ signInWithRedirect(&amp;quot;email openid profile&amp;quot;, &amp;quot;en&amp;qu
 
                     </div>
                     <div class="io-description">
-                        <p>Redirects to Cryptr Sign in page</p>
+                        <p>Observable of this signin redirection</p>
 
                     </div>
                 </td>
@@ -1390,14 +921,16 @@ signInWithRedirect(&amp;quot;email openid profile&amp;quot;, &amp;quot;en&amp;qu
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="126"
-                            class="link-to-prism">src/lib/auth.service.ts:126</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="143"
+                            class="link-to-prism">src/lib/auth.service.ts:143</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Performs redirection to Cryptr for signup process with chosen args</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -1424,7 +957,7 @@ signInWithRedirect(&amp;quot;email openid profile&amp;quot;, &amp;quot;en&amp;qu
 
                                     <td>
                                         <ul>
-<li>Scopes requested for this sign up process (whitespace separator), Minimum/Default: <code>&quot;email openid profile&quot;</code></li>
+<li>Default: <code>&quot;email openid profile&quot;</code>. Scopes requested for this sign up process (whitespace separator).</li>
 </ul>
 
                                     </td>
@@ -1442,7 +975,7 @@ signInWithRedirect(&amp;quot;email openid profile&amp;quot;, &amp;quot;en&amp;qu
 
                                     <td>
                                         <ul>
-<li>locale for this sign up process. Default: <code>config.default_locale</code> value</li>
+<li>Default: <code>config.default_locale</code> value. locale for this sign up process.</li>
 </ul>
 
                                     </td>
@@ -1460,7 +993,7 @@ signInWithRedirect(&amp;quot;email openid profile&amp;quot;, &amp;quot;en&amp;qu
 
                                     <td>
                                         <ul>
-<li>URI where to redirect after sign up process. Default: <code>config.default_redirect_uri</code> value</li>
+<li>Default: <code>config.default_redirect_uri</code> value. URI where to redirect after sign up process.</li>
 </ul>
 
                                     </td>
@@ -1492,7 +1025,7 @@ signUpWithRedirect(&amp;quot;email openid profile&amp;quot;, &amp;quot;en&amp;qu
 
                     </div>
                     <div class="io-description">
-                        <p>Redirects to Cryptr Sign up page</p>
+                        <p>Observable of this sugnup redirection</p>
 
                     </div>
                 </td>
@@ -1521,17 +1054,25 @@ signUpWithRedirect(&amp;quot;email openid profile&amp;quot;, &amp;quot;en&amp;qu
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="188"
-                            class="link-to-prism">src/lib/auth.service.ts:188</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="243"
+                            class="link-to-prism">src/lib/auth.service.ts:243</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Opens user account page.</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Promise of retrieving/opening page</p>
 
                     </div>
                 </td>
@@ -1556,6 +1097,9 @@ import { filter, map } from &#x27;rxjs/operators&#x27;;
 import { DEFAULT_SCOPE } from &#x27;./utils/constants&#x27;;
 import { AuthClientConfig } from &#x27;./auth.config&#x27;;
 
+/**
+ * AuthService - Cryptr Authentication Service
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
@@ -1577,6 +1121,9 @@ export class AuthService implements OnDestroy {
    */
   private isLoading$ &#x3D; new BehaviorSubject(true);
 
+  /**
+   * @ignore
+   */
   constructor(
     @Inject(CryptrClientService) private cryptrClient: CryptrClient,
     private location: Location,
@@ -1594,12 +1141,18 @@ export class AuthService implements OnDestroy {
     });
   }
 
+  /**
+   * @ignore
+   */
   ngOnDestroy(): void {
     this.ngUnsubscribe$.next();
     this.ngUnsubscribe$.complete();
   }
 
-  checkAuthentication(): void {
+  /**
+   * @ignore
+   */
+  private checkAuthentication(): void {
     this.isAuthenticated().then(async (isAuthenticated: boolean) &#x3D;&gt; {
       this.updateCurrentAuthState(isAuthenticated);
       this.resetAuthentication(isAuthenticated);
@@ -1611,7 +1164,10 @@ export class AuthService implements OnDestroy {
     });
   }
 
-  resetAuthentication(isAuthenticated: boolean): void {
+  /**
+   * @ignore
+   */
+  private resetAuthentication(isAuthenticated: boolean): void {
     if (isAuthenticated) {
       return;
     }
@@ -1620,6 +1176,7 @@ export class AuthService implements OnDestroy {
   }
 
   /**
+   * Performs redirection to Cryptr for signin process with chosen args
    * @example
    * Default usage
    * signInWithRedirect()
@@ -1636,10 +1193,10 @@ export class AuthService implements OnDestroy {
    * Usage with custom locale
    * signInWithRedirect(&quot;email openid profile&quot;, &quot;en&quot;, &quot;http://localhsot:4201&quot;)
    *
-   * @param scope - Default: &#x60;&quot;email openid profile&quot;&#x60;, Scopes requested for this sign in process (whitespace separator)
+   * @param scope - Default: &#x60;&quot;email openid profile&quot;&#x60;. Scopes requested for this sign in process (whitespace separator)
    * @param locale - Default: &#x60;config.default_locale&#x60; value. locale for this sign in process.
    * @param redirectUri - Default: &#x60;config.default_redirect_uri&#x60; value. URI where to redirect after sign in process.
-   * @returns Redirects to Cryptr Sign in page
+   * @returns Observable of this signin redirection
    */
   signInWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable&lt;any&gt; {
     if (this.cryptrClient) {
@@ -1648,6 +1205,7 @@ export class AuthService implements OnDestroy {
   }
 
   /**
+   * Performs redirection to Cryptr for signup process with chosen args
    * @example
    * Default usage
    * signUpWithRedirect()
@@ -1664,28 +1222,44 @@ export class AuthService implements OnDestroy {
    * Usage with custom locale
    * signUpWithRedirect(&quot;email openid profile&quot;, &quot;en&quot;, &quot;http://localhsot:4201&quot;)
    *
-   * @param scope - Scopes requested for this sign up process (whitespace separator), Minimum/Default: &#x60;&quot;email openid profile&quot;&#x60;
-   * @param locale - locale for this sign up process. Default: &#x60;config.default_locale&#x60; value
-   * @param redirectUri - URI where to redirect after sign up process. Default: &#x60;config.default_redirect_uri&#x60; value
-   * @returns Redirects to Cryptr Sign up page
+   * @param scope - Default: &#x60;&quot;email openid profile&quot;&#x60;. Scopes requested for this sign up process (whitespace separator).
+   * @param locale - Default: &#x60;config.default_locale&#x60; value. locale for this sign up process.
+   * @param redirectUri - Default: &#x60;config.default_redirect_uri&#x60; value. URI where to redirect after sign up process.
+   * @returns Observable of this sugnup redirection
    */
   signUpWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable&lt;any&gt; {
     return from(this.cryptrClient.signUpWithRedirect(scope, redirectUri, locale));
   }
 
-  preLogOutCallBack(callback: () &#x3D;&gt; void): () &#x3D;&gt; void {
+  /**
+   * @ignore
+   */
+  private preLogOutCallBack(callback: () &#x3D;&gt; void): () &#x3D;&gt; void {
     this.updateCurrentAuthState(false);
     this.setUser(null);
     return callback;
   }
+
+  /**
+   * Destroy current session with specific action
+   * @param callback - Action to call at the end of logout process
+   * @param location - **Default:** &#x60;window.location&#x60;. Where to redirect after logout process
+   * @returns process logout of session with callback call
+   */
   logOut(callback: () &#x3D;&gt; void, location: any &#x3D; window.location): Observable&lt;any&gt; {
     return from(this.cryptrClient.logOut(this.preLogOutCallBack(callback), location));
   }
 
+  /**
+   * @ignore
+   */
   canHandleAuthentication(): boolean {
     return this.cryptrClient.canHandleAuthentication();
   }
 
+  /**
+   * @ignore
+   */
   handleRedirectCallback(): Promise&lt;any&gt; {
     try {
       return this.cryptrClient.handleRedirectCallback();
@@ -1694,6 +1268,9 @@ export class AuthService implements OnDestroy {
     }
   }
 
+  /**
+   * @ignore
+   */
   handleTokens(tokens: Tokens): boolean {
     // console.log(&#x27;tokens&#x27;);
     // console.log(tokens);
@@ -1708,15 +1285,27 @@ export class AuthService implements OnDestroy {
     return this.authenticated$.value;
   }
 
+  /**
+   * Retrieve authentication state
+   * @returns authentication state in a Promise
+   */
   isAuthenticated(): Promise&lt;boolean&gt; {
     return this.cryptrClient.isAuthenticated();
   }
 
-  getAccessToken(): any {
+  /**
+   * Retrieve current stored access token
+   * @returns Current session access_token or undefined if no live session
+   */
+  getAccessToken(): string | undefined {
     return this.cryptrClient.getCurrentAccessToken();
   }
 
-  getIdToken(): any {
+  /**
+   * retrieve current stored id token
+   * @returns Current session id_token or undefined if no live session.
+   */
+  getIdToken(): string | undefined {
     return this.cryptrClient.getCurrentIdToken();
   }
 
@@ -1727,39 +1316,74 @@ export class AuthService implements OnDestroy {
     this.user$.next(newUser);
   }
 
+  /**
+   * @ignore
+   */
   getClientUser(): any {
     return this.cryptrClient.getUser();
   }
 
+  /**
+   * Opens user account page.
+   * @returns Promise of retrieving/opening page
+   */
   userAccountAccess(): Promise&lt;any&gt; {
     return this.cryptrClient.userAccountAccess();
   }
 
+  /**
+   * Refresh current tokens.
+   * @returns void
+   */
   refreshTokens(): void {
     this.cryptrClient.handleRefreshTokens();
   }
 
+  /**
+   * Retrieve Cryptr current configuration
+   * @returns Current Cryptr configuration settings
+   */
   config(): Config {
     return this.cryptrClient.config;
   }
 
+  /**
+   * Retrieve current user
+   * @returns User object
+   */
   getUser(): any {
     return this.user$.value;
   }
 
+  /**
+   * Check if authentication check still in progress
+   * @returns Boolean observable of authentication progress state
+   */
   authenticationInProgress(): Observable&lt;boolean&gt; {
     return this.isLoading$.asObservable();
   }
 
+  /**
+   * Retrieve authentication state
+   * @returns Boolean observable of authentication state
+   */
   observableAuthenticated(): Observable&lt;boolean&gt; {
     return from(this.cryptrClient.isAuthenticated());
   }
 
+  /**
+   * Retrieve current user as observable
+   * @returns Current user as Observable
+   */
   getObservableUser(): Observable&lt;any&gt; {
     return this.user$.asObservable();
   }
 
 
+  /**
+   * Retrieve current authentication state.
+   * @returns boolean of authentiation state
+   */
   currentAuthenticationState(): boolean {
     return this.authenticated$.value;
   }
@@ -1772,6 +1396,10 @@ export class AuthService implements OnDestroy {
     this.setUser(this.getClientUser());
   }
 
+  /**
+   * Retrieve current authentication state as Observable
+   * @returns boolean observable of authentiation state
+   */
   currentAuthenticationObservable(): Observable&lt;boolean&gt; {
     return this.authenticated$.asObservable();
   }
@@ -1809,7 +1437,10 @@ export class AuthService implements OnDestroy {
     }, 2);
   }
 
-  async authenticate(): Promise&lt;boolean | UrlTree&gt; {
+  /**
+   * @ignore
+   */
+  private async authenticate(): Promise&lt;boolean | UrlTree&gt; {
     if (this.authenticated$.value) {
       this.isLoading$.next(false);
       return;
