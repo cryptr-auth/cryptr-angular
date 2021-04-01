@@ -47,8 +47,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
   }
 
   /**
-   * Strips the query and fragment from the given uri
-   * @param uri The uri to remove the query and fragment from
+   * @ignore
    */
   private stripQueryFrom(uri: string): string {
     if (uri.indexOf('?') > -1) {
@@ -63,10 +62,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
   }
 
   /**
-   * Determines whether the specified route can have an access token attached to it, based on matching the HTTP request against
-   * the interceptor route configuration.
-   * @param route The route to test
-   * @param request The HTTP request
+   * @param ignore
    */
   private canAttachToken(
     route: ApiRouteDefinition,
@@ -108,9 +104,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
   }
 
   /**
-   * Tries to match a route from the SDK configuration to the HTTP request.
-   * If a match is found, the route configuration is returned.
-   * @param request The Http request
+   * @ignore
    */
   private findMatchingRoute(
     request: HttpRequest<any>

@@ -80,15 +80,7 @@
                                 <a href="#canAttachToken">canAttachToken</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#findMatchingRoute">findMatchingRoute</a>
-                            </li>
-                            <li>
                                 <a href="#intercept">intercept</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#stripQueryFrom">stripQueryFrom</a>
                             </li>
                         </ul>
                     </td>
@@ -192,17 +184,14 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="71"
-                            class="link-to-prism">src/lib/auth.interceptor.ts:71</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/lib/auth.interceptor.ts:67</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Determines whether the specified route can have an access token attached to it, based on matching the HTTP request against
-the interceptor route configuration.</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -212,7 +201,6 @@ the interceptor route configuration.</p>
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
-                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -227,10 +215,6 @@ the interceptor route configuration.</p>
                                     </td>
 
 
-                                    <td>
-                                        <p>The route to test</p>
-
-                                    </td>
                                 </tr>
                                 <tr>
                                     <td>request</td>
@@ -243,10 +227,6 @@ the interceptor route configuration.</p>
                                     </td>
 
 
-                                    <td>
-                                        <p>The HTTP request</p>
-
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -255,86 +235,6 @@ the interceptor route configuration.</p>
                     </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="findMatchingRoute"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            findMatchingRoute
-                        </b>
-                        <a href="#findMatchingRoute"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findMatchingRoute(request: HttpRequest<any>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="115"
-                            class="link-to-prism">src/lib/auth.interceptor.ts:115</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Tries to match a route from the SDK configuration to the HTTP request.
-If a match is found, the route configuration is returned.</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>request</td>
-                                    <td>
-                                            <code>HttpRequest&lt;any&gt;</code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                    <td>
-                                        <p>The Http request</p>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;HttpInterceptorRouteConfig&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -426,85 +326,6 @@ If a match is found, the route configuration is returned.</p>
             </tr>
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="stripQueryFrom"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            stripQueryFrom
-                        </b>
-                        <a href="#stripQueryFrom"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>stripQueryFrom(uri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="53"
-                            class="link-to-prism">src/lib/auth.interceptor.ts:53</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Strips the query and fragment from the given uri</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>uri</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                    <td>
-                                        <p>The uri to remove the query and fragment from</p>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </section>
 
     </div>
@@ -560,8 +381,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
   }
 
   /**
-   * Strips the query and fragment from the given uri
-   * @param uri The uri to remove the query and fragment from
+   * @ignore
    */
   private stripQueryFrom(uri: string): string {
     if (uri.indexOf(&#x27;?&#x27;) &gt; -1) {
@@ -576,10 +396,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
   }
 
   /**
-   * Determines whether the specified route can have an access token attached to it, based on matching the HTTP request against
-   * the interceptor route configuration.
-   * @param route The route to test
-   * @param request The HTTP request
+   * @param ignore
    */
   private canAttachToken(
     route: ApiRouteDefinition,
@@ -621,9 +438,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
   }
 
   /**
-   * Tries to match a route from the SDK configuration to the HTTP request.
-   * If a match is found, the route configuration is returned.
-   * @param request The Http request
+   * @ignore
    */
   private findMatchingRoute(
     request: HttpRequest&lt;any&gt;
