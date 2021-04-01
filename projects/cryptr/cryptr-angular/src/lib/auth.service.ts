@@ -73,6 +73,28 @@ export class AuthService implements OnDestroy {
     this.setUser(null);
   }
 
+  /**
+  * @example
+  * Default usage
+  * signInWithRedirect()
+  *
+  * @example
+  * Usage with custom scope
+  * signInWithRedirect("email openid profile read:invoices")
+  *
+  * @example
+  * Usage with custom locale
+  * signInWithRedirect("email openid profile", "fr")
+  *
+  * @example
+  * Usage with custom locale
+  * signInWithRedirect("email openid profile", "en", "http://localhsot:4201")
+  *
+  * @param {string} [scope= email openid profile] - Scopes requested for this sign in process (whitespace separator), Minimum/Default: `"email openid profile"`
+  * @param {string} locale - locale for this sign in process. Default: `config.default_locale` value
+  * @param {string} redirectUri - URI where to redirect after sign in process. Default: `config.default_redirect_uri` value
+  * @returns Redirects to Cryptr Sign in page
+  */
   signInWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
     if (this.cryptrClient) {
       return from(this.cryptrClient.signInWithRedirect(scope, redirectUri, locale));
