@@ -14,9 +14,21 @@ import { AuthClientConfig } from './auth.config';
   providedIn: 'root'
 })
 export class AuthService implements OnDestroy {
+  /**
+  * @ignore
+  */
   private ngUnsubscribe$ = new Subject();
+  /**
+  * @ignore
+  */
   private authenticated$ = new BehaviorSubject(false);
+  /**
+  * @ignore
+  */
   private user$ = new BehaviorSubject(null);
+  /**
+  * @ignore
+  */
   private isLoading$ = new BehaviorSubject(true);
 
   constructor(
@@ -118,6 +130,9 @@ export class AuthService implements OnDestroy {
     return this.cryptrClient.getCurrentIdToken();
   }
 
+  /**
+  * @ignore
+  */
   private setUser(newUser: any): void {
     this.user$.next(newUser);
   }
@@ -159,6 +174,9 @@ export class AuthService implements OnDestroy {
     return this.authenticated$.value;
   }
 
+  /**
+  * @ignore
+  */
   private updateCurrentAuthState(newAuthenticated: boolean): void {
     this.authenticated$.next(newAuthenticated);
     this.setUser(this.getClientUser());
@@ -168,6 +186,9 @@ export class AuthService implements OnDestroy {
     return this.authenticated$.asObservable();
   }
 
+  /**
+  * @ignore
+  */
   private cleanUrlTree(sourceUrlTree: UrlTree, stateUrl?: string): UrlTree {
     try {
       const path = !!stateUrl ? stateUrl.split('?')[0] : '';
@@ -179,6 +200,9 @@ export class AuthService implements OnDestroy {
     }
   }
 
+  /**
+  * @ignore
+  */
   private routeCleanedPath(): string {
     const path = this.location.path();
     const currentUrlTree = this.router.parseUrl(path);
@@ -186,6 +210,9 @@ export class AuthService implements OnDestroy {
     return !!newPath ? newPath : '/';
   }
 
+  /**
+  * @ignore
+  */
   private cleanRouteState(): void {
     setTimeout(() => {
       this.location.replaceState(this.routeCleanedPath(), '');
