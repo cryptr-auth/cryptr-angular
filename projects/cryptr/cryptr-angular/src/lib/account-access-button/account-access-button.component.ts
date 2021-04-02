@@ -14,19 +14,60 @@ import {
 import { LocalizedStrings } from '../utils/enums';
 import { Sign, User } from '../utils/types';
 
+/**
+ * Account AccessButton Component
+ * Dynamic component to easily handle User session
+ *
+ * @example
+ * <cryptr-account-access-button [auth]="auth">
+ * </cryptr-account-access-button>
+ */
 @Component({
   selector: 'cryptr-account-access-button[auth]',
   templateUrl: './account-access-button.component.html',
   styleUrls: ['./account-access-button.component.scss']
 })
 export class AccountAccessButtonComponent implements OnChanges {
+  /**
+   * Cryptr Auth service to use for this component
+   */
   @Input() auth: AuthService;
+  /**
+   * Choose if component should behave like a widget.
+   *
+   * **Default:** true
+   */
   @Input() isWidget: boolean;
+  /**
+   * Choose if Component should prompt sign in or sign up when
+   * no active session
+   *
+   * **Default:** Sign.In -> `"signin"`
+   */
   @Input() defaultSignType: Sign.In | Sign.Up;
+  /**
+   *
+   */
   @Input() defaultSignText: string;
+  /**
+   *
+   */
   @Input() unauthenticatedPath: string;
+  /**
+   * Chosen locale for this component.
+   *
+   * If none, `default_locale` from config. **Fallback:** `en`
+   */
   @Input() locale: string;
+  /**
+   * Chosen redirect URI for this component.
+   *
+   * If none, `default_redirect_uri` from config. **Fallback:** current URI
+   */
   @Input() redirectUri: string;
+  /**
+   * Chosen redirect URI for this component.
+   */
   @Input() logoSrc: string;
   @Input() buttonLabel: string;
   @Input() logOutLabel: string;
@@ -50,17 +91,35 @@ export class AccountAccessButtonComponent implements OnChanges {
   @Input() logOutBtnClass: string;
   @Input() childClass: string;
 
+  /**
+   * @ignore
+   */
   isOpened = false;
+  /**
+   * @ignore
+   */
   accountPopup: Window;
+  /**
+   * @ignore
+   */
   errorMessage: string = null;
+  /**
+   * @ignore
+   */
   errorBtnClass = ERROR_BTN_CLASS;
 
+  /**
+   * @ignore
+   */
   closeAccountPopup(): void {
     if (typeof this.accountPopup !== 'undefined' && this.accountPopup !== null) {
       this.accountPopup.close();
     }
   }
 
+  /**
+   * @ignore
+   */
   constructor(private router: Router) {
     window.addEventListener('beforeunload', (e) => {
       this.closeAccountPopup();
@@ -73,6 +132,9 @@ export class AccountAccessButtonComponent implements OnChanges {
     });
   }
 
+  /**
+   * @ignore
+   */
   currentLocale(): string {
     try {
       return this.locale || this.auth.config().default_locale || 'en';
@@ -81,10 +143,16 @@ export class AccountAccessButtonComponent implements OnChanges {
     }
   }
 
+  /**
+   * @ignore
+   */
   localizedString(key: string): string {
     return LocalizedStrings[this.currentLocale()][key];
   }
 
+  /**
+   * @ignore
+   */
   setDefaults(): void {
     if (this.isWidget === undefined) {
       this.isWidget = true;
@@ -104,11 +172,17 @@ export class AccountAccessButtonComponent implements OnChanges {
     this.logOutBtnClass = this.logOutBtnClass || LOG_OUT_BTN_CLASS;
   }
 
+  /**
+   * @ignore
+   */
   ngOnChanges(_changes: SimpleChanges): void {
     this.checkConfig();
     this.setDefaults();
   }
 
+  /**
+   * @ignore
+   */
   checkConfig(): void {
     // const { config: routerConfig } = this.router;
     // if (this.redirectUri) {
@@ -126,10 +200,16 @@ export class AccountAccessButtonComponent implements OnChanges {
     // }
   }
 
+  /**
+   * @ignore
+   */
   toggleOpen(): void {
     this.isOpened = !this.isOpened;
   }
 
+  /**
+   * @ignore
+   */
   logOut(): void {
     this.toggleOpen();
     this.auth.logOut(() => {
@@ -137,10 +217,16 @@ export class AccountAccessButtonComponent implements OnChanges {
     });
   }
 
+  /**
+   * @ignore
+   */
   popupParams(): string {
     return `location=yes,height=${this.popupHeight},width=${this.popupWidth},scrollbars=yes,status=yes`;
   }
 
+  /**
+   * @ignore
+   */
   userAccountAccess(): void {
     this.toggleOpen();
     this.auth.userAccountAccess().then(accountAccessData => {
@@ -153,18 +239,30 @@ export class AccountAccessButtonComponent implements OnChanges {
     });
   }
 
+  /**
+   * @ignore
+   */
   isAuthenticated(): boolean {
     return this.auth.currentAuthenticationState();
   }
 
+  /**
+   * @ignore
+   */
   user(): User | undefined {
     return this.auth.getClientUser();
   }
 
+  /**
+   * @ignore
+   */
   cannotDisplayUser(): boolean {
     return !this.isAuthenticated() || typeof this.user() === 'undefined';
   }
 
+  /**
+   * @ignore
+   */
   email(): string | undefined {
     if (this.cannotDisplayUser()) {
       return;
@@ -172,6 +270,9 @@ export class AccountAccessButtonComponent implements OnChanges {
     return this.user().email;
   }
 
+  /**
+   * @ignore
+   */
   initials(): any {
     if (this.cannotDisplayUser()) {
       return;
@@ -179,6 +280,9 @@ export class AccountAccessButtonComponent implements OnChanges {
     return this.fullName().match(/\b(\w)/g).join('');
   }
 
+  /**
+   * @ignore
+   */
   fullName(): any {
     if (this.cannotDisplayUser()) {
       return;
@@ -187,43 +291,73 @@ export class AccountAccessButtonComponent implements OnChanges {
     return emailName.split('.').join(' ');
   }
 
+  /**
+   * @ignore
+   */
   widgetButtonText(): string {
     const tenantKey = 'tenant_domain';
     return this.buttonLabel || this.auth.config()[tenantKey].split('-').join(' ');
   }
 
+  /**
+   * @ignore
+   */
   logOutText(): string {
     return this.logOutLabel || this.localizedString('logOut');
   }
 
+  /**
+   * @ignore
+   */
   manageAccountText(): string {
     return this.accountLabel || this.localizedString('manageAccount');
   }
 
+  /**
+   * @ignore
+   */
   showSigninButton(): boolean {
     return !this.isAuthenticated() && this.defaultSignType === Sign.In;
   }
 
+  /**
+   * @ignore
+   */
   showSignupButton(): boolean {
     return !this.isAuthenticated() && this.defaultSignType === Sign.Up;
   }
 
+  /**
+   * @ignore
+   */
   showWidgetBtn(): boolean {
     return this.isWidget && this.isAuthenticated();
   }
 
+  /**
+   * @ignore
+   */
   showAccessButtonOnly(): boolean {
     return this.isAuthenticated() && !this.isWidget;
   }
 
+  /**
+   * @ignore
+   */
   signInWithRedirect(): void {
     this.auth.signInWithRedirect(DEFAULT_SCOPE, this.locale, this.redirectUri);
   }
 
+  /**
+   * @ignore
+   */
   signUpWithRedirect(): void {
     this.auth.signUpWithRedirect(DEFAULT_SCOPE, this.locale, this.redirectUri);
   }
 
+  /**
+   * @ignore
+   */
   currentToggleBtnClass(): string {
     let toggleClass = TOGGLE_CASS_CLOSED;
     if (this.toggleBtnClass !== undefined) {
