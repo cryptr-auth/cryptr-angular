@@ -46,11 +46,11 @@ export class AccountAccessButtonComponent implements OnChanges {
    */
   @Input() defaultSignType: Sign.In | Sign.Up;
   /**
-   *
+   * Text to show inside sign button when no active session
    */
   @Input() defaultSignText: string;
   /**
-   *
+   * Path to redirect after logout process
    */
   @Input() unauthenticatedPath: string;
   /**
@@ -66,29 +66,91 @@ export class AccountAccessButtonComponent implements OnChanges {
    */
   @Input() redirectUri: string;
   /**
-   * Chosen redirect URI for this component.
+   * Source of logo you want in widget button
    */
   @Input() logoSrc: string;
+  /**
+   * Text to show in widget button.
+   * If none it will display tenant domain string
+   */
   @Input() buttonLabel: string;
+  /**
+   * Text to show inside logout button
+   */
   @Input() logOutLabel: string;
+  /**
+   * Text for user account access button.
+   * It will define either button inside widget or
+   * account button when chosing widget `false`
+   */
   @Input() accountLabel: string;
+  /**
+   * Desired height(px) for user account popup.
+   * **Warning:** If user is in full screen it will be a new tab of browser
+   */
   @Input() popupHeight: number;
+  /**
+   * Desired width(px) for user account popup
+   * **Warning:** If user is in full screen it will be a new tab of browser
+   */
   @Input() popupWidth: number;
 
   // STYLE config
+
+  /**
+   * Style for sign button when no active session
+   */
   @Input() signBtnStyle: any;
+  /**
+   * Style for widget toggle button
+   */
   @Input() toggleBtnStyle: any;
+  /**
+   * Style for initials badge in widget toggle button
+   */
   @Input() badgeStyle: any;
+  /**
+   * Style for user account access button.
+   * It will define either button inside widget or
+   * account button when chosing widget `false`
+   */
   @Input() accountBtnStyle: any;
+  /**
+   * Style for logout button
+   */
   @Input() logOutBtnStyle: any;
+  /**
+   * Desired style to apply arrount `cryptrWidgetChild`
+   */
   @Input() childStyle: any;
 
   // CLASS config
+
+  /**
+   * Class for sign button when no active session
+   */
   @Input() signBtnClass: string;
+  /**
+   * Class for widget toggle button
+   */
   @Input() toggleBtnClass: string;
+  /**
+   * Class for initials badge in widget toggle button
+   */
   @Input() badgeClass: string;
+  /**
+   * Class for user account access button.
+   * It will define either button inside widget or
+   * account button when chosing widget `false`
+   */
   @Input() accountBtnClass: string;
+  /**
+   * Class for logout button
+   */
   @Input() logOutBtnClass: string;
+  /**
+   * Class for sign button when no active session
+   */
   @Input() childClass: string;
 
   /**
