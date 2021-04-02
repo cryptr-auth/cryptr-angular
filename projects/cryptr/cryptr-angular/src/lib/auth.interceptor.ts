@@ -19,13 +19,16 @@ import {
 import { first } from 'rxjs/operators';
 import { CryptrClientService } from './auth.client';
 
+/** Interceptor to decorate requests with Access token */
 @Injectable()
 export class AuthHttpInterceptor implements HttpInterceptor {
+  /** @ignore */
   constructor(
     @Inject(AuthConfigService) private config: AuthConfig,
     @Inject(CryptrClientService) private cryptrClient: any
   ) { }
 
+  /** @ignore */
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
@@ -46,9 +49,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
     return next.handle(finalReq);
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   private stripQueryFrom(uri: string): string {
     if (uri.indexOf('?') > -1) {
       uri = uri.substr(0, uri.indexOf('?'));
@@ -61,9 +62,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
     return uri;
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   private canAttachToken(
     route: ApiRouteDefinition,
     request: HttpRequest<any>
@@ -103,9 +102,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
     return testPrimitive(route);
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   private findMatchingRoute(
     request: HttpRequest<any>
   ): Observable<HttpInterceptorRouteConfig> {

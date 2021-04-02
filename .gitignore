@@ -47,3 +47,6 @@ testem.log
 Thumbs.db
 dist/cryptr/cryptr-angular/cryptr-cryptr-angular-0.0.1.tgz
 .cc_token
+
+/projects/cryptr/cryptr-angular/documentation/*
+projects/cryptr/cryptr-angular/documentation/*

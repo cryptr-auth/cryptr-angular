@@ -1,40 +1,77 @@
+/**
+ * Cryptr sign types
+ */
 export enum Sign {
   Invite = 'invite',
   In = 'signin',
   Up = 'signup',
   Refresh = 'refresh'
 }
+
+/** @ignore */
 export interface Authorization {
   id: string;
   code: string;
 }
 
+/**
+ * Result of tokens response
+ */
 export interface Tokens {
+  /** is token response returns sucessfully */
   valid: boolean;
+  /** access token value */
   accessToken?: string;
 }
 
+/**
+ * Cryptr config interface
+ */
 export interface Config {
+  /** Tenant domain */
   tenant_domain: string;
+  /** Cryptr Client ID */
   client_id: string;
+  /** Application audience URL */
   audience: string;
+  /** Default redirect URI for application
+   * after Cryptr authentication process */
   default_redirect_uri: string;
+  /** Default locale for Cryptr SDK in application */
   default_locale?: string;
+  /** region used for Cryptr integration */
   region?: string;
+  /** Cryptr Service URL for this application */
   cryptr_base_url?: string;
+  /** Activate Cryptr telemetry reporting */
   telemetry?: boolean;
 }
 
+/** @ignore */
 export interface AuthResponseError {
   field: string;
   message: string;
 }
+
+/**
+ * Token error response interface
+ */
 export interface TokenError {
+  /**
+   * Response error body of token request
+   */
   http_response: any;
+  /**
+   * Error message of token request failure
+   */
   error: string;
+  /**
+   * Error description of token request failure
+   */
   error_description: string;
 }
 
+/** @ignore */
 export interface RefreshStore {
   refresh_token: string;
   access_token_expiration_date: number;
@@ -43,6 +80,7 @@ export interface RefreshStore {
   refresh_retry: number;
 }
 
+/** @ignore */
 export interface CryptrClient {
   config: Config;
   getCurrentAccessToken(): string | undefined;
@@ -72,6 +110,10 @@ export interface CryptrClient {
   decoratedRequest(axiosRequestConfig: any): any;
 }
 
+/**
+ * Cryptr User simplest representation
+ */
 export interface User {
+  /** email of end user */
   email: string;
 }

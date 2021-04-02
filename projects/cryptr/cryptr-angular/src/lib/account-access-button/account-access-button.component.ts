@@ -153,35 +153,23 @@ export class AccountAccessButtonComponent implements OnChanges {
    */
   @Input() childClass: string;
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   isOpened = false;
-  /**
-   * @ignore
-   */
+  /** @ignore */
   accountPopup: Window;
-  /**
-   * @ignore
-   */
+  /** @ignore */
   errorMessage: string = null;
-  /**
-   * @ignore
-   */
+  /** @ignore */
   errorBtnClass = ERROR_BTN_CLASS;
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   closeAccountPopup(): void {
     if (typeof this.accountPopup !== 'undefined' && this.accountPopup !== null) {
       this.accountPopup.close();
     }
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   constructor(private router: Router) {
     window.addEventListener('beforeunload', (e) => {
       this.closeAccountPopup();
@@ -194,9 +182,7 @@ export class AccountAccessButtonComponent implements OnChanges {
     });
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   currentLocale(): string {
     try {
       return this.locale || this.auth.config().default_locale || 'en';
@@ -205,16 +191,12 @@ export class AccountAccessButtonComponent implements OnChanges {
     }
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   localizedString(key: string): string {
     return LocalizedStrings[this.currentLocale()][key];
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   setDefaults(): void {
     if (this.isWidget === undefined) {
       this.isWidget = true;
@@ -234,17 +216,13 @@ export class AccountAccessButtonComponent implements OnChanges {
     this.logOutBtnClass = this.logOutBtnClass || LOG_OUT_BTN_CLASS;
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   ngOnChanges(_changes: SimpleChanges): void {
     this.checkConfig();
     this.setDefaults();
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   checkConfig(): void {
     // const { config: routerConfig } = this.router;
     // if (this.redirectUri) {
@@ -262,16 +240,12 @@ export class AccountAccessButtonComponent implements OnChanges {
     // }
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   toggleOpen(): void {
     this.isOpened = !this.isOpened;
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   logOut(): void {
     this.toggleOpen();
     this.auth.logOut(() => {
@@ -279,16 +253,12 @@ export class AccountAccessButtonComponent implements OnChanges {
     });
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   popupParams(): string {
     return `location=yes,height=${this.popupHeight},width=${this.popupWidth},scrollbars=yes,status=yes`;
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   userAccountAccess(): void {
     this.toggleOpen();
     this.auth.userAccountAccess().then(accountAccessData => {
@@ -301,30 +271,22 @@ export class AccountAccessButtonComponent implements OnChanges {
     });
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   isAuthenticated(): boolean {
     return this.auth.currentAuthenticationState();
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   user(): User | undefined {
     return this.auth.getClientUser();
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   cannotDisplayUser(): boolean {
     return !this.isAuthenticated() || typeof this.user() === 'undefined';
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   email(): string | undefined {
     if (this.cannotDisplayUser()) {
       return;
@@ -332,9 +294,7 @@ export class AccountAccessButtonComponent implements OnChanges {
     return this.user().email;
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   initials(): any {
     if (this.cannotDisplayUser()) {
       return;
@@ -342,9 +302,7 @@ export class AccountAccessButtonComponent implements OnChanges {
     return this.fullName().match(/\b(\w)/g).join('');
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   fullName(): any {
     if (this.cannotDisplayUser()) {
       return;
@@ -353,73 +311,53 @@ export class AccountAccessButtonComponent implements OnChanges {
     return emailName.split('.').join(' ');
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   widgetButtonText(): string {
     const tenantKey = 'tenant_domain';
     return this.buttonLabel || this.auth.config()[tenantKey].split('-').join(' ');
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   logOutText(): string {
     return this.logOutLabel || this.localizedString('logOut');
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   manageAccountText(): string {
     return this.accountLabel || this.localizedString('manageAccount');
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   showSigninButton(): boolean {
     return !this.isAuthenticated() && this.defaultSignType === Sign.In;
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   showSignupButton(): boolean {
     return !this.isAuthenticated() && this.defaultSignType === Sign.Up;
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   showWidgetBtn(): boolean {
     return this.isWidget && this.isAuthenticated();
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   showAccessButtonOnly(): boolean {
     return this.isAuthenticated() && !this.isWidget;
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   signInWithRedirect(): void {
     this.auth.signInWithRedirect(DEFAULT_SCOPE, this.locale, this.redirectUri);
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   signUpWithRedirect(): void {
     this.auth.signUpWithRedirect(DEFAULT_SCOPE, this.locale, this.redirectUri);
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   currentToggleBtnClass(): string {
     let toggleClass = TOGGLE_CASS_CLOSED;
     if (this.toggleBtnClass !== undefined) {
