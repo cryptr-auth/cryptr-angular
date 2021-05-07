@@ -50,51 +50,29 @@ export class AuthService implements OnDestroy {
     this.ngUnsubscribe$.complete();
   }
 
-  /** @ignore */
-  private checkAuthentication(): void {
-    this.isAuthenticated().then(async (isAuthenticated: boolean) => {
-      this.updateCurrentAuthState(isAuthenticated);
-      this.resetAuthentication(isAuthenticated);
-      await this.authenticate();
-    }).catch((error) => {
-      console.error(error);
-      this.resetAuthentication(false);
-      this.isLoading$.next(false);
-    });
-  }
-
-  /** @ignore */
-  private resetAuthentication(isAuthenticated: boolean): void {
-    if (isAuthenticated) {
-      return;
-    }
-    this.updateCurrentAuthState(false);
-    this.setUser(null);
-  }
-
   /**
-   * Performs redirection to Cryptr for signin process with chosen args
-   * @example
-   * Default usage
-   * signInWithRedirect()
-   *
-   * @example
-   * Usage with custom scope
-   * signInWithRedirect("email openid profile read:invoices")
-   *
-   * @example
-   * Usage with custom locale
-   * signInWithRedirect("email openid profile", "fr")
-   *
-   * @example
-   * Usage with custom locale
-   * signInWithRedirect("email openid profile", "en", "http://localhsot:4201")
-   *
-   * @param scope - Default: `"email openid profile"`. Scopes requested for this sign in process (whitespace separator)
-   * @param locale - Default: `config.default_locale` value. locale for this sign in process.
-   * @param redirectUri - Default: `config.default_redirect_uri` value. URI where to redirect after sign in process.
-   * @returns Observable of this signin redirection
-   */
+  * Performs redirection to Cryptr for signin process with chosen args
+  * @example
+  * Default usage
+  * signInWithRedirect()
+  *
+  * @example
+  * Usage with custom scope
+  * signInWithRedirect("email openid profile read:invoices")
+  *
+  * @example
+  * Usage with custom locale
+  * signInWithRedirect("email openid profile", "fr")
+  *
+  * @example
+  * Usage with custom locale
+  * signInWithRedirect("email openid profile", "en", "http://localhsot:4201")
+  *
+  * @param scope - Default: `"email openid profile"`. Scopes requested for this sign in process (whitespace separator)
+  * @param locale - Default: `config.default_locale` value. locale for this sign in process.
+  * @param redirectUri - Default: `config.default_redirect_uri` value. URI where to redirect after sign in process.
+  * @returns Observable of this signin redirection
+  */
   signInWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
     if (this.cryptrClient) {
       return from(this.cryptrClient.signInWithRedirect(scope, redirectUri, locale));
@@ -102,45 +80,38 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-   * Performs redirection to Cryptr for signup process with chosen args
-   * @example
-   * Default usage
-   * signUpWithRedirect()
-   *
-   * @example
-   * Usage with custom scope
-   * signUpWithRedirect("email openid profile read:invoices")
-   *
-   * @example
-   * Usage with custom locale
-   * signUpWithRedirect("email openid profile", "fr")
-   *
-   * @example
-   * Usage with custom locale
-   * signUpWithRedirect("email openid profile", "en", "http://localhsot:4201")
-   *
-   * @param scope - Default: `"email openid profile"`. Scopes requested for this sign up process (whitespace separator).
-   * @param locale - Default: `config.default_locale` value. locale for this sign up process.
-   * @param redirectUri - Default: `config.default_redirect_uri` value. URI where to redirect after sign up process.
-   * @returns Observable of this sugnup redirection
-   */
+  * Performs redirection to Cryptr for signup process with chosen args
+  * @example
+  * Default usage
+  * signUpWithRedirect()
+  *
+  * @example
+  * Usage with custom scope
+  * signUpWithRedirect("email openid profile read:invoices")
+  *
+  * @example
+  * Usage with custom locale
+  * signUpWithRedirect("email openid profile", "fr")
+  *
+  * @example
+  * Usage with custom locale
+  * signUpWithRedirect("email openid profile", "en", "http://localhsot:4201")
+  *
+  * @param scope - Default: `"email openid profile"`. Scopes requested for this sign up process (whitespace separator).
+  * @param locale - Default: `config.default_locale` value. locale for this sign up process.
+  * @param redirectUri - Default: `config.default_redirect_uri` value. URI where to redirect after sign up process.
+  * @returns Observable of this sugnup redirection
+  */
   signUpWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
     return from(this.cryptrClient.signUpWithRedirect(scope, redirectUri, locale));
   }
 
-  /** @ignore */
-  private preLogOutCallBack(callback: () => void): () => void {
-    this.updateCurrentAuthState(false);
-    this.setUser(null);
-    return callback;
-  }
-
   /**
-   * Destroy current session with specific action
-   * @param callback - Action to call at the end of logout process
-   * @param location - **Default:** `window.location`. Where to redirect after logout process
-   * @returns process logout of session with callback call
-   */
+  * Destroy current session with specific action
+  * @param callback - Action to call at the end of logout process
+  * @param location - **Default:** `window.location`. Where to redirect after logout process
+  * @returns process logout of session with callback call
+  */
   logOut(callback: () => void, location: any = window.location): Observable<any> {
     return from(this.cryptrClient.logOut(this.preLogOutCallBack(callback), location));
   }
@@ -196,11 +167,6 @@ export class AuthService implements OnDestroy {
    */
   getIdToken(): string | undefined {
     return this.cryptrClient.getCurrentIdToken();
-  }
-
-  /** @ignore */
-  private setUser(newUser: any): void {
-    this.user$.next(newUser);
   }
 
   /** @ignore */
@@ -264,7 +230,6 @@ export class AuthService implements OnDestroy {
     return this.user$.asObservable();
   }
 
-
   /**
    * Retrieve current authentication state.
    * @returns boolean of authentiation state
@@ -273,18 +238,73 @@ export class AuthService implements OnDestroy {
     return this.authenticated$.value;
   }
 
-  /** @ignore */
-  private updateCurrentAuthState(newAuthenticated: boolean): void {
-    this.authenticated$.next(newAuthenticated);
-    this.setUser(this.getClientUser());
-  }
-
   /**
    * Retrieve current authentication state as Observable
    * @returns boolean observable of authentiation state
    */
   currentAuthenticationObservable(): Observable<boolean> {
     return this.authenticated$.asObservable();
+  }
+
+  /** @ignore */
+  fullAuthenticateProcess(
+    stateUrl?: string,
+    callback?: (isAuthenticated: boolean, stateUrl?: string) => boolean
+  ): Observable<boolean | UrlTree> {
+    return combineLatest(
+      [this.isLoading$, this.authenticated$]
+    ).pipe(
+      filter(([isLoading, isAuthenticated]) => {
+        return !isLoading;
+      }),
+      map(([isLoading, isAuthenticated]) => {
+        if (callback) {
+          return callback(isAuthenticated, stateUrl);
+        } else {
+          return this.defaultAuthenticationCallback(isAuthenticated, stateUrl);
+        }
+      })
+    );
+  }
+
+  /** @ignore */
+  private checkAuthentication(): void {
+    this.isAuthenticated().then(async (isAuthenticated: boolean) => {
+      this.updateCurrentAuthState(isAuthenticated);
+      this.resetAuthentication(isAuthenticated);
+      await this.authenticate();
+    }).catch((error) => {
+      console.error(error);
+      this.resetAuthentication(false);
+      this.isLoading$.next(false);
+    });
+  }
+
+  /** @ignore */
+  private resetAuthentication(isAuthenticated: boolean): void {
+    if (isAuthenticated) {
+      return;
+    }
+    this.updateCurrentAuthState(false);
+    this.setUser(null);
+  }
+
+  /** @ignore */
+  private preLogOutCallBack(callback: () => void): () => void {
+    this.updateCurrentAuthState(false);
+    this.setUser(null);
+    return callback;
+  }
+
+  /** @ignore */
+  private setUser(newUser: any): void {
+    this.user$.next(newUser);
+  }
+
+  /** @ignore */
+  private updateCurrentAuthState(newAuthenticated: boolean): void {
+    this.authenticated$.next(newAuthenticated);
+    this.setUser(this.getClientUser());
   }
 
   /** @ignore */
@@ -366,26 +386,5 @@ export class AuthService implements OnDestroy {
       }
       return false;
     }
-  }
-
-  /** @ignore */
-  fullAuthenticateProcess(
-    stateUrl?: string,
-    callback?: (isAuthenticated: boolean, stateUrl?: string) => boolean
-  ): Observable<boolean | UrlTree> {
-    return combineLatest(
-      [this.isLoading$, this.authenticated$]
-    ).pipe(
-      filter(([isLoading, isAuthenticated]) => {
-        return !isLoading;
-      }),
-      map(([isLoading, isAuthenticated]) => {
-        if (callback) {
-          return callback(isAuthenticated, stateUrl);
-        } else {
-          return this.defaultAuthenticationCallback(isAuthenticated, stateUrl);
-        }
-      })
-    );
   }
 }
