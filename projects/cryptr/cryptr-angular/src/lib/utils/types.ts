@@ -34,8 +34,10 @@ export interface Config {
   client_id: string;
   /** Application audience URL */
   audience: string;
-  /** Default redirect URI for application
-   * after Cryptr authentication process */
+  /**
+   * Default redirect URI for application
+   * after Cryptr authentication process
+   */
   default_redirect_uri: string;
   /** Default locale for Cryptr SDK in application */
   default_locale?: string;

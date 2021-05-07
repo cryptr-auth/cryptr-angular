@@ -20,15 +20,19 @@ export class AuthGuard implements CanActivate, CanLoad, CanActivateChild {
   /** @ignore */
   constructor(private auth: AuthService) { }
 
-  /** Cryptr check if child can be loaded
-   * depending on authentication state  */
+  /**
+   * Cryptr check if child can be loaded
+   * depending on authentication state
+   */
   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
     return this.auth.observableAuthenticated();
   }
 
-  /** Cryptr check if route can be activate
+  /**
+   * Cryptr check if route can be activate
    * depending on authentication state.
-   * If no session active will redirect to cryptr sign process */
+   * If no session active will redirect to cryptr sign process
+   */
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -36,9 +40,11 @@ export class AuthGuard implements CanActivate, CanLoad, CanActivateChild {
     return this.auth.fullAuthenticateProcess(state.url);
   }
 
-  /** Cryptr check if child route can be activate
+  /**
+   * Cryptr check if child route can be activate
    * depending on authentication state.
-   * If no session active will redirect to cryptr sign process */
+   * If no session active will redirect to cryptr sign process
+   */
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
