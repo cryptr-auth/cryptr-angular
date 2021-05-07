@@ -51,28 +51,28 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * Performs redirection to Cryptr for signin process with chosen args
-  * @example
-  * Default usage
-  * signInWithRedirect()
-  *
-  * @example
-  * Usage with custom scope
-  * signInWithRedirect("email openid profile read:invoices")
-  *
-  * @example
-  * Usage with custom locale
-  * signInWithRedirect("email openid profile", "fr")
-  *
-  * @example
-  * Usage with custom locale
-  * signInWithRedirect("email openid profile", "en", "http://localhsot:4201")
-  *
-  * @param scope - Default: `"email openid profile"`. Scopes requested for this sign in process (whitespace separator)
-  * @param locale - Default: `config.default_locale` value. locale for this sign in process.
-  * @param redirectUri - Default: `config.default_redirect_uri` value. URI where to redirect after sign in process.
-  * @returns Observable of this signin redirection
-  */
+   * Performs redirection to Cryptr for signin process with chosen args
+   * @example
+   * Default usage
+   * signInWithRedirect()
+   *
+   * @example
+   * Usage with custom scope
+   * signInWithRedirect("email openid profile read:invoices")
+   *
+   * @example
+   * Usage with custom locale
+   * signInWithRedirect("email openid profile", "fr")
+   *
+   * @example
+   * Usage with custom locale
+   * signInWithRedirect("email openid profile", "en", "http://localhsot:4201")
+   *
+   * @param scope - Default: `"email openid profile"`. Scopes requested for this sign in process (whitespace separator)
+   * @param locale - Default: `config.default_locale` value. locale for this sign in process.
+   * @param redirectUri - Default: `config.default_redirect_uri` value. URI where to redirect after sign in process.
+   * @returns Observable of this signin redirection
+   */
   signInWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
     if (this.cryptrClient) {
       return from(this.cryptrClient.signInWithRedirect(scope, redirectUri, locale));
@@ -80,38 +80,38 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-  * Performs redirection to Cryptr for signup process with chosen args
-  * @example
-  * Default usage
-  * signUpWithRedirect()
-  *
-  * @example
-  * Usage with custom scope
-  * signUpWithRedirect("email openid profile read:invoices")
-  *
-  * @example
-  * Usage with custom locale
-  * signUpWithRedirect("email openid profile", "fr")
-  *
-  * @example
-  * Usage with custom locale
-  * signUpWithRedirect("email openid profile", "en", "http://localhsot:4201")
-  *
-  * @param scope - Default: `"email openid profile"`. Scopes requested for this sign up process (whitespace separator).
-  * @param locale - Default: `config.default_locale` value. locale for this sign up process.
-  * @param redirectUri - Default: `config.default_redirect_uri` value. URI where to redirect after sign up process.
-  * @returns Observable of this sugnup redirection
-  */
+   * Performs redirection to Cryptr for signup process with chosen args
+   * @example
+   * Default usage
+   * signUpWithRedirect()
+   *
+   * @example
+   * Usage with custom scope
+   * signUpWithRedirect("email openid profile read:invoices")
+   *
+   * @example
+   * Usage with custom locale
+   * signUpWithRedirect("email openid profile", "fr")
+   *
+   * @example
+   * Usage with custom locale
+   * signUpWithRedirect("email openid profile", "en", "http://localhsot:4201")
+   *
+   * @param scope - Default: `"email openid profile"`. Scopes requested for this sign up process (whitespace separator).
+   * @param locale - Default: `config.default_locale` value. locale for this sign up process.
+   * @param redirectUri - Default: `config.default_redirect_uri` value. URI where to redirect after sign up process.
+   * @returns Observable of this sugnup redirection
+   */
   signUpWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
     return from(this.cryptrClient.signUpWithRedirect(scope, redirectUri, locale));
   }
 
   /**
-  * Destroy current session with specific action
-  * @param callback - Action to call at the end of logout process
-  * @param location - **Default:** `window.location`. Where to redirect after logout process
-  * @returns process logout of session with callback call
-  */
+   * Destroy current session with specific action
+   * @param callback - Action to call at the end of logout process
+   * @param location - **Default:** `window.location`. Where to redirect after logout process
+   * @returns process logout of session with callback call
+   */
   logOut(callback: () => void, location: any = window.location): Observable<any> {
     return from(this.cryptrClient.logOut(this.preLogOutCallBack(callback), location));
   }
