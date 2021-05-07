@@ -357,9 +357,8 @@ export class AuthService implements OnDestroy {
       }).finally(() => {
         this.isLoading$.next(false);
       });
-      // TODO: handle invitation process
-      // } else if (this.cryptrClient.canHandleInvitation()) {
-      //   console.log('can handle invite')
+    } else if (this.cryptrClient.canHandleInvitation()) {
+      this.cryptrClient.handleInvitationState();
     } else {
       await this.cryptrClient.handleRefreshTokens();
       this.isAuthenticated().then((isAuthenticated) => {
