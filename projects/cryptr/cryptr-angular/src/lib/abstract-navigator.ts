@@ -2,23 +2,22 @@ import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
+/** @ignore */
 @Injectable({
   providedIn: 'root',
 })
 export class AbstractNavigator {
+  /** @ignore */
   private readonly router: Router;
 
+  /** @ignore */
   constructor(private location: Location, injector: Injector) {
     try {
       this.router = injector.get(Router);
-    } catch {}
+    } catch { }
   }
 
-  /**
-   * Navigates to the specified url. The router will be used if one is available, otherwise it falls back
-   * to `window.history.replaceState`.
-   * @param url The url to navigate to
-   */
+  /** @ignore */
   navigateByUrl(url: string): void {
     if (this.router) {
       setTimeout(() => {
