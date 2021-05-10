@@ -19,13 +19,16 @@ import {
 import { first } from 'rxjs/operators';
 import { CryptrClientService } from './auth.client';
 
+/** Interceptor to decorate requests with Access token */
 @Injectable()
 export class AuthHttpInterceptor implements HttpInterceptor {
+  /** @ignore */
   constructor(
     @Inject(AuthConfigService) private config: AuthConfig,
     @Inject(CryptrClientService) private cryptrClient: any
   ) { }
 
+  /** @ignore */
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
@@ -46,10 +49,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
     return next.handle(finalReq);
   }
 
-  /**
-   * Strips the query and fragment from the given uri
-   * @param uri The uri to remove the query and fragment from
-   */
+  /** @ignore */
   private stripQueryFrom(uri: string): string {
     if (uri.indexOf('?') > -1) {
       uri = uri.substr(0, uri.indexOf('?'));
@@ -62,12 +62,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
     return uri;
   }
 
-  /**
-   * Determines whether the specified route can have an access token attached to it, based on matching the HTTP request against
-   * the interceptor route configuration.
-   * @param route The route to test
-   * @param request The HTTP request
-   */
+  /** @ignore */
   private canAttachToken(
     route: ApiRouteDefinition,
     request: HttpRequest<any>
@@ -107,11 +102,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
     return testPrimitive(route);
   }
 
-  /**
-   * Tries to match a route from the SDK configuration to the HTTP request.
-   * If a match is found, the route configuration is returned.
-   * @param request The Http request
-   */
+  /** @ignore */
   private findMatchingRoute(
     request: HttpRequest<any>
   ): Observable<HttpInterceptorRouteConfig> {

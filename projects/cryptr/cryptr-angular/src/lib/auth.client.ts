@@ -2,7 +2,10 @@ import { InjectionToken } from '@angular/core';
 import CryptrSpa from '@cryptr/cryptr-spa-js';
 
 import { AuthClientConfig } from './auth.config';
+
+/** @ignore */
 export class CryptrClientFactory {
+  /** @ignore */
   static createClient(configFactory: AuthClientConfig): any {
     const config = configFactory.get();
 
@@ -28,4 +31,5 @@ export class CryptrClientFactory {
   }
 }
 
+/** @ignore */
 export const CryptrClientService = new InjectionToken<any>('cryptr.client');

@@ -9,22 +9,31 @@ if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefi
   };
   `;
 
-  const targetPath = './src/environments/environment.prod.ts'
+  const targetPath = './projects/playground/src/environments/environment.prod.ts';
 
   console.log(`The file '${targetPath}' will be written with the following content: \n`);
   console.log(envConfigFile);
 
-
-  fs.writeFile(targetPath, envConfigFile, function (err) {
-    if (err) {
-      throw console.error(err)
+  fs.exists("./projects/playground/src/environments/environment.prod.ts", (exists: boolean) => {
+    if (exists) {
+      fs.unlink("./projects/playground/src/environments/environment.prod.ts", (err: Error) => {
+        if (err) {
+          throw err;
+        }
+        fs.writeFile(
+          "./projects/playground/src/environments/environment.prod.ts",
+          envConfigFile,
+          { flag: "wx" },
+          (err: Error) => {
+            if (err) {
+              throw err;
+            }
+          })
+      });
     } else {
-      console.log(`Angular environment.ts file generated correctly at ${targetPath} \n`)
+      console.error("file not found :/");
     }
-  })
+  });
 } else {
-  console.info("no .env variable found -> use files")
-  console.debug(process.env.PRODUCTION)
-  console.debug(process.env.CRYPTR_CONFIG)
-  console.debug(process.env.RS_URL)
+  console.info("no .env variable found -> use files");
 }
