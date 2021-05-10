@@ -16,7 +16,7 @@ if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefi
 
 
   console.log("Try deleting")
-  fs.existsSync(targetPath, function (exists) {
+  fs.exists(targetPath, function (exists) {
     console.log(`file ${targetPath} exists: ${exists}`)
     if (exists) {
       //Show in green
