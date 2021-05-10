@@ -15,6 +15,13 @@ if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefi
   console.log(envConfigFile);
 
 
+  fs.exists(targetPath, function (exists) {
+    if (exists) {
+      //Show in green
+      console.log('File exists. Deleting now ...');
+      fs.unlink(targetPath);
+    }
+  });
   fs.writeFileSync(targetPath, envConfigFile, { flag: 'wx' }, function (err) {
     if (err) {
       throw console.error(err)
