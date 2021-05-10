@@ -9,7 +9,7 @@ if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefi
   };
   `;
 
-  const targetPath = './src/environments/environment.prod.ts'
+  const targetPath = './projects/playground/src/environments/environment.prod.ts'
 
   console.log(`The file '${targetPath}' will be written with the following content: \n`);
   console.log(envConfigFile);
