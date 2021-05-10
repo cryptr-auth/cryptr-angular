@@ -21,19 +21,23 @@ if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefi
     if (exists) {
       //Show in green
       console.log('File exists. Deleting now ...');
-      fs.unlinkSync(targetPath);
+      fs.unlink(targetPath, function (err) {
+        if (err) {
+          throw console.error(err)
+        }
+        console.log("Try writing")
+        fs.writeFile(targetPath, envConfigFile, { flag: 'wx' }, function (err) {
+          if (err) {
+            throw console.error(err)
+          } else {
+            console.log(`Angular environment.ts file generated correctly at ${targetPath} \n`)
+          }
+        })
+      });
     } else {
       console.log("file not found :/")
     }
   });
-  console.log("Try writing")
-  fs.writeFile(targetPath, envConfigFile, { flag: 'wx' }, function (err) {
-    if (err) {
-      throw console.error(err)
-    } else {
-      console.log(`Angular environment.ts file generated correctly at ${targetPath} \n`)
-    }
-  })
 } else {
   console.info("no .env variable found -> use files")
   console.debug(process.env.PRODUCTION)
