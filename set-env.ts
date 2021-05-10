@@ -15,7 +15,9 @@ if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefi
   console.log(envConfigFile);
 
 
+  console.log("Try deleting")
   fs.exists(targetPath, function (exists) {
+    console.log(`file ${targetPath} exists: ${exists}`)
     if (exists) {
       //Show in green
       console.log('File exists. Deleting now ...');
@@ -24,7 +26,8 @@ if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefi
       console.log("file not found :/")
     }
   });
-  fs.writeFileSync(targetPath, envConfigFile, { flag: 'wx' }, function (err) {
+  console.log("Try writing")
+  fs.writeFile(targetPath, envConfigFile, { flag: 'wx' }, function (err) {
     if (err) {
       throw console.error(err)
     } else {
