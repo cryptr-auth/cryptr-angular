@@ -14,15 +14,15 @@ if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefi
   console.log(`The file '${targetPath}' will be written with the following content: \n`);
   console.log(envConfigFile);
 
-  fs.exists(`${targetPath}`, (exists: boolean) => {
+  fs.exists('./projects/playground/src/environments/environment.prod.ts', (exists: boolean) => {
     if (exists) {
-      fs.unlink(`${targetPath}`, (err: any) => {
+      fs.unlink('./projects/playground/src/environments/environment.prod.ts', (err: Error) => {
         if (err) {
           throw err;
         }
-        fs.writeFile(`${targetPath}`, envConfigFile, { flag: "wx" }, (err: any) => {
+        fs.writeFile('./projects/playground/src/environments/environment.prod.ts', envConfigFile, { flag: "wx" }, (err: Error) => {
           if (err) {
-            throw console.error(err);
+            throw err;
           }
         })
       });
