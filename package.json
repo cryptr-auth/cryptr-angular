@@ -62,7 +62,7 @@
     "tslint": "~6.1.0",
     "typescript": "~4.0.5"
   },
-  "description": "--- For more See our [related live Doc](https://cryptr-doc-develop.onrender.com/docs/sdks/angular/introduction) ---",
+  "description": "--- For more See our [related live Doc](https://cryptr-angular-doc.onrender.com) ---",
   "author": "Cryptr <thibaud@cryptr.co> (http://www.cryptr.co)",
   "license": "MIT",
   "keywords": [
