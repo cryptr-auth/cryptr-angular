@@ -20,6 +20,8 @@ if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefi
       //Show in green
       console.log('File exists. Deleting now ...');
       fs.unlink(targetPath);
+    } else {
+      console.log("file not found :/")
     }
   });
   fs.writeFileSync(targetPath, envConfigFile, { flag: 'wx' }, function (err) {
