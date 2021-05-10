@@ -18,6 +18,7 @@
     "publish:lib": "cd dist/cryptr/cryptr-angular && npm publish",
     "playground-run": "ng serve playground",
     "playground-run:lib": "npm run build:all:clean && ng serve playground",
+    "create:doc": "typedoc projects/cryptr/cryptr-angular/src/ --tsconfig projects/cryptr/cryptr-angular/tsconfig.lib.json --out doc/ --excludeNotDocumented",
     "test": "ng test",
     "lint": "ng lint"
   },
