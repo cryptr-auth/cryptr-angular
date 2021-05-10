@@ -15,7 +15,7 @@ if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefi
   console.log(envConfigFile);
 
 
-  fs.writeFile(targetPath, envConfigFile, { flag: 'wx' }, function (err) {
+  fs.writeFileSync(targetPath, envConfigFile, { flag: 'wx' }, function (err) {
     if (err) {
       throw console.error(err)
     } else {
