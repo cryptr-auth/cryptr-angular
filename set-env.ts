@@ -9,38 +9,33 @@ if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefi
   };
   `;
 
-  const targetPath = './projects/playground/src/environments/environment.prod.ts'
+  const targetPath = './projects/playground/src/environments/environment.prod.ts';
 
   console.log(`The file '${targetPath}' will be written with the following content: \n`);
   console.log(envConfigFile);
 
 
   console.log("Try deleting")
-  fs.exists(targetPath, function (exists) {
-    console.log(`file ${targetPath} exists: ${exists}`)
+  fs.exists(targetPath, (exists: boolean) => {
     if (exists) {
       //Show in green
-      console.log('File exists. Deleting now ...');
-      fs.unlink(targetPath, function (err) {
+      fs.unlink(targetPath, (err: any) => {
         if (err) {
-          throw console.error(err)
+          throw console.error(err);
         }
-        console.log("Try writing")
-        fs.writeFile(targetPath, envConfigFile, { flag: 'wx' }, function (err) {
+        fs.writeFile(targetPath, envConfigFile, { flag: 'wx' }, (err: any) => {
           if (err) {
-            throw console.error(err)
-          } else {
-            console.log(`Angular environment.ts file generated correctly at ${targetPath} \n`)
+            throw console.error(err);
           }
         })
       });
     } else {
-      console.log("file not found :/")
+      console.error("file not found :/");
     }
   });
 } else {
-  console.info("no .env variable found -> use files")
-  console.debug(process.env.PRODUCTION)
-  console.debug(process.env.CRYPTR_CONFIG)
-  console.debug(process.env.RS_URL)
+  console.info("no .env variable found -> use files");
+  console.debug(process.env.PRODUCTION);
+  console.debug(process.env.CRYPTR_CONFIG);
+  console.debug(process.env.RS_URL);
 }
