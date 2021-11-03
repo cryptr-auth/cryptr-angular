@@ -19,4 +19,8 @@ export class HomeComponent implements OnInit {
   signUpWithRedirect(): void {
     this.auth.signUpWithRedirect();
   }
+
+  signinWithSso(): void {
+    this.auth.signInWithSso("second_tenant_5V8L2QucJyEiyrF86fo9cV")
+  }
 }

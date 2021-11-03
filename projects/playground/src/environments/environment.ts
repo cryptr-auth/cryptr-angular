@@ -7,11 +7,11 @@ export const environment = {
   production: false,
   cryptrConfig: {
     audience: 'http://localhost:4200',
-    tenant_domain: 'shark-academy',
-    client_id: 'fea92afe-3bf5-4f55-b772-1d0fa14d325f',
-    default_redirect_uri: 'http://localhost:4200/',
+    tenant_domain: 'second-tenant',
+    client_id: 'ff0c8139-6a3c-4674-87ad-b80143fc349c',
+    default_redirect_uri: 'http://localhost:4200',
     // region: 'us',
-    cryptr_base_url: 'http://localhost:4000',
+    cryptr_base_url: 'https://samly.howto:4443',
     default_locale: 'fr',
     httpInterceptor: {
       apiRequestsToSecure: [

@@ -106,6 +106,10 @@ export class AuthService implements OnDestroy {
     return from(this.cryptrClient.signUpWithRedirect(scope, redirectUri, locale));
   }
 
+  signInWithSso(idpId: string): Observable<any> {
+    return from(this.cryptrClient.signInWithSSO(idpId))
+  }
+
   /**
    * Destroy current session with specific action
    * @param callback - Action to call at the end of logout process

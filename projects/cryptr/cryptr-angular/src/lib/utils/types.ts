@@ -90,6 +90,7 @@ export interface CryptrClient {
   isAuthenticated(): Promise<boolean>;
   finalScope(scope?: string): string;
   signInWithoutRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
+  signInWithSSO(idpId: string, options?: SsoSignOptsAttrs): Promise<void>;
   signUpWithoutRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
   inviteWithoutRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
   signInWithRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
@@ -118,4 +119,14 @@ export interface CryptrClient {
 export interface User {
   /** email of end user */
   email: string;
+}
+
+export interface SignOptsAttrs {
+  scope?: string;
+  redirectUri?: string;
+  locale?: string;
+}
+export interface SsoSignOptsAttrs extends SignOptsAttrs {
+  clientId?: string;
+  tenantDomain?: string;
 }
