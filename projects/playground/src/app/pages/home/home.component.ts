@@ -22,6 +22,6 @@ export class HomeComponent implements OnInit {
   }
 
   signinWithSso(): void {
-    this.auth.signInWithSso(environment.idpId)
+    this.auth.signInWithSso(environment.idpId);
   }
 }

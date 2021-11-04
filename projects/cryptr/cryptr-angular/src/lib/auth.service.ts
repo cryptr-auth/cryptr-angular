@@ -107,7 +107,7 @@ export class AuthService implements OnDestroy {
   }
 
   signInWithSso(idpId: string): Observable<any> {
-    return from(this.cryptrClient.signInWithSSO(idpId))
+    return from(this.cryptrClient.signInWithSSO(idpId));
   }
 
   /**
@@ -117,7 +117,7 @@ export class AuthService implements OnDestroy {
    * @param targetUrl - Optional | **Default:** `window.location.href`. Where to redirect after SLO process
    * @returns process logout of session with callback call
    */
-  logOut(callback: () => void, location: any = window.location, targetUrl?: string): Observable<any> {
+  logOut(callback: () => void, location: undefined | globalThis.Location = window.location, targetUrl?: string): Observable<any> {
     return from(this.cryptrClient.logOut(this.preLogOutCallBack(callback), location, targetUrl));
   }
 

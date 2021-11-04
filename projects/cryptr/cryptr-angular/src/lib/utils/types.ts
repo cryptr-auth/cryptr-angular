@@ -82,6 +82,16 @@ export interface RefreshStore {
   refresh_retry: number;
 }
 
+export interface SignOptsAttrs {
+  scope?: string;
+  redirectUri?: string;
+  locale?: string;
+}
+export interface SsoSignOptsAttrs extends SignOptsAttrs {
+  clientId?: string;
+  tenantDomain?: string;
+}
+
 /** @ignore */
 export interface CryptrClient {
   config: Config;
@@ -119,14 +129,4 @@ export interface CryptrClient {
 export interface User {
   /** email of end user */
   email: string;
-}
-
-export interface SignOptsAttrs {
-  scope?: string;
-  redirectUri?: string;
-  locale?: string;
-}
-export interface SsoSignOptsAttrs extends SignOptsAttrs {
-  clientId?: string;
-  tenantDomain?: string;
 }
