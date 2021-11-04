@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'projects/cryptr/cryptr-angular/src/lib/auth.service';
-import { environment } from 'projects/playground/src/environments/environment';
+import { environment } from "projects/playground/src/environments/environment";
 
 @Component({
   selector: 'app-home',

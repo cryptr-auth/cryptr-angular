@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import CryptrSpa from '@cryptr/cryptr-spa-js';
 import { AuthService } from 'projects/cryptr/cryptr-angular/src/lib/auth.service';
-import { environment } from 'projects/playground/src/environments/environment';
+import { environment } from "projects/playground/src/environments/environment";
 
 @Component({
   selector: 'app-nav',
