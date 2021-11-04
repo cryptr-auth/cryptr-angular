@@ -25,10 +25,6 @@ export class NavComponent implements OnInit {
   targetUrl: string = environment.targetUrl;
 
   constructor(public auth: AuthService, private router: Router) {
-    console.log("constructor");
-    console.log(environment.targetUrl);
-    console.log(typeof environment.targetUrl);
-    console.log(environment.targetUrl);
   }
 
   ngOnInit(): void {
