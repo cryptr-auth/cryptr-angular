@@ -87,6 +87,43 @@
             </div>
           </div>
           <div
+            *ngIf="authenticated"
+            (click)="signinWithSso()"
+            class="cursor-pointer sm:mr-8 md:mr-10"
+          >
+            <div class="rounded-md shadow">
+              <a
+                class="
+                  w-full
+                  flex
+                  items-center
+                  justify-center
+                  px-8
+                  py-3
+                  border border-transparent
+                  text-sm
+                  leading-6
+                  font-bold
+                  shadow-md
+                  rounded-md
+                  uppercase
+                  text-gray-900
+                  bg-blue-500
+                  hover:bg-blue-400
+                  focus:outline-none
+                  focus:border-blue-600
+                  focus:shadow-outline-blue
+                  transition
+                  duration-150
+                  ease-in-out
+                  md:py-4 md:text-base md:px-10
+                "
+              >
+                Nouveau SSO
+              </a>
+            </div>
+          </div>
+          <div
             *ngIf="!authenticated"
             (click)="signUpWithRedirect()"
             class="cursor-pointer sm:mr-8 md:mr-10"
