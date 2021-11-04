@@ -15,4 +15,6 @@ export const environment = {
     telemetry: false
   },
   resource_server_url: 'https://cryptr-express-staging-backend.onrender.com',
+  idpId: "comcast_RrmZYfWTWncWmQ26QPVgbe",
+  targetUrl: "https://cryptr-angular-playground.onrender.com",
 };
