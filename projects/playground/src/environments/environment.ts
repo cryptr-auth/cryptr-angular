@@ -22,8 +22,8 @@ export const environment = {
     has_ssr: true,
   },
   resource_server_url: 'http://localhost:5000',
-  idpId: "second_tenant_5V8L2QucJyEiyrF86fo9cV",
-  targetUrl: "http://localhost:4200",
+  idpId: 'second_tenant_5V8L2QucJyEiyrF86fo9cV',
+  targetUrl: 'http://localhost:4200',
 };
 
 /*
