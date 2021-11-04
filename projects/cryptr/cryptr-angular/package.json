@@ -10,7 +10,9 @@
     "Authorization",
     "PKCE",
     "oAuth",
-    "angular"
+    "angular",
+    "SSO",
+    "SLO"
   ],
   "license": "MIT",
   "peerDependencies": {
