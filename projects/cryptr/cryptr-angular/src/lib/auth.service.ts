@@ -118,7 +118,7 @@ export class AuthService implements OnDestroy {
    * @returns process logout of session with callback call
    */
   logOut(callback: () => void, location: undefined | globalThis.Location = window.location, targetUrl?: string): Observable<any> {
-    let target = targetUrl === undefined ? window.location.href : targetUrl
+    let target = targetUrl === undefined || targetUrl === 'undefined' ? window.location.href : targetUrl
     alert(target)
     return from(this.cryptrClient.logOut(this.preLogOutCallBack(callback), location, target));
   }
