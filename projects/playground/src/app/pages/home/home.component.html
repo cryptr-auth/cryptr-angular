@@ -20,14 +20,29 @@
         class="text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left"
       >
         <h2
-          class="mt-1 text-3xl tracking-tight text-gray-900 font-normal sm:leading-snug sm:text-5xl lg:text-3xl xl:text-4xl"
+          class="
+            mt-1
+            text-3xl
+            tracking-tight
+            text-gray-900
+            font-normal
+            sm:leading-snug sm:text-5xl
+            lg:text-3xl
+            xl:text-4xl
+          "
         >
           Change de vie,
           <br class="hidden md:inline" />
           <span class="capitalize font-black">Deviens expert tech </span>
         </h2>
         <p
-          class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl"
+          class="
+            mt-3
+            text-base text-gray-500
+            sm:mt-5 sm:text-xl
+            lg:text-lg
+            xl:text-xl
+          "
         >
           Les compétences des personnes et des entreprises évoluent. Peu importe
           où vous êtes dans votre carrière ou dans quel domaine vous travaillez,
@@ -36,12 +51,110 @@
         <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
           <div
             *ngIf="!authenticated"
+            (click)="signinWithSso()"
+            class="cursor-pointer sm:mr-8 md:mr-10"
+          >
+            <div class="rounded-md shadow">
+              <a
+                class="
+                  w-full
+                  flex
+                  items-center
+                  justify-center
+                  px-8
+                  py-3
+                  border border-transparent
+                  text-sm
+                  leading-6
+                  font-bold
+                  shadow-md
+                  rounded-md
+                  uppercase
+                  text-gray-900
+                  bg-blue-500
+                  hover:bg-blue-400
+                  focus:outline-none
+                  focus:border-blue-600
+                  focus:shadow-outline-blue
+                  transition
+                  duration-150
+                  ease-in-out
+                  md:py-4 md:text-base md:px-10
+                "
+              >
+                Connexion SSO
+              </a>
+            </div>
+          </div>
+          <div
+            *ngIf="authenticated"
+            (click)="signinWithSso()"
+            class="cursor-pointer sm:mr-8 md:mr-10"
+          >
+            <div class="rounded-md shadow">
+              <a
+                class="
+                  w-full
+                  flex
+                  items-center
+                  justify-center
+                  px-8
+                  py-3
+                  border border-transparent
+                  text-sm
+                  leading-6
+                  font-bold
+                  shadow-md
+                  rounded-md
+                  uppercase
+                  text-gray-900
+                  bg-blue-500
+                  hover:bg-blue-400
+                  focus:outline-none
+                  focus:border-blue-600
+                  focus:shadow-outline-blue
+                  transition
+                  duration-150
+                  ease-in-out
+                  md:py-4 md:text-base md:px-10
+                "
+              >
+                Nouveau SSO
+              </a>
+            </div>
+          </div>
+          <div
+            *ngIf="!authenticated"
             (click)="signUpWithRedirect()"
             class="cursor-pointer sm:mr-8 md:mr-10"
           >
             <div class="rounded-md shadow">
               <a
-                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-sm leading-6 font-bold shadow-md rounded-md uppercase text-gray-900 bg-yellow-500 hover:bg-yellow-400 focus:outline-none focus:border-yellow-600 focus:shadow-outline-yellow transition duration-150 ease-in-out md:py-4 md:text-base md:px-10"
+                class="
+                  w-full
+                  flex
+                  items-center
+                  justify-center
+                  px-8
+                  py-3
+                  border border-transparent
+                  text-sm
+                  leading-6
+                  font-bold
+                  shadow-md
+                  rounded-md
+                  uppercase
+                  text-gray-900
+                  bg-yellow-500
+                  hover:bg-yellow-400
+                  focus:outline-none
+                  focus:border-yellow-600
+                  focus:shadow-outline-yellow
+                  transition
+                  duration-150
+                  ease-in-out
+                  md:py-4 md:text-base md:px-10
+                "
               >
                 M'inscrire
               </a>
@@ -50,7 +163,25 @@
           <div class="mt-3 sm:mt-0">
             <a
               href="mailto:hamid@sharkup.studio?subject=A propos de Shark academy&body=Bonjour Hamid,"
-              class="w-full flex justify-center lg:justify-start py-3 underline text-sm leading-6 font-bold uppercase text-gray-800 hover:text-gray-600 focus:outline-none transition duration-150 ease-in-out md:py-4 md:text-base"
+              class="
+                w-full
+                flex
+                justify-center
+                lg:justify-start
+                py-3
+                underline
+                text-sm
+                leading-6
+                font-bold
+                uppercase
+                text-gray-800
+                hover:text-gray-600
+                focus:outline-none
+                transition
+                duration-150
+                ease-in-out
+                md:py-4 md:text-base
+              "
             >
               Nous contacter
             </a>
@@ -58,7 +189,12 @@
         </div>
       </div>
       <div
-        class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center"
+        class="
+          mt-12
+          relative
+          sm:max-w-lg sm:mx-auto
+          lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center
+        "
       >
         <div class="relative mx-auto w-full lg:max-w-md">
           <div type="button" class="relative block w-full overflow-hidden">

@@ -66,6 +66,12 @@ export class AccountAccessButtonComponent implements OnChanges {
    */
   @Input() redirectUri: string;
   /**
+   * Chosen target URL for SLO end process.
+   *
+   * If none, `window.location.href` will be be used
+   */
+  @Input() targetUrl: undefined | string;
+  /**
    * Source of logo you want in widget button
    */
   @Input() logoSrc: string;
@@ -250,7 +256,7 @@ export class AccountAccessButtonComponent implements OnChanges {
     this.toggleOpen();
     this.auth.logOut(() => {
       window.location.href = this.unauthenticatedPath || '/';
-    });
+    }, window.location, this.targetUrl);
   }
 
   /** @ignore */

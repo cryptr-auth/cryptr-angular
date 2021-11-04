@@ -1,6 +1,6 @@
 {
   "name": "@cryptr/cryptr-angular",
-  "version": "0.1.14",
+  "version": "1.0.0",
   "description": "Cryptr SDK for Angular SPA",
   "keywords": [
     "cryptr",
@@ -10,7 +10,9 @@
     "Authorization",
     "PKCE",
     "oAuth",
-    "angular"
+    "angular",
+    "SSO",
+    "SLO"
   ],
   "license": "MIT",
   "peerDependencies": {
@@ -22,7 +24,7 @@
     "compodoc": "npx compodoc -p tsconfig.lib.json src"
   },
   "dependencies": {
-    "@cryptr/cryptr-spa-js": "^0.1.10",
+    "@cryptr/cryptr-spa-js": "^1.0.2-rc1",
     "tslib": "^2.0.0"
   },
   "author": "Cryptr <thibaud@cryptr.co> (https://www.cryptr.co)",

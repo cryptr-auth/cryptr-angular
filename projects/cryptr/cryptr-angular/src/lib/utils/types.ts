@@ -82,6 +82,16 @@ export interface RefreshStore {
   refresh_retry: number;
 }
 
+export interface SignOptsAttrs {
+  scope?: string;
+  redirectUri?: string;
+  locale?: string;
+}
+export interface SsoSignOptsAttrs extends SignOptsAttrs {
+  clientId?: string;
+  tenantDomain?: string;
+}
+
 /** @ignore */
 export interface CryptrClient {
   config: Config;
@@ -90,6 +100,7 @@ export interface CryptrClient {
   isAuthenticated(): Promise<boolean>;
   finalScope(scope?: string): string;
   signInWithoutRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
+  signInWithSSO(idpId: string, options?: SsoSignOptsAttrs): Promise<void>;
   signUpWithoutRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
   inviteWithoutRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
   signInWithRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
@@ -108,7 +119,7 @@ export interface CryptrClient {
   canHandleAuthentication(searchParams?: string): boolean;
   canHandleInvitation(searchParams?: string): boolean;
   userAccountAccess(): Promise<import('axios').AxiosResponse<any> | undefined>;
-  logOut(callback: any, location?: Location): Promise<boolean>;
+  logOut(callback: any, location?: Location, targetUrl?: string): Promise<boolean>;
   decoratedRequest(axiosRequestConfig: any): any;
 }
 

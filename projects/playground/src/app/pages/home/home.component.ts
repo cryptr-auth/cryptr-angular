@@ -1,5 +1,6 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'projects/cryptr/cryptr-angular/src/lib/auth.service';
+import { environment } from 'projects/playground/src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -18,5 +19,9 @@ export class HomeComponent implements OnInit {
 
   signUpWithRedirect(): void {
     this.auth.signUpWithRedirect();
+  }
+
+  signinWithSso(): void {
+    this.auth.signInWithSso(environment.idpId);
   }
 }

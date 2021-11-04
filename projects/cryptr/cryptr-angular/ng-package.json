@@ -4,9 +4,12 @@
   "lib": {
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
-      "cryptr-spa-js" : "cryptr-spa-js",
-      "cryptr-spa-js/dist/types/client" : "cryptr-spa-js/dist/types/client"
+      "cryptr-spa-js": "cryptr-spa-js",
+      "cryptr-spa-js/dist/types/client": "cryptr-spa-js/dist/types/client"
     }
   },
-  "whitelistedNonPeerDependencies": ["tslib", "@cryptr/cryptr-spa-js"]
+  "allowedNonPeerDependencies": [
+    "tslib",
+    "@cryptr/cryptr-spa-js"
+  ]
 }
