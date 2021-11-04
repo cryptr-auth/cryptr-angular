@@ -28,6 +28,7 @@ export class NavComponent implements OnInit {
     console.log("constructor");
     console.log(environment.targetUrl);
     console.log(typeof environment.targetUrl);
+    console.log(environment.targetUrl);
   }
 
   ngOnInit(): void {

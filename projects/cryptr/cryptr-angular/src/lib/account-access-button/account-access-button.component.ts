@@ -253,7 +253,7 @@ export class AccountAccessButtonComponent implements OnChanges {
 
   /** @ignore */
   logOut(): void {
-    let target = this.targetUrl === undefined ? window.location.href : this.targetUrl
+    let target = this.targetUrl === 'undefined' || this.targetUrl === undefined ? window.location.href : this.targetUrl
     console.log("component logOut");
     console.log(this.targetUrl);
     console.log(typeof this.targetUrl);
