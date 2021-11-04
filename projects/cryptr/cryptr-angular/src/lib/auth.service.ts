@@ -114,10 +114,11 @@ export class AuthService implements OnDestroy {
    * Destroy current session with specific action
    * @param callback - Action to call at the end of logout process
    * @param location - **Default:** `window.location`. Where to redirect after logout process
+   * @param targetUrl - Optional | **Default:** `window.location.href`. Where to redirect after SLO process
    * @returns process logout of session with callback call
    */
-  logOut(callback: () => void, location: any = window.location): Observable<any> {
-    return from(this.cryptrClient.logOut(this.preLogOutCallBack(callback), location));
+  logOut(callback: () => void, location: any = window.location, targetUrl?: string): Observable<any> {
+    return from(this.cryptrClient.logOut(this.preLogOutCallBack(callback), location, targetUrl));
   }
 
   /** @ignore */
