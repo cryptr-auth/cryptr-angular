@@ -253,6 +253,7 @@ export class AccountAccessButtonComponent implements OnChanges {
 
   /** @ignore */
   logOut(): void {
+    alert(this.targetUrl)
     this.toggleOpen();
     this.auth.logOut(() => {
       window.location.href = this.unauthenticatedPath || '/';
