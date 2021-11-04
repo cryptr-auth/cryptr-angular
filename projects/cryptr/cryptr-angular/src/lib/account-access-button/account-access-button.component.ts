@@ -70,7 +70,7 @@ export class AccountAccessButtonComponent implements OnChanges {
    *
    * If none, `window.location.href` will be be used
    */
-  @Input() targetUrl: string;
+  @Input() targetUrl: undefined | string;
   /**
    * Source of logo you want in widget button
    */
@@ -254,8 +254,10 @@ export class AccountAccessButtonComponent implements OnChanges {
   /** @ignore */
   logOut(): void {
     let target = this.targetUrl === undefined ? window.location.href : this.targetUrl
-    console.log(this.targetUrl)
-    console.log(target)
+    console.log("component logOut");
+    console.log(this.targetUrl);
+    console.log(typeof this.targetUrl);
+    console.log(typeof target);
     this.toggleOpen();
     // this.auth.logOut(() => {
     //   window.location.href = this.unauthenticatedPath || '/';
