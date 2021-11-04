@@ -21,6 +21,7 @@ export class NavComponent implements OnInit {
   locale = 'fr';
   signType = 'signin';
   redirectUri = 'http://localhost:4200/';
+  targetUrl = 'http://localhost:4200/';
 
   constructor(public auth: AuthService, private router: Router) {
   }
