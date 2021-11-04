@@ -5,7 +5,8 @@ if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefi
   const envConfigFile = `export const environment = {
     production: ${process.env.PRODUCTION},
     cryptrConfig: ${process.env.CRYPTR_CONFIG},
-    resource_server_url: '${process.env.RS_URL}'
+    resource_server_url: '${process.env.RS_URL}',
+    idpId: '${process.env.CRYPTR_IDP_ID}'
   };
   `;
 
