@@ -100,12 +100,21 @@ export class AuthService implements OnDestroy {
    * @param scope - Default: `"email openid profile"`. Scopes requested for this sign up process (whitespace separator).
    * @param locale - Default: `config.default_locale` value. locale for this sign up process.
    * @param redirectUri - Default: `config.default_redirect_uri` value. URI where to redirect after sign up process.
-   * @returns Observable of this sugnup redirection
+   * @returns Observable of this signup redirection
    */
   signUpWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
     return from(this.cryptrClient.signUpWithRedirect(scope, redirectUri, locale));
   }
 
+  /**
+   * Performs process to sign with SSO
+   *
+   * @example
+   * signInWithSSO('shark_academy_Qw5m83GbkwCgYZv5gENGHD')
+   *
+   * @param idpId - SSO Connection ID (string slug)
+   * @returns Observable of this SSO process
+   */
   signInWithSso(idpId: string): Observable<any> {
     return from(this.cryptrClient.signInWithSSO(idpId));
   }
