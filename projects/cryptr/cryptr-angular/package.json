@@ -25,7 +25,7 @@
     "compodoc": "npx compodoc -p tsconfig.lib.json src"
   },
   "dependencies": {
-    "@cryptr/cryptr-spa-js": "^1.1.0",
+    "@cryptr/cryptr-spa-js": "^1.0.3",
     "tslib": "^2.0.0"
   },
   "author": "Cryptr <thibaud@cryptr.co> (https://www.cryptr.co)",
