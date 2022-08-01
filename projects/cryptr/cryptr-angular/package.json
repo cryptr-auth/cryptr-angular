@@ -12,7 +12,8 @@
     "oAuth",
     "angular",
     "SSO",
-    "SLO"
+    "SLO",
+    "Gateway"
   ],
   "license": "MIT",
   "peerDependencies": {
