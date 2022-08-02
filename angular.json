@@ -30,14 +30,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/cryptr/cryptr-angular/tsconfig.lib.json",
-              "projects/cryptr/cryptr-angular/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/cryptr/cryptr-angular/**/*.ts",
+              "projects/cryptr/cryptr-angular/**/*.html"
             ]
           }
         }
