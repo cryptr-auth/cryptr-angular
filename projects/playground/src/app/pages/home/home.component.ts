@@ -22,10 +22,16 @@ export class HomeComponent implements OnInit {
   }
 
   signinWithSso(): void {
-    this.auth.signInWithSso(environment.idpId);
+    this.auth.signInWithSso(environment.idpIds[0]);
   }
 
-  signinWithSsoGateway(idpId?: string | string[]): void {
-    this.auth.signInWithSsoGateway(idpId);
+  bareSigninWithSsoGateway(): void {
+    this.auth.signInWithSsoGateway(null, { locale: 'fr' });
+  }
+  simpleSigninWithSsoGateway(): void {
+    this.auth.signInWithSsoGateway(environment.idpIds[0], { locale: 'fr' });
+  }
+  multiSigninWithSsoGateway(): void {
+    this.auth.signInWithSsoGateway(environment.idpIds, { locale: 'fr' });
   }
 }
