@@ -16,6 +16,6 @@ export const environment = {
     dedicated_server: true,
   },
   resource_server_url: 'https://cryptr-express-staging-backend.onrender.com',
-  idpIds: ["flametech_B468fhGyJgYKauZSXbdxVg"],
+  idpIds: ["comcast_RrmZYfWTWncWmQ26QPVgbe", "flametech_B468fhGyJgYKauZSXbdxVg", "envirogreen_agency_LNAFPoFHsKzGVVujYKjQQR", "metro_cash_RbYDv2qHSyVJ96h6VkthjV"],
   targetUrl: "https://cryptr-angular-playground.onrender.com",
 };
