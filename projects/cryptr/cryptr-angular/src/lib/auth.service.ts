@@ -100,16 +100,54 @@ export class AuthService implements OnDestroy {
    * @param scope - Default: `"email openid profile"`. Scopes requested for this sign up process (whitespace separator).
    * @param locale - Default: `config.default_locale` value. locale for this sign up process.
    * @param redirectUri - Default: `config.default_redirect_uri` value. URI where to redirect after sign up process.
-   * @returns Observable of this sugnup redirection
+   * @returns Observable of this signup redirection
    */
   signUpWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
     return from(this.cryptrClient.signUpWithRedirect(scope, redirectUri, locale));
   }
 
-  signInWithSso(idpId: string): Observable<any> {
-    return from(this.cryptrClient.signInWithSSO(idpId));
+  /**
+   * Starts SSO process for specific ID
+   *
+   * @example
+   * Default usage
+   * signInWithSso('some_company_bWoMxSFWKhQt6WAm4AucGk')
+   *
+   * @example
+   * Usage with custom locale
+   * signInWithSso('some_company_bWoMxSFWKhQt6WAm4AucGk', { locale: 'fr' })
+   *
+   * @param idpId - SSO Connection ID reference.
+   * @param options - Optional. Customize process, See SsoSignOptsAttrs
+   * @returns Observable of SSO process.
+   */
+  signInWithSso(idpId: string, options?: SsoSignOptsAttrs): Observable<any> {
+    return from(this.cryptrClient.signInWithSSO(idpId, options));
   }
 
+  /**
+   * Starts SSO Gateway Process
+   *
+   * @example
+   * Bare usage
+   * signInWithSsoGateway()
+   *
+   * @example
+   * Bare usage with custom locale
+   * signInWithSsoGateway(null, { locale: 'fr' })
+   *
+   * @example
+   * Simple SSO usage
+   * signInWithSsoGateway('some_company_bWoMxSFWKhQt6WAm4AucGk')
+   *
+   * @example
+   * Multi SSO usage
+   * signInWithSsoGateway(['some_company_bWoMxSFWKhQt6WAm4AucGk', 'other_company_6Jc3TGatGmsHzexaRP5ZrE'])
+   *
+   * @param idpId - Optional string or string[] to reference SSO Connection(s) ID(s)
+   * @param options - Optional. Customize process, See SsoSignOptsAttrs
+   * @returns Observable of SSO process
+   */
   signInWithSsoGateway(idpId?: string | string[], options?: SsoSignOptsAttrs): Observable<any> {
     return from(this.cryptrClient.signInWithSSOGateway(idpId, options));
   }
