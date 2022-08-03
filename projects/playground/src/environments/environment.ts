@@ -24,7 +24,7 @@ export const environment = {
     dedicated_server: false,
   },
   resource_server_url: 'http://localhost:5000',
-  idpIds: ["shark_academy_bWoMxSFWKhQt6WAm4AucGk", "blockpulse_6Jc3TGatGmsHzexaRP5ZrE"],
+  idpIds: ['shark_academy_bWoMxSFWKhQt6WAm4AucGk', 'blockpulse_6Jc3TGatGmsHzexaRP5ZrE'],
   // idpId: 'shark_academy_58BB2Evky9GkDrkpddr3w6',
   targetUrl: 'http://localhost:4200',
 };
