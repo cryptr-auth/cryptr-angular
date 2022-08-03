@@ -121,7 +121,7 @@ export class AuthService implements OnDestroy {
    * @param options - Optional. Customize process, See SsoSignOptsAttrs
    * @returns Observable of SSO process.
    */
-  signInWithSso(idpId: string, options?: SsoSignOptsAttrs): Observable<any> {
+  public signInWithSso(idpId: string, options?: SsoSignOptsAttrs): Observable<void> {
     return from(this.cryptrClient.signInWithSSO(idpId, options));
   }
 
@@ -148,7 +148,7 @@ export class AuthService implements OnDestroy {
    * @param options - Optional. Customize process, See SsoSignOptsAttrs
    * @returns Observable of SSO process
    */
-  signInWithSsoGateway(idpId?: string | string[], options?: SsoSignOptsAttrs): Observable<any> {
+  public signInWithSsoGateway(idpId?: string | string[], options?: SsoSignOptsAttrs): Observable<void> {
     return from(this.cryptrClient.signInWithSSOGateway(idpId, options));
   }
 
