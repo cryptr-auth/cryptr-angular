@@ -3,7 +3,7 @@ import CryptrSpa from '@cryptr/cryptr-spa-js';
 import { BehaviorSubject, combineLatest, from, Observable, Subject } from 'rxjs';
 import { AbstractNavigator } from './abstract-navigator';
 import { Location } from '@angular/common';
-import { Config, CryptrClient, Tokens } from './utils/types';
+import { Config, CryptrClient, SsoSignOptsAttrs, Tokens } from './utils/types';
 import { ActivatedRoute, Router, UrlTree } from '@angular/router';
 import { CryptrClientService } from './auth.client';
 import { filter, map } from 'rxjs/operators';
@@ -110,8 +110,8 @@ export class AuthService implements OnDestroy {
     return from(this.cryptrClient.signInWithSSO(idpId));
   }
 
-  signInWithSsoGateway(idpId?: string | string[]): Observable<any> {
-    return from(this.cryptrClient.signInWithSSOGateway(idpId));
+  signInWithSsoGateway(idpId?: string | string[], options?: SsoSignOptsAttrs): Observable<any> {
+    return from(this.cryptrClient.signInWithSSOGateway(idpId, options));
   }
 
   /**
