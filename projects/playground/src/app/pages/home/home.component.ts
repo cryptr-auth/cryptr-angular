@@ -26,12 +26,12 @@ export class HomeComponent implements OnInit {
   }
 
   public bareSigninWithSsoGateway(): void {
-    this.auth.signInWithSsoGateway(null, { locale: "fr" });
+    this.auth.signInWithSsoGateway(null, { locale: 'fr' });
   }
   public simpleSigninWithSsoGateway(): void {
-    this.auth.signInWithSsoGateway(environment.idpIds[0], { locale: "fr" });
+    this.auth.signInWithSsoGateway(environment.idpIds[0], { locale: 'fr' });
   }
   public multiSigninWithSsoGateway(): void {
-    this.auth.signInWithSsoGateway(environment.idpIds, { locale: "fr" });
+    this.auth.signInWithSsoGateway(environment.idpIds, { locale: 'fr' });
   }
 }
