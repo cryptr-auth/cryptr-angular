@@ -97,6 +97,7 @@
             </div>
           </div>
           <div
+            *ngIf="!authenticated"
             (click)="simpleSigninWithSsoGateway()"
             class="cursor-pointer sm:mr-8 md:mr-10"
           >
