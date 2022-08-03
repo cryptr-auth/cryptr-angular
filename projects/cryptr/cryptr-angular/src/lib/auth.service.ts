@@ -322,7 +322,7 @@ export class AuthService implements OnDestroy {
     try {
       const path = !!stateUrl ? stateUrl.split('?')[0] : '';
       const queryParams = sourceUrlTree.queryParams;
-      const { authorization_id, code, state, ...newParams } = queryParams;
+      const { authorization_code, authorization_id, code, organization_domain, state, ...newParams } = queryParams;
       return this.router.createUrlTree([path], { queryParams: newParams, fragment: sourceUrlTree.fragment });
     } catch (error) {
       return sourceUrlTree;
