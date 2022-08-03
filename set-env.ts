@@ -17,6 +17,7 @@ if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CLIENT_ID !== und
     telemetry: process.env.CRYPTR_TELEMETRY == 'true',
     dedicated_server: process.env.CRYPTR_DEDICATED_SERVER == 'true',
   }
+  console.debug(cryptrConfig);
   const envConfigFile = `export const environment = {
     production: ${process.env.PRODUCTION},
     cryptrConfig: ${cryptrConfig},
