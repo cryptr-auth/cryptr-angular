@@ -24,4 +24,8 @@ export class HomeComponent implements OnInit {
   signinWithSso(): void {
     this.auth.signInWithSso(environment.idpId);
   }
+
+  signinWithSsoGateway(idpId?: string | string[]): void {
+    this.auth.signInWithSsoGateway(idpId);
+  }
 }
