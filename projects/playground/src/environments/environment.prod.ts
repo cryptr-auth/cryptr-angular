@@ -13,6 +13,7 @@ export const environment = {
       ]
     },
     telemetry: false,
+    dedicated_server: true,
   },
   resource_server_url: 'https://cryptr-express-staging-backend.onrender.com',
   idpIds: ["comcast_RrmZYfWTWncWmQ26QPVgbe"],
