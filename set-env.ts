@@ -6,7 +6,7 @@ if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefi
     production: ${process.env.PRODUCTION},
     cryptrConfig: ${process.env.CRYPTR_CONFIG},
     resource_server_url: '${process.env.RS_URL}',
-    idpIds: [${process.env.CRYPTR_IDP_IDS.split(',')}],
+    idpIds: [${process.env.CRYPTR_IDP_IDS.split(',').map(id => `'${id}'`).join(',')}],
     targetUrl: '${process.env.CRYPTR_TARGET_URL}'
   };
   `;
