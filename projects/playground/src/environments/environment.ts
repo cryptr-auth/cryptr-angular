@@ -7,8 +7,9 @@ export const environment = {
   production: false,
   cryptrConfig: {
     audience: 'http://localhost:4200',
-    tenant_domain: 'second-tenant',
-    client_id: 'ff0c8139-6a3c-4674-87ad-b80143fc349c',
+    tenant_domain: 'cryptr',
+    // client_id: 'f407cafd-b58a-472f-b857-475a863b69b6',
+    client_id: '1abcf9f0-c641-4630-9362-2046f96b2a97',
     default_redirect_uri: 'http://localhost:4200',
     // region: 'us',
     cryptr_base_url: 'https://samly.howto:4443',
@@ -20,9 +21,11 @@ export const environment = {
     },
     telemetry: false,
     has_ssr: true,
+    dedicated_server: false,
   },
   resource_server_url: 'http://localhost:5000',
-  idpId: 'second_tenant_5V8L2QucJyEiyrF86fo9cV',
+  idpIds: ['shark_academy_bWoMxSFWKhQt6WAm4AucGk', 'blockpulse_6Jc3TGatGmsHzexaRP5ZrE'],
+  // idpId: 'shark_academy_58BB2Evky9GkDrkpddr3w6',
   targetUrl: 'http://localhost:4200',
 };
 

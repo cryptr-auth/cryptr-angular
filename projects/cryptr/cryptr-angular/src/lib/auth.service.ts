@@ -3,7 +3,7 @@ import CryptrSpa from '@cryptr/cryptr-spa-js';
 import { BehaviorSubject, combineLatest, from, Observable, Subject } from 'rxjs';
 import { AbstractNavigator } from './abstract-navigator';
 import { Location } from '@angular/common';
-import { Config, CryptrClient, Tokens } from './utils/types';
+import { Config, CryptrClient, SsoSignOptsAttrs, Tokens } from './utils/types';
 import { ActivatedRoute, Router, UrlTree } from '@angular/router';
 import { CryptrClientService } from './auth.client';
 import { filter, map } from 'rxjs/operators';
@@ -100,14 +100,56 @@ export class AuthService implements OnDestroy {
    * @param scope - Default: `"email openid profile"`. Scopes requested for this sign up process (whitespace separator).
    * @param locale - Default: `config.default_locale` value. locale for this sign up process.
    * @param redirectUri - Default: `config.default_redirect_uri` value. URI where to redirect after sign up process.
-   * @returns Observable of this sugnup redirection
+   * @returns Observable of this signup redirection
    */
   signUpWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
     return from(this.cryptrClient.signUpWithRedirect(scope, redirectUri, locale));
   }
 
-  signInWithSso(idpId: string): Observable<any> {
-    return from(this.cryptrClient.signInWithSSO(idpId));
+  /**
+   * Starts SSO process for specific ID
+   *
+   * @example
+   * Default usage
+   * signInWithSso('some_company_bWoMxSFWKhQt6WAm4AucGk')
+   *
+   * @example
+   * Usage with custom locale
+   * signInWithSso('some_company_bWoMxSFWKhQt6WAm4AucGk', { locale: 'fr' })
+   *
+   * @param idpId - SSO Connection ID reference.
+   * @param options - Optional. Customize process, See SsoSignOptsAttrs
+   * @returns Observable of SSO process.
+   */
+  public signInWithSso(idpId: string, options?: SsoSignOptsAttrs): Observable<void> {
+    return from(this.cryptrClient.signInWithSSO(idpId, options));
+  }
+
+  /**
+   * Starts SSO Gateway Process
+   *
+   * @example
+   * Bare usage
+   * signInWithSsoGateway()
+   *
+   * @example
+   * Bare usage with custom locale
+   * signInWithSsoGateway(null, { locale: 'fr' })
+   *
+   * @example
+   * Simple SSO usage
+   * signInWithSsoGateway('some_company_bWoMxSFWKhQt6WAm4AucGk')
+   *
+   * @example
+   * Multi SSO usage
+   * signInWithSsoGateway(['some_company_bWoMxSFWKhQt6WAm4AucGk', 'other_company_6Jc3TGatGmsHzexaRP5ZrE'])
+   *
+   * @param idpId - Optional string or string[] to reference SSO Connection(s) ID(s)
+   * @param options - Optional. Customize process, See SsoSignOptsAttrs
+   * @returns Observable of SSO process
+   */
+  public signInWithSsoGateway(idpId?: string | string[], options?: SsoSignOptsAttrs): Observable<void> {
+    return from(this.cryptrClient.signInWithSSOGateway(idpId, options));
   }
 
   /**
@@ -318,7 +360,7 @@ export class AuthService implements OnDestroy {
     try {
       const path = !!stateUrl ? stateUrl.split('?')[0] : '';
       const queryParams = sourceUrlTree.queryParams;
-      const { authorization_id, code, state, ...newParams } = queryParams;
+      const { authorization_code, authorization_id, code, organization_domain, state, ...newParams } = queryParams;
       return this.router.createUrlTree([path], { queryParams: newParams, fragment: sourceUrlTree.fragment });
     } catch (error) {
       return sourceUrlTree;
