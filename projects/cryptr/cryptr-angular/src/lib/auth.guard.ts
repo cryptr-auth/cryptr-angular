@@ -16,7 +16,7 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate, CanLoad, CanActivateChild {
+export class AuthGuard /*implements CanActivate, CanLoad, CanActivateChild*/ {
   /** @ignore */
   constructor(private auth: AuthService) { }
 
@@ -24,31 +24,31 @@ export class AuthGuard implements CanActivate, CanLoad, CanActivateChild {
    * Cryptr check if child can be loaded
    * depending on authentication state
    */
-  canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
-    return this.auth.observableAuthenticated();
-  }
+  // canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
+  //   return this.auth.observableAuthenticated();
+  // }
 
-  /**
-   * Cryptr check if route can be activate
-   * depending on authentication state.
-   * If no session active will redirect to cryptr sign process
-   */
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> {
-    return this.auth.fullAuthenticateProcess(state.url);
-  }
+  // /**
+  //  * Cryptr check if route can be activate
+  //  * depending on authentication state.
+  //  * If no session active will redirect to cryptr sign process
+  //  */
+  // canActivate(
+  //   next: ActivatedRouteSnapshot,
+  //   state: RouterStateSnapshot
+  // ): Observable<boolean | UrlTree> {
+  //   return this.auth.fullAuthenticateProcess(state.url);
+  // }
 
-  /**
-   * Cryptr check if child route can be activate
-   * depending on authentication state.
-   * If no session active will redirect to cryptr sign process
-   */
-  canActivateChild(
-    childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> {
-    return this.auth.fullAuthenticateProcess(state.url);
-  }
+  // /**
+  //  * Cryptr check if child route can be activate
+  //  * depending on authentication state.
+  //  * If no session active will redirect to cryptr sign process
+  //  */
+  // canActivateChild(
+  //   childRoute: ActivatedRouteSnapshot,
+  //   state: RouterStateSnapshot
+  // ): Observable<boolean | UrlTree> {
+  //   return this.auth.fullAuthenticateProcess(state.url);
+  // }
 }

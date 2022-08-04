@@ -16,8 +16,8 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": ">=9 <=11",
-    "@angular/core": ">=9 <=11"
+    "@angular/common": ">=9 <=12",
+    "@angular/core": ">=9 <=12"
   },
   "scripts": {
     "make-badges": "istanbul-badges-readme",
