@@ -101,6 +101,7 @@ export interface CryptrClient {
   finalScope(scope?: string): string;
   signInWithoutRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
   signInWithSSO(idpId: string, options?: SsoSignOptsAttrs): Promise<void>;
+  signInWithSSOGateway(idpId?: string | string[], options?: SsoSignOptsAttrs): Promise<void>;
   signUpWithoutRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
   inviteWithoutRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
   signInWithRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
