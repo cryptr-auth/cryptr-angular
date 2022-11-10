@@ -430,7 +430,7 @@ export class AuthService implements OnDestroy {
           this.signInWithSsoGateway(null, { locale: default_locale || 'en' });
           break;
         case AuthnMethod.SSOGateway:
-          this.signInWithSsoGateway();
+          this.signInWithSsoGateway(null, {});
           break;
 
         default:
