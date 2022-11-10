@@ -425,7 +425,7 @@ export class AuthService implements OnDestroy {
     if (isAuthenticated) {
       return true;
     } else {
-      if (prefered_auth_method == AuthnMethod.Gateway) {
+      if (prefered_auth_method === AuthnMethod.Gateway) {
         this.signInWithSsoGateway(null, { locale: default_locale || 'en' });
       } else {
         this.signInWithMagicLink();
