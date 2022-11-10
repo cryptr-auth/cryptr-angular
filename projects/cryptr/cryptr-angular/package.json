@@ -1,6 +1,6 @@
 {
   "name": "@cryptr/cryptr-angular",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Cryptr SDK for Angular SPA",
   "keywords": [
     "cryptr",
@@ -24,7 +24,7 @@
     "compodoc": "npx compodoc -p tsconfig.lib.json src -d documentation"
   },
   "dependencies": {
-    "@cryptr/cryptr-spa-js": "^1.1.0",
+    "@cryptr/cryptr-spa-js": "^1.1.2",
     "tslib": "^2.0.0"
   },
   "author": "Cryptr <thibaud@cryptr.co> (https://www.cryptr.co)",
