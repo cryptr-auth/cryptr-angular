@@ -8,6 +8,12 @@ export enum Sign {
   Refresh = 'refresh'
 }
 
+export enum AuthnMethod {
+  MagicLink = 'magic_link',
+  Gateway = 'gateway',
+  SSOGateway = 'sso_gateway',
+}
+
 /** @ignore */
 export interface Authorization {
   id: string;
@@ -47,6 +53,10 @@ export interface Config {
   cryptr_base_url?: string;
   /** Activate Cryptr telemetry reporting */
   telemetry?: boolean;
+  /** Set to true if you have your own Cryptr dedicated server */
+  dedicated_server?: boolean;
+  /** Prefered authentication method for default authentication */
+  prefered_auth_method?: AuthnMethod;
 }
 
 /** @ignore */
