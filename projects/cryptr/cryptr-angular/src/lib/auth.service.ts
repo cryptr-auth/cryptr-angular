@@ -421,12 +421,12 @@ export class AuthService implements OnDestroy {
 
   /** @ignore */
   private defaultAuthenticationCallback(isAuthenticated: boolean, stateUrl?: string): boolean {
-    const { default_locale, prefered_auth_method } = this.config();
+    const { default_locale: defaultLocale, preferedAuthMethod } = this.config();
     if (isAuthenticated) {
       return true;
     } else {
-      if (prefered_auth_method === AuthnMethod.Gateway) {
-        this.signInWithSsoGateway(null, { locale: default_locale || 'en' });
+      if (preferedAuthMethod === AuthnMethod.Gateway) {
+        this.signInWithSsoGateway(null, { locale: defaultLocale || 'en' });
       } else {
         this.signInWithMagicLink();
       }

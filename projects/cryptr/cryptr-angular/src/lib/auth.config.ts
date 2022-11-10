@@ -60,7 +60,7 @@ export interface AuthConfig {
   /** false if you are using our shared instance */
   dedicated_server?: boolean;
   /** Prefered authentication method for default authentication */
-  prefered_auth_method?: AuthnMethod | string;
+  preferedAuthMethod?: AuthnMethod | string;
   /** @ignore */
   other_key?: string;
 }

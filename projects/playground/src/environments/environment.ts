@@ -24,7 +24,7 @@ export const environment = {
     telemetry: false,
     has_ssr: true,
     dedicated_server: false,
-    prefered_auth_method: 'gateway',
+    preferedAuthMethod: 'gateway',
   },
   resource_server_url: 'http://localhost:5000',
   idpIds: ['shark_academy_bWoMxSFWKhQt6WAm4AucGk', 'blockpulse_6Jc3TGatGmsHzexaRP5ZrE'],

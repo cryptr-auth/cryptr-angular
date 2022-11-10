@@ -55,7 +55,7 @@ export interface Config {
   /** Set to true if you have your own Cryptr dedicated server */
   dedicated_server?: boolean;
   /** Prefered authentication method for default authentication */
-  prefered_auth_method?: AuthnMethod | string;
+  preferedAuthMethod?: AuthnMethod | string;
 }
 
 /** @ignore */
