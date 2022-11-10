@@ -315,6 +315,8 @@ export class AuthService implements OnDestroy {
     );
   }
 
+
+
   /** @ignore */
   private checkAuthentication(): void {
     this.isAuthenticated().then(async (isAuthenticated: boolean) => {
@@ -434,6 +436,7 @@ export class AuthService implements OnDestroy {
     }
   }
 
+  /** @ignore */
   private signInWithMagicLink(stateUrl?: string): Observable<any> {
     const { audience, default_locale } = this.config();
     const redirectUri = audience.concat(stateUrl || '');
