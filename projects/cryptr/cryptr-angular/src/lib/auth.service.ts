@@ -425,17 +425,10 @@ export class AuthService implements OnDestroy {
     if (isAuthenticated) {
       return true;
     } else {
-      switch (prefered_auth_method) {
-        case AuthnMethod.Gateway:
-          this.signInWithSsoGateway(null, { locale: default_locale || 'en' });
-          break;
-        case AuthnMethod.SSOGateway:
-          this.signInWithSsoGateway(null, {});
-          break;
-
-        default:
-          this.signInWithMagicLink();
-          break;
+      if (prefered_auth_method == AuthnMethod.Gateway) {
+        this.signInWithSsoGateway(null, { locale: default_locale || 'en' });
+      } else {
+        this.signInWithMagicLink();
       }
       return false;
     }

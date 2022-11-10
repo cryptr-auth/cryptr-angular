@@ -11,7 +11,6 @@ export enum Sign {
 export enum AuthnMethod {
   MagicLink = 'magic_link',
   Gateway = 'gateway',
-  SSOGateway = 'sso_gateway',
 }
 
 /** @ignore */
