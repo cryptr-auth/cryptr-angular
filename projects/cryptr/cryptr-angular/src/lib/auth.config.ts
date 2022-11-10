@@ -1,4 +1,5 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
+import { AuthnMethod } from './utils/types';
 
 /**
  * Defines a common set of HTTP methods.
@@ -54,6 +55,12 @@ export interface AuthConfig {
   httpInterceptor: HttpInterceptorConfig;
   /** Is Current application is running is a SSR support */
   has_ssr?: boolean;
+  /** Activate Cryptr telemetry reporting */
+  telemetry?: boolean;
+  /** false if you are using our shared instance */
+  dedicated_server?: boolean;
+  /** Prefered authentication method for default authentication */
+  preferedAuthMethod?: AuthnMethod | string;
   /** @ignore */
   other_key?: string;
 }
