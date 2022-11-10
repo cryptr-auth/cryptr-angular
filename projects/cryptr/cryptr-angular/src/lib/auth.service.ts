@@ -440,6 +440,7 @@ export class AuthService implements OnDestroy {
   private signInWithMagicLink(stateUrl?: string): Observable<any> {
     const { audience, default_locale } = this.config();
     const redirectUri = audience.concat(stateUrl || '');
+
     if (this.configFactory.get().has_ssr) {
       return this.signInWithRedirect(DEFAULT_SCOPE, default_locale, redirectUri);
     } else {
