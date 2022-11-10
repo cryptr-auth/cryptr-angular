@@ -3,7 +3,7 @@ import CryptrSpa from '@cryptr/cryptr-spa-js';
 import { BehaviorSubject, combineLatest, from, Observable, Subject } from 'rxjs';
 import { AbstractNavigator } from './abstract-navigator';
 import { Location } from '@angular/common';
-import { Config, CryptrClient, SsoSignOptsAttrs, Tokens } from './utils/types';
+import { AuthnMethod, Config, CryptrClient, SsoSignOptsAttrs, Tokens } from './utils/types';
 import { ActivatedRoute, Router, UrlTree } from '@angular/router';
 import { CryptrClientService } from './auth.client';
 import { filter, map } from 'rxjs/operators';
@@ -421,17 +421,33 @@ export class AuthService implements OnDestroy {
 
   /** @ignore */
   private defaultAuthenticationCallback(isAuthenticated: boolean, stateUrl?: string): boolean {
-    const { audience, default_locale } = this.config();
-    const redirectUri = audience.concat(stateUrl || '');
+    const { default_locale, prefered_auth_method } = this.config();
     if (isAuthenticated) {
       return true;
     } else {
-      if (this.configFactory.get().has_ssr) {
-        this.signInWithRedirect(DEFAULT_SCOPE, default_locale, redirectUri);
-      } else {
-        this.signInWithRedirect();
+      switch (prefered_auth_method) {
+        case AuthnMethod.Gateway:
+          this.signInWithSsoGateway(null, { locale: default_locale || 'en' })
+          break;
+        case AuthnMethod.SSOGateway:
+          this.signInWithSsoGateway()
+          break;
+
+        default:
+          this.signInWithMagicLink()
+          break;
       }
       return false;
+    }
+  }
+
+  private signInWithMagicLink(stateUrl?: string) {
+    const { audience, default_locale } = this.config();
+    const redirectUri = audience.concat(stateUrl || '');
+    if (this.configFactory.get().has_ssr) {
+      this.signInWithRedirect(DEFAULT_SCOPE, default_locale, redirectUri);
+    } else {
+      this.signInWithRedirect();
     }
   }
 }
