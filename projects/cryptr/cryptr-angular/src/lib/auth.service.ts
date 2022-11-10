@@ -427,27 +427,27 @@ export class AuthService implements OnDestroy {
     } else {
       switch (prefered_auth_method) {
         case AuthnMethod.Gateway:
-          this.signInWithSsoGateway(null, { locale: default_locale || 'en' })
+          this.signInWithSsoGateway(null, { locale: default_locale || 'en' });
           break;
         case AuthnMethod.SSOGateway:
-          this.signInWithSsoGateway()
+          this.signInWithSsoGateway();
           break;
 
         default:
-          this.signInWithMagicLink()
+          this.signInWithMagicLink();
           break;
       }
       return false;
     }
   }
 
-  private signInWithMagicLink(stateUrl?: string) {
+  private signInWithMagicLink(stateUrl?: string): Observable<any> {
     const { audience, default_locale } = this.config();
     const redirectUri = audience.concat(stateUrl || '');
     if (this.configFactory.get().has_ssr) {
-      this.signInWithRedirect(DEFAULT_SCOPE, default_locale, redirectUri);
+      return this.signInWithRedirect(DEFAULT_SCOPE, default_locale, redirectUri);
     } else {
-      this.signInWithRedirect();
+      return this.signInWithRedirect();
     }
   }
 }
