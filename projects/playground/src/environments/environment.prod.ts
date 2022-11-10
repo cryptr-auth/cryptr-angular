@@ -14,6 +14,7 @@ export const environment = {
     },
     telemetry: false,
     dedicated_server: true,
+    prefered_auth_method: 'gateway'
   },
   resource_server_url: 'https://cryptr-express-staging-backend.onrender.com',
   idpIds: ["comcast_RrmZYfWTWncWmQ26QPVgbe", "envirogreen_agency_LNAFPoFHsKzGVVujYKjQQR"],
