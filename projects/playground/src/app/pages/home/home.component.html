@@ -85,6 +85,32 @@
         <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
           <div
             *ngIf="!authenticated"
+            (click)="signInWithDomain()"
+            class="cursor-pointer sm:mr-8 md:mr-10"
+          >
+            <div class="rounded-md shadow">
+              <a
+                class="w-full flex items-center justify-center px-4 py-3 border border-transparent text-sm leading-6 font-bold shadow-md rounded-md uppercase text-gray-900 bg-blue-500 hover:bg-blue-400 focus:outline-none focus:border-blue-600 focus:shadow-outline-blue transition duration-150 ease-in-out md:py-4 md:text-base md:px-4"
+              >
+                SignInWithDomain
+              </a>
+            </div>
+          </div>
+          <div
+            *ngIf="!authenticated"
+            (click)="signInWithEmail()"
+            class="cursor-pointer sm:mr-8 md:mr-10"
+          >
+            <div class="rounded-md shadow">
+              <a
+                class="w-full flex items-center justify-center px-4 py-3 border border-transparent text-sm leading-6 font-bold shadow-md rounded-md uppercase text-gray-900 bg-blue-500 hover:bg-blue-400 focus:outline-none focus:border-blue-600 focus:shadow-outline-blue transition duration-150 ease-in-out md:py-4 md:text-base md:px-4"
+              >
+                SignInWithEmail
+              </a>
+            </div>
+          </div>
+          <div
+            *ngIf="!authenticated"
             (click)="bareSigninWithSsoGateway()"
             class="cursor-pointer sm:mr-8 md:mr-10"
           >
