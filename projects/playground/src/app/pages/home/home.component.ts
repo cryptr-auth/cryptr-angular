@@ -34,4 +34,12 @@ export class HomeComponent implements OnInit {
   public multiSigninWithSsoGateway(): void {
     this.auth.signInWithSsoGateway(environment.idpIds, { locale: 'fr' });
   }
+
+  public signInWithDomain(orgDomain?: string): void {
+    this.auth.signInWithDomain('orgDomain', { locale: 'fr' })
+  }
+
+  public signInWithEmail(): void {
+    this.auth.signInWithEmail('toto@titi.fr', { locale: 'fr' })
+  }
 }

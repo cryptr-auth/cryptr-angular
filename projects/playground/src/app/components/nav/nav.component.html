@@ -90,6 +90,7 @@
       <div>
         <div>
           <cryptr-account-access-button
+            *ngIf="authenticated"
             [auth]="auth"
             [logoSrc]="logoSrc"
             [defaultSignType]="signType"

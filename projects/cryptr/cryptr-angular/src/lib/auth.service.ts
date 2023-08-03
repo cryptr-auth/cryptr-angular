@@ -52,6 +52,7 @@ export class AuthService implements OnDestroy {
 
   /**
    * Performs redirection to Cryptr for signin process with chosen args
+   * @deprecated since version 1.2.0. Please now refer to `signInWithDomain`or `signInWithEmail`
    * @example
    * Default usage
    * signInWithRedirect()
@@ -107,6 +108,8 @@ export class AuthService implements OnDestroy {
   }
 
   /**
+   * @deprecated since version 1.2.0. Please now refer to `signInWithDomain`or `signInWithEmail`
+   *
    * Starts SSO process for specific ID
    *
    * @example
@@ -126,6 +129,7 @@ export class AuthService implements OnDestroy {
   }
 
   /**
+   * @deprecated since version 1.2.0. Please now refer to `signInWithDomain`or `signInWithEmail`
    * Starts SSO Gateway Process
    *
    * @example
@@ -150,6 +154,48 @@ export class AuthService implements OnDestroy {
    */
   public signInWithSsoGateway(idpId?: string | string[], options?: SsoSignOptsAttrs): Observable<void> {
     return from(this.cryptrClient.signInWithSSOGateway(idpId, options));
+  }
+
+  /**
+   * Starts Authentication process for a precise organization
+   * @example
+   *
+   * Bare usage to authenticate user without any context
+   * signInWithDomain(null, { locale: 'fr' })
+   *
+   * Starts authentication process for Organization with domain `company-name`
+   * signInWithDomain('company-name')
+   *
+   * Starts authnetication process for Organization and defined locale
+   * signInWithDomain('company-name', { locale: 'fr' })
+   *
+   * @param orgDomain - Optional. Organization's domain
+   * @param options - Optional. Customize process, see SsoSignOptsAttrs
+   * @returns Observable of the authentication process for an Organization user
+   */
+  public signInWithDomain(orgDomain?: string, options?: SsoSignOptsAttrs): Observable<void> {
+    return from(this.cryptrClient.signInWithDomain(orgDomain, options))
+  }
+
+  /**
+   * Starts Authentication process for a precise user email
+   * @example
+   *
+   * Bare usage to authenticate user without any context
+   * signInWithEmail(null, { locale: 'fr' })
+   *
+   * Starts authentication process for Organization with domain `company-name`
+   * signInWithEmail('company-name')
+   *
+   * Starts authnetication process for Organization and defined locale
+   * signInWithEmail('company-name', { locale: 'fr' })
+   *
+   * @param email - Required. Organization's domain
+   * @param options - Optional. Customize process, see SsoSignOptsAttrs
+   * @returns Observable of the authentication process for an Organization user
+   */
+  public signInWithEmail(email: string, options?: SsoSignOptsAttrs): Observable<void> {
+    return from(this.cryptrClient.signInWithEmail(email, options))
   }
 
   /**
