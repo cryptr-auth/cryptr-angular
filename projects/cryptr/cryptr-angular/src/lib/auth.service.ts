@@ -52,7 +52,7 @@ export class AuthService implements OnDestroy {
 
   /**
    * Performs redirection to Cryptr for signin process with chosen args
-   * @deprecated since version 1.2.0
+   * @deprecated since version 1.2.0. Please now refer to `signInWithDomain`or `signInWithEmail`
    * @example
    * Default usage
    * signInWithRedirect()
@@ -108,7 +108,7 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-   * @deprecated since version 1.2.0
+   * @deprecated since version 1.2.0. Please now refer to `signInWithDomain`or `signInWithEmail`
    *
    * Starts SSO process for specific ID
    *
@@ -129,7 +129,7 @@ export class AuthService implements OnDestroy {
   }
 
   /**
-   * @deprecated since version 1.2.0
+   * @deprecated since version 1.2.0. Please now refer to `signInWithDomain`or `signInWithEmail`
    * Starts SSO Gateway Process
    *
    * @example
