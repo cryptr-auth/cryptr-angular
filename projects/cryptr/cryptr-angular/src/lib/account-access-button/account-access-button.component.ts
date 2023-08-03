@@ -355,7 +355,8 @@ export class AccountAccessButtonComponent implements OnChanges {
 
   /** @ignore */
   signInWithRedirect(): void {
-    this.auth.signInWithRedirect(DEFAULT_SCOPE, this.locale, this.redirectUri);
+    // this.auth.signInWithRedirect(DEFAULT_SCOPE, this.locale, this.redirectUri);
+    this.auth.signInWithDomain(null, { locale: DEFAULT_SCOPE });
   }
 
   /** @ignore */
