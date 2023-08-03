@@ -52,6 +52,7 @@ export class AuthService implements OnDestroy {
 
   /**
    * Performs redirection to Cryptr for signin process with chosen args
+   * @deprecated since version 1.2.0
    * @example
    * Default usage
    * signInWithRedirect()
@@ -107,6 +108,8 @@ export class AuthService implements OnDestroy {
   }
 
   /**
+   * @deprecated since version 1.2.0
+   *
    * Starts SSO process for specific ID
    *
    * @example
@@ -126,6 +129,7 @@ export class AuthService implements OnDestroy {
   }
 
   /**
+   * @deprecated since version 1.2.0
    * Starts SSO Gateway Process
    *
    * @example
