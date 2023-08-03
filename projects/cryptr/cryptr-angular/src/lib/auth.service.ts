@@ -152,6 +152,14 @@ export class AuthService implements OnDestroy {
     return from(this.cryptrClient.signInWithSSOGateway(idpId, options));
   }
 
+  public signInWithDomain(orgDomain?: string, options?: SsoSignOptsAttrs): Observable<void> {
+    return from(this.cryptrClient.signInWithDomain(orgDomain, options))
+  }
+
+  public signInWithEmail(email: string, options?: SsoSignOptsAttrs): Observable<void> {
+    return from(this.cryptrClient.signInWithEmail(email, options))
+  }
+
   /**
    * Destroy current session with specific action
    * @param callback - Action to call at the end of logout process
