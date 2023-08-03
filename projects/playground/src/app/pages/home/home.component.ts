@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
   }
 
   public signInWithDomain(orgDomain?: string): void {
-    console.log(orgDomain)
     this.auth.signInWithDomain('orgDomain', { locale: 'fr' })
   }
 
