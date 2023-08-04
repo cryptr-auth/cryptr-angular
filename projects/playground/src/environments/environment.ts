@@ -24,6 +24,7 @@ export const environment = {
     telemetry: false,
     has_ssr: true,
     dedicated_server: true,
+    fixed_pkce: true,
     /** @deprecated */
     // preferedAuthMethod: 'gateway',
   },
