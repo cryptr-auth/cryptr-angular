@@ -174,7 +174,7 @@ export class AuthService implements OnDestroy {
    * @returns Observable of the authentication process for an Organization user
    */
   public signInWithDomain(orgDomain?: string, options?: SsoSignOptsAttrs): Observable<void> {
-    return from(this.cryptrClient.signInWithDomain(orgDomain, options))
+    return from(this.cryptrClient.signInWithDomain(orgDomain, options));
   }
 
   /**
@@ -195,7 +195,7 @@ export class AuthService implements OnDestroy {
    * @returns Observable of the authentication process for an Organization user
    */
   public signInWithEmail(email: string, options?: SsoSignOptsAttrs): Observable<void> {
-    return from(this.cryptrClient.signInWithEmail(email, options))
+    return from(this.cryptrClient.signInWithEmail(email, options));
   }
 
   /**
@@ -474,7 +474,7 @@ export class AuthService implements OnDestroy {
       return true;
     } else {
       if (preferedAuthMethod === AuthnMethod.Gateway) {
-        this.signInWithSsoGateway(null, { locale: defaultLocale || 'en' });
+        this.signInWithDomain(null, { locale: defaultLocale || 'en' });
       } else {
         this.signInWithMagicLink();
       }
@@ -487,10 +487,12 @@ export class AuthService implements OnDestroy {
     const { audience, default_locale } = this.config();
     const redirectUri = audience.concat(stateUrl || '');
 
-    if (this.configFactory.get().has_ssr) {
-      return this.signInWithRedirect(DEFAULT_SCOPE, default_locale, redirectUri);
-    } else {
-      return this.signInWithRedirect();
-    }
+    // if (this.configFactory.get().has_ssr) {
+    //   return this.signInWithRedirect(DEFAULT_SCOPE, default_locale, redirectUri);
+    // } else {
+    //   return this.signInWithRedirect();
+    // }
+
+    return this.signInWithDomain(null, { locale: default_locale });
   }
 }
