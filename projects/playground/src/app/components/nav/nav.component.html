@@ -86,50 +86,6 @@
           >
         </div>
       </div>
-
-      <div>
-        <div>
-          <cryptr-account-access-button
-            *ngIf="authenticated"
-            [auth]="auth"
-            [logoSrc]="logoSrc"
-            [defaultSignType]="signType"
-            [unauthenticatedPath]="unauthenticatedPath"
-            [targetUrl]="targetUrl"
-          >
-            <a cryptrWidgetChild routerLink="{{ securedPath }}">
-              <div class="-m-3 p-3 flex items-start space-x-4">
-                <div class="space-y-1 divide-y-2">
-                  <em class="text-xs text-gray-400" style="color: gray">
-                    This block is customizable
-                  </em>
-                  <p class="text-base leading-6 font-medium text-gray-900">
-                    My courses
-                  </p>
-                  <p class="text-sm leading-5 text-gray-500">
-                    Click to continue learning and see your in-progress courses
-                  </p>
-                  <div class="h-1 w-full bg-gray-900"></div>
-                  <div class="border-top border-blue-600" *ngIf="user">
-                    <p>
-                      <strong>organization: </strong>
-                      <span>{{ user.tnt }}</span>
-                    </p>
-                    <p>
-                      <strong>provider: </strong>
-                      <span>{{ user.ips }}</span>
-                    </p>
-                    <p *ngIf="user && user.sci">
-                      <strong>idp id: </strong>
-                      <small>{{ user.sci }}</small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </cryptr-account-access-button>
-        </div>
-      </div>
     </div>
   </div>
 </nav>

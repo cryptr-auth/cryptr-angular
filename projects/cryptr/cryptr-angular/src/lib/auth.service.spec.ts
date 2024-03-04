@@ -38,13 +38,6 @@ describe('AuthConfig', () => {
       });
 
       expect(typeof authService.observableAuthenticated()).toBe('object');
-      authService.userAccountAccess()
-        .then(res => {
-          expect(res).toBe(undefined);
-        }).catch(err => {
-          expect(err).toBe(undefined);
-        });
-
       expect(authService.refreshTokens()).toBe(undefined);
       try {
         authService.handleRedirectCallback();
