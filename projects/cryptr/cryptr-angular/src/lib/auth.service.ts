@@ -26,7 +26,6 @@ export class AuthService implements OnDestroy {
   /** @ignore */
   private isLoading$ = new BehaviorSubject(true);
 
-  /** @ignore */
   constructor(
     @Inject(CryptrClientService) private cryptrClient: CryptrClient,
     private location: Location,

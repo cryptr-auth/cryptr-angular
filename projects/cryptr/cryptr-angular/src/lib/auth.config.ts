@@ -71,7 +71,6 @@ export class AuthClientConfig {
   /** @ignore */
   private config: AuthConfig;
 
-  /** @ignore */
   constructor(@Optional() @Inject(AuthConfigService) config?: AuthConfig) {
     if (config) {
       this.set(config);

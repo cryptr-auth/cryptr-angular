@@ -22,7 +22,6 @@ import { CryptrClientService } from './auth.client';
 /** Interceptor to decorate requests with Access token */
 @Injectable()
 export class AuthHttpInterceptor implements HttpInterceptor {
-  /** @ignore */
   constructor(
     @Inject(AuthConfigService) private config: AuthConfig,
     @Inject(CryptrClientService) private cryptrClient: any
