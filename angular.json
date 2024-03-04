@@ -32,6 +32,9 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
+            "allowedCommonJsDependencies": [
+              "@cryptr/cryptr-spa-js"
+            ],
             "tsConfig": [
               "projects/cryptr/cryptr-angular/tsconfig.lib.json",
               "projects/cryptr/cryptr-angular/tsconfig.spec.json"
@@ -58,10 +61,15 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "@cryptr/cryptr-spa-js"
+            ],
             "outputPath": "dist/playground",
             "index": "projects/playground/src/index.html",
             "main": "projects/playground/src/main.ts",
-            "polyfills": "projects/playground/src/polyfills.ts",
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "projects/playground/tsconfig.app.json",
             "aot": true,
             "assets": [
@@ -84,7 +92,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -107,18 +114,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "playground:build"
+            "buildTarget": "playground:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "playground:build:production"
+              "buildTarget": "playground:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "playground:build"
+            "buildTarget": "playground:build"
           }
         },
         "lint": {
@@ -134,6 +141,5 @@
         }
       }
     }
-  },
-  "defaultProject": "@cryptr/cryptr-angular"
+  }
 }

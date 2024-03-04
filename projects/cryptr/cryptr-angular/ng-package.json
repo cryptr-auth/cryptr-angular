@@ -2,11 +2,7 @@
   "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../../dist/cryptr/cryptr-angular",
   "lib": {
-    "entryFile": "src/public-api.ts",
-    "umdModuleIds": {
-      "cryptr-spa-js": "cryptr-spa-js",
-      "cryptr-spa-js/dist/types/client": "cryptr-spa-js/dist/types/client"
-    }
+    "entryFile": "src/public-api.ts"
   },
   "allowedNonPeerDependencies": [
     "tslib",
