@@ -45,8 +45,6 @@ describe('AuthConfig', () => {
         expect(error).not.toBe(undefined);
       }
       expect(authService.ngOnDestroy()).not.toBe(null);
-      expect(authService.signInWithRedirect('read:data')).not.toBe(null);
-      expect(authService.signUpWithRedirect('read:data')).not.toBe(null);
       expect(authService.logOut(null, window.location)).not.toBe(null);
     });
   });

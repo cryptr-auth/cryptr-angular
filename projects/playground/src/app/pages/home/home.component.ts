@@ -18,22 +18,8 @@ export class HomeComponent implements OnInit {
   }
 
   signUpWithRedirect(): void {
-    this.auth.signUpWithRedirect();
+    this.auth.signInWithDomain();
   }
-
-  // signinWithSso(): void {
-  //   this.auth.signInWithSso(environment.idpIds[0]);
-  // }
-
-  // public bareSigninWithSsoGateway(): void {
-  //   this.auth.signInWithSsoGateway(null, { locale: 'fr' });
-  // }
-  // public simpleSigninWithSsoGateway(): void {
-  //   this.auth.signInWithSsoGateway(environment.idpIds[0], { locale: 'fr' });
-  // }
-  // public multiSigninWithSsoGateway(): void {
-  //   this.auth.signInWithSsoGateway(environment.idpIds, { locale: 'fr' });
-  // }
 
   public signInWithDomain(orgDomain?: string): void {
     this.auth.signInWithDomain('orgDomain', { locale: 'fr' });

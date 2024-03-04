@@ -17,7 +17,7 @@ export class ReactComponent implements OnInit {
   }
 
   signUpWithRedirect(): void {
-    this.auth.signUpWithRedirect();
+    this.auth.signInWithDomain();
   }
 
 }

@@ -108,17 +108,8 @@ export interface CryptrClient {
   getCurrentIdToken(): string | undefined;
   isAuthenticated(): Promise<boolean>;
   finalScope(scope?: string): string;
-  signInWithoutRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
-  signInWithSSO(idpId: string, options?: SsoSignOptsAttrs): Promise<void>;
   signInWithDomain(orgDomain?: string, options?: SsoSignOptsAttrs): Promise<void>;
   signInWithEmail(email: string, options?: SsoSignOptsAttrs): Promise<void>;
-  signInWithSSOGateway(idpId?: string | string[], options?: SsoSignOptsAttrs): Promise<void>;
-  signUpWithoutRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
-  inviteWithoutRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
-  signInWithRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
-  signUpWithRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
-  inviteWithRedirect(scope?: string, redirectUri?: string, locale?: string): Promise<void>;
-  handleInvitationState(scope?: string): Promise<void>;
   handleTokensErrors(errors: TokenError[]): boolean;
   handleNewTokens(refreshStore: RefreshStore, tokens?: any): void;
   handleRedirectCallback(): Promise<any>;
@@ -129,7 +120,6 @@ export interface CryptrClient {
   getUser(): object | undefined;
   getClaimsFromAccess(accessToken: string): object | null;
   canHandleAuthentication(searchParams?: string): boolean;
-  canHandleInvitation(searchParams?: string): boolean;
   logOut(callback: any, location?: Location, targetUrl?: string): Promise<boolean>;
   decoratedRequest(axiosRequestConfig: any): any;
 }

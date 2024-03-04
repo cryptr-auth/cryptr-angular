@@ -17,7 +17,7 @@ export class GrowthHackerComponent implements OnInit {
   }
 
   signUpWithRedirect(): void {
-    this.auth.signUpWithRedirect();
+    this.auth.signInWithDomain();
   }
   triggerError(): void {
     throw new Error(`My sentry signup error logrocket ${new Date().getTime()}`);
