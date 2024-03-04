@@ -55,3 +55,4 @@ projects/cryptr/cryptr-angular/documentation/*
 doc/
 
 *.env
+.angular
