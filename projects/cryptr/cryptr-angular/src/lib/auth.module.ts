@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { CryptrClientFactory, CryptrClientService } from './auth.client';
 
 @NgModule({
-  imports: [CommonModule]
+  imports: [CommonModule],
 })
 export class AuthModule {
   static forRoot(config?: AuthConfig): ModuleWithProviders<AuthModule> {

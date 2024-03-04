@@ -12,6 +12,7 @@ export const enum HttpMethod {
   Head = 'HEAD',
 }
 
+/** Definitions for route secure */
 export type ApiRouteDefinition = HttpInterceptorRouteConfig | string;
 
 /** @ignore */
@@ -38,6 +39,7 @@ export interface HttpInterceptorRouteConfig {
 export interface AuthConfig extends Config {
   /** cryptr http Interceptor for current application */
   httpInterceptor: HttpInterceptorConfig
+  /** defines if SLO is always ran after token revocation */
   default_slo_after_revoke: boolean
   /** @ignore */
   other_key?: string

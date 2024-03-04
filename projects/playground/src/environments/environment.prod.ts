@@ -11,7 +11,7 @@ export const environment = {
       apiRequestsToSecure: process.env.CRYPTR_API_TO_SECURE ? process.env.CRYPTR_API_TO_SECURE.split(',') : ['https://cryptr-express-staging-backend.onrender.com/*']
     },
     telemetry: false,
-    dedicated_server: true
+    dedicated_server: true,
   },
   resource_server_url: process.env.CRYPTR_RESOURCE_SERVER_URL || 'https://cryptr-express-staging-backend.onrender.com',
   idpIds: process.env.CRYPTR_IDP_IDS ? process.env.CRYPTR_IDP_IDS.split(',') : ["comcast_RrmZYfWTWncWmQ26QPVgbe", "envirogreen_agency_LNAFPoFHsKzGVVujYKjQQR"],

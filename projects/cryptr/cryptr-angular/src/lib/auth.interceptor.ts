@@ -23,7 +23,9 @@ import { CryptrClientService } from './auth.client';
 @Injectable()
 export class AuthHttpInterceptor implements HttpInterceptor {
   constructor(
+    /** Cryptr config to use */
     @Inject(AuthConfigService) private config: AuthConfig,
+    /** Client that wil lbe initialized */
     @Inject(CryptrClientService) private cryptrClient: any
   ) { }
 
