@@ -1,6 +1,6 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { AuthnMethod } from './utils/types';
-
+import { Config } from '@cryptr/cryptr-spa-js/dist/types/interfaces';
 /**
  * Defines a common set of HTTP methods.
  */
@@ -36,34 +36,42 @@ export interface HttpInterceptorRouteConfig {
 }
 
 /** Cryptr Authentication configuration for Angular */
-export interface AuthConfig {
-  /** cryptr tenant domain of current application */
-  tenant_domain: string;
-  /** cryptr client ID of current application */
-  client_id: string;
-  /** Audience URL of current application */
-  audience: string;
-  /** Default Redirect URI of current application */
-  default_redirect_uri: string;
-  /** cryptr region of current application */
-  region?: string;
-  /** Default locale for current application */
-  default_locale?: string;
-  /** Cryptr service URL for current application */
-  cryptr_base_url?: string;
+export interface AuthConfig extends Config {
   /** cryptr http Interceptor for current application */
-  httpInterceptor: HttpInterceptorConfig;
-  /** Is Current application is running is a SSR support */
-  has_ssr?: boolean;
-  /** Activate Cryptr telemetry reporting */
-  telemetry?: boolean;
-  /** false if you are using our shared instance */
-  dedicated_server?: boolean;
-  /** Prefered authentication method for default authentication */
-  preferedAuthMethod?: AuthnMethod | string;
+  httpInterceptor: HttpInterceptorConfig
+  default_slo_after_revoke: boolean
   /** @ignore */
-  other_key?: string;
+  other_key?: string
 }
+
+// export interface AuthConfig {
+//   /** cryptr tenant domain of current application */
+//   tenant_domain: string;
+//   /** cryptr client ID of current application */
+//   client_id: string;
+//   /** Audience URL of current application */
+//   audience: string;
+//   /** Default Redirect URI of current application */
+//   default_redirect_uri: string;
+//   /** cryptr region of current application */
+//   region?: string;
+//   /** Default locale for current application */
+//   default_locale?: string;
+//   /** Cryptr service URL for current application */
+//   cryptr_base_url?: string;
+//   /** cryptr http Interceptor for current application */
+//   httpInterceptor: HttpInterceptorConfig;
+//   /** Is Current application is running is a SSR support */
+//   has_ssr?: boolean;
+//   /** Activate Cryptr telemetry reporting */
+//   telemetry?: boolean;
+//   /** false if you are using our shared instance */
+//   dedicated_server?: boolean;
+//   /** Prefered authentication method for default authentication */
+//   preferedAuthMethod?: AuthnMethod | string;
+//   /** @ignore */
+//   other_key?: string;
+// }
 
 /** Manage Cryptr authentication client configuration */
 @Injectable({ providedIn: 'root' })
