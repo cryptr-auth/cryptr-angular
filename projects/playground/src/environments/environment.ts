@@ -16,6 +16,7 @@ export const environment = {
     // region: 'us',
     cryptr_base_url: 'https://samly.howto:4443',
     default_locale: 'fr',
+    default_slo_after_revoke: false,
     httpInterceptor: {
       apiRequestsToSecure: [
         'http://localhost:5000/*',

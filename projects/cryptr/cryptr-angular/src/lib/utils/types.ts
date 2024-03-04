@@ -130,7 +130,6 @@ export interface CryptrClient {
   getClaimsFromAccess(accessToken: string): object | null;
   canHandleAuthentication(searchParams?: string): boolean;
   canHandleInvitation(searchParams?: string): boolean;
-  userAccountAccess(): Promise<import('axios').AxiosResponse<any> | undefined>;
   logOut(callback: any, location?: Location, targetUrl?: string): Promise<boolean>;
   decoratedRequest(axiosRequestConfig: any): any;
 }

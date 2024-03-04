@@ -45,7 +45,7 @@ export class AuthService implements OnDestroy {
 
   /** @ignore */
   ngOnDestroy(): void {
-    this.ngUnsubscribe$.next();
+    // this.ngUnsubscribe$.next();
     this.ngUnsubscribe$.complete();
   }
 
@@ -271,9 +271,9 @@ export class AuthService implements OnDestroy {
    * Opens user account page.
    * @returns Promise of retrieving/opening page
    */
-  userAccountAccess(): Promise<any> {
-    return this.cryptrClient.userAccountAccess();
-  }
+  // userAccountAccess(): Promise<any> {
+  //   return this.cryptrClient.userAccountAccess();
+  // }
 
   /**
    * Refresh current tokens.

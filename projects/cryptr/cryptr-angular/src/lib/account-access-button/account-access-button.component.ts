@@ -267,14 +267,14 @@ export class AccountAccessButtonComponent implements OnChanges {
   /** @ignore */
   userAccountAccess(): void {
     this.toggleOpen();
-    this.auth.userAccountAccess().then(accountAccessData => {
-      try {
-        const { data: { data: { url } } } = accountAccessData;
-        this.accountPopup = window.open(url, '_blank', this.popupParams());
-      } catch (err) {
-        console.error(err.message);
-      }
-    });
+    // this.auth.userAccountAccess().then(accountAccessData => {
+    //   try {
+    //     const { data: { data: { url } } } = accountAccessData;
+    //     this.accountPopup = window.open(url, '_blank', this.popupParams());
+    //   } catch (err) {
+    //     console.error(err.message);
+    //   }
+    // });
   }
 
   /** @ignore */
