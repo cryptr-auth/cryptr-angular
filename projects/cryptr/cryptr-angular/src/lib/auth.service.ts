@@ -3,12 +3,14 @@ import CryptrSpa from '@cryptr/cryptr-spa-js';
 import { BehaviorSubject, combineLatest, from, Observable, Subject } from 'rxjs';
 import { AbstractNavigator } from './abstract-navigator';
 import { Location } from '@angular/common';
-import { AuthnMethod, Config, CryptrClient, SsoSignOptsAttrs, Tokens } from './utils/types';
+import { Tokens } from './utils/types';
 import { ActivatedRoute, Router, UrlTree } from '@angular/router';
 import { CryptrClientService } from './auth.client';
 import { filter, map } from 'rxjs/operators';
 import { DEFAULT_SCOPE } from './utils/constants';
 import { AuthClientConfig } from './auth.config';
+import { Config, SsoSignOptsAttrs } from '@cryptr/cryptr-spa-js/dist/types/interfaces';
+import Client from '@cryptr/cryptr-spa-js/dist/types/client';
 
 /**
  * AuthService - Cryptr Authentication Service
@@ -27,7 +29,7 @@ export class AuthService implements OnDestroy {
   private isLoading$ = new BehaviorSubject(true);
 
   constructor(
-    @Inject(CryptrClientService) private cryptrClient: CryptrClient,
+    @Inject(CryptrClientService) private cryptrClient: Client,
     private location: Location,
     private navigator: AbstractNavigator,
     private router: Router,
