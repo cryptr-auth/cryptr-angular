@@ -26,7 +26,7 @@ const routes: Routes = [
     component: GrowthHackerComponent
   },
   {
-    path: 'mes-formations',
+    path: 'profile-page',
     component: MyCoursesComponent,
     canActivate: [AuthGuard]
   }
