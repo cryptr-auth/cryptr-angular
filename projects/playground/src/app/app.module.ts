@@ -5,9 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ReactComponent } from './pages/react/react.component';
-import { GraphqlComponent } from './pages/graphql/graphql.component';
-import { GrowthHackerComponent } from './pages/growth-hacker/growth-hacker.component';
 import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from '../environments/environment';
@@ -19,9 +16,6 @@ import { AuthHttpInterceptor } from 'projects/cryptr/cryptr-angular/src/lib/auth
     AppComponent,
     NavComponent,
     HomeComponent,
-    ReactComponent,
-    GraphqlComponent,
-    GrowthHackerComponent,
     MyCoursesComponent,
   ],
   imports: [
