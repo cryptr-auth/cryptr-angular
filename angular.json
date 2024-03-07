@@ -114,7 +114,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "playground:build"
+            "buildTarget": "playground:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
