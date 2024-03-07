@@ -13,7 +13,6 @@ import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { AuthModule } from 'projects/cryptr/cryptr-angular/src/lib/auth.module';
-import { AccountAccessButtonComponent } from 'projects/cryptr/cryptr-angular/src/lib/account-access-button/account-access-button.component';
 import { AuthHttpInterceptor } from 'projects/cryptr/cryptr-angular/src/lib/auth.interceptor';
 
 @NgModule({
@@ -35,7 +34,6 @@ import { AuthHttpInterceptor } from 'projects/cryptr/cryptr-angular/src/lib/auth
     AuthModule.forRoot(environment.cryptrConfig),
   ],
   providers: [
-    AccountAccessButtonComponent,
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

@@ -14,6 +14,7 @@ describe('AuthGuard', () => {
         client_id: '123-xeab',
         audience: 'http://localhost:4200',
         default_redirect_uri: 'http://localhost:4200',
+        default_slo_after_revoke: false,
         cryptr_base_url: 'http://localhost:4000',
         httpInterceptor
       };

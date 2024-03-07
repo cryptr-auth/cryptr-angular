@@ -3,15 +3,13 @@
  */
 export const LocalizedStrings = {
   fr: {
+    logOut: 'Déconnexion',
     signin: 'Connexion',
     signup: 'Inscription',
-    logOut: 'Déconnexion',
-    manageAccount: 'Mon Compte'
   },
   en: {
+    logOut: 'Log out',
     signin: 'Sign In',
     signup: 'Sign Up',
-    logOut: 'Log out',
-    manageAccount: 'Manage my account'
   }
 };

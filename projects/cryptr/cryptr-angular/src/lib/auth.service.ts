@@ -3,12 +3,14 @@ import CryptrSpa from '@cryptr/cryptr-spa-js';
 import { BehaviorSubject, combineLatest, from, Observable, Subject } from 'rxjs';
 import { AbstractNavigator } from './abstract-navigator';
 import { Location } from '@angular/common';
-import { AuthnMethod, Config, CryptrClient, SsoSignOptsAttrs, Tokens } from './utils/types';
+import { Tokens } from './utils/types';
 import { ActivatedRoute, Router, UrlTree } from '@angular/router';
 import { CryptrClientService } from './auth.client';
 import { filter, map } from 'rxjs/operators';
 import { DEFAULT_SCOPE } from './utils/constants';
 import { AuthClientConfig } from './auth.config';
+import { Config, SsoSignOptsAttrs } from '@cryptr/cryptr-spa-js/dist/types/interfaces';
+import Client from '@cryptr/cryptr-spa-js/dist/types/client';
 
 /**
  * AuthService - Cryptr Authentication Service
@@ -26,9 +28,8 @@ export class AuthService implements OnDestroy {
   /** @ignore */
   private isLoading$ = new BehaviorSubject(true);
 
-  /** @ignore */
   constructor(
-    @Inject(CryptrClientService) private cryptrClient: CryptrClient,
+    @Inject(CryptrClientService) private cryptrClient: Client,
     private location: Location,
     private navigator: AbstractNavigator,
     private router: Router,
@@ -46,114 +47,8 @@ export class AuthService implements OnDestroy {
 
   /** @ignore */
   ngOnDestroy(): void {
-    this.ngUnsubscribe$.next();
+    // this.ngUnsubscribe$.next();
     this.ngUnsubscribe$.complete();
-  }
-
-  /**
-   * Performs redirection to Cryptr for signin process with chosen args
-   * @deprecated since version 1.2.0. Please now refer to `signInWithDomain`or `signInWithEmail`
-   * @example
-   * Default usage
-   * signInWithRedirect()
-   *
-   * @example
-   * Usage with custom scope
-   * signInWithRedirect("email openid profile read:invoices")
-   *
-   * @example
-   * Usage with custom locale
-   * signInWithRedirect("email openid profile", "fr")
-   *
-   * @example
-   * Usage with custom locale
-   * signInWithRedirect("email openid profile", "en", "http://localhsot:4201")
-   *
-   * @param scope - Default: `"email openid profile"`. Scopes requested for this sign in process (whitespace separator)
-   * @param locale - Default: `config.default_locale` value. locale for this sign in process.
-   * @param redirectUri - Default: `config.default_redirect_uri` value. URI where to redirect after sign in process.
-   * @returns Observable of this signin redirection
-   */
-  signInWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
-    if (this.cryptrClient) {
-      return from(this.cryptrClient.signInWithRedirect(scope, redirectUri, locale));
-    }
-  }
-
-  /**
-   * Performs redirection to Cryptr for signup process with chosen args
-   * @example
-   * Default usage
-   * signUpWithRedirect()
-   *
-   * @example
-   * Usage with custom scope
-   * signUpWithRedirect("email openid profile read:invoices")
-   *
-   * @example
-   * Usage with custom locale
-   * signUpWithRedirect("email openid profile", "fr")
-   *
-   * @example
-   * Usage with custom locale
-   * signUpWithRedirect("email openid profile", "en", "http://localhsot:4201")
-   *
-   * @param scope - Default: `"email openid profile"`. Scopes requested for this sign up process (whitespace separator).
-   * @param locale - Default: `config.default_locale` value. locale for this sign up process.
-   * @param redirectUri - Default: `config.default_redirect_uri` value. URI where to redirect after sign up process.
-   * @returns Observable of this signup redirection
-   */
-  signUpWithRedirect(scope?: string, locale?: string, redirectUri?: string): Observable<any> {
-    return from(this.cryptrClient.signUpWithRedirect(scope, redirectUri, locale));
-  }
-
-  /**
-   * @deprecated since version 1.2.0. Please now refer to `signInWithDomain`or `signInWithEmail`
-   *
-   * Starts SSO process for specific ID
-   *
-   * @example
-   * Default usage
-   * signInWithSso('some_company_bWoMxSFWKhQt6WAm4AucGk')
-   *
-   * @example
-   * Usage with custom locale
-   * signInWithSso('some_company_bWoMxSFWKhQt6WAm4AucGk', { locale: 'fr' })
-   *
-   * @param idpId - SSO Connection ID reference.
-   * @param options - Optional. Customize process, See SsoSignOptsAttrs
-   * @returns Observable of SSO process.
-   */
-  public signInWithSso(idpId: string, options?: SsoSignOptsAttrs): Observable<void> {
-    return from(this.cryptrClient.signInWithSSO(idpId, options));
-  }
-
-  /**
-   * @deprecated since version 1.2.0. Please now refer to `signInWithDomain`or `signInWithEmail`
-   * Starts SSO Gateway Process
-   *
-   * @example
-   * Bare usage
-   * signInWithSsoGateway()
-   *
-   * @example
-   * Bare usage with custom locale
-   * signInWithSsoGateway(null, { locale: 'fr' })
-   *
-   * @example
-   * Simple SSO usage
-   * signInWithSsoGateway('some_company_bWoMxSFWKhQt6WAm4AucGk')
-   *
-   * @example
-   * Multi SSO usage
-   * signInWithSsoGateway(['some_company_bWoMxSFWKhQt6WAm4AucGk', 'other_company_6Jc3TGatGmsHzexaRP5ZrE'])
-   *
-   * @param idpId - Optional string or string[] to reference SSO Connection(s) ID(s)
-   * @param options - Optional. Customize process, See SsoSignOptsAttrs
-   * @returns Observable of SSO process
-   */
-  public signInWithSsoGateway(idpId?: string | string[], options?: SsoSignOptsAttrs): Observable<void> {
-    return from(this.cryptrClient.signInWithSSOGateway(idpId, options));
   }
 
   /**
@@ -266,14 +161,6 @@ export class AuthService implements OnDestroy {
   /** @ignore */
   getClientUser(): any {
     return this.cryptrClient.getUser();
-  }
-
-  /**
-   * Opens user account page.
-   * @returns Promise of retrieving/opening page
-   */
-  userAccountAccess(): Promise<any> {
-    return this.cryptrClient.userAccountAccess();
   }
 
   /**
@@ -453,8 +340,6 @@ export class AuthService implements OnDestroy {
       }).finally(() => {
         this.isLoading$.next(false);
       });
-    } else if (this.cryptrClient.canHandleInvitation()) {
-      this.cryptrClient.handleInvitationState();
     } else {
       await this.cryptrClient.handleRefreshTokens();
       this.isAuthenticated().then((isAuthenticated) => {
@@ -469,15 +354,11 @@ export class AuthService implements OnDestroy {
 
   /** @ignore */
   private defaultAuthenticationCallback(isAuthenticated: boolean, stateUrl?: string): boolean {
-    const { default_locale: defaultLocale, preferedAuthMethod } = this.config();
+    const { default_locale: defaultLocale } = this.config();
     if (isAuthenticated) {
       return true;
     } else {
-      if (preferedAuthMethod === AuthnMethod.Gateway) {
-        this.signInWithDomain(null, { locale: defaultLocale || 'en' });
-      } else {
-        this.signInWithMagicLink();
-      }
+      this.signInWithDomain(null, { locale: defaultLocale || 'en' });
       return false;
     }
   }
@@ -486,12 +367,6 @@ export class AuthService implements OnDestroy {
   private signInWithMagicLink(stateUrl?: string): Observable<any> {
     const { audience, default_locale } = this.config();
     const redirectUri = audience.concat(stateUrl || '');
-
-    // if (this.configFactory.get().has_ssr) {
-    //   return this.signInWithRedirect(DEFAULT_SCOPE, default_locale, redirectUri);
-    // } else {
-    //   return this.signInWithRedirect();
-    // }
 
     return this.signInWithDomain(null, { locale: default_locale });
   }

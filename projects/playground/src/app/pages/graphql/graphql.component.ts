@@ -17,6 +17,6 @@ export class GraphqlComponent implements OnInit {
   }
 
   signUpWithRedirect(): void {
-    this.auth.signUpWithRedirect();
+    this.auth.signInWithDomain();
   }
 }

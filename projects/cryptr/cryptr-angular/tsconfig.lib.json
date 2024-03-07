@@ -3,15 +3,12 @@
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../../out-tsc/lib",
-    "target": "es2015",
+    "target": "ES2022",
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
     "types": [],
-    "lib": [
-      "dom",
-      "es2018"
-    ],
+    "lib": ["dom", "es2018"],
     "resolveJsonModule": true
   },
   "angularCompilerOptions": {
@@ -20,8 +17,5 @@
     "enableResourceInlining": true,
     "preserveSymlinks": true
   },
-  "exclude": [
-    "src/test.ts",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["src/test.ts", "**/*.spec.ts"]
 }
