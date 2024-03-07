@@ -1,22 +1,24 @@
-<li class="bg-white px-4 py-6 shadow sm:rounded-lg sm:p-6 article">
+<li class="bg-white px-4 py-6 shadow sm:rounded-lg sm:p-6 article my-2">
   <article aria-labelledby="question-title-81614">
     <div>
       <div class="flex space-x-3">
         <div class="flex-shrink-0">
           <img
             class="h-10 w-10 rounded-full"
-            src="{avatar}"
-            alt="Nicolas Boivin"
+            src="{{ article.avatar }}"
+            alt="{{ article.author }}"
           />
         </div>
         <div class="min-w-0 flex-1">
           <p class="text-sm font-medium text-gray-900">
-            <a href="/" class="hover:underline"> author </a>
+            <a href="/" class="hover:underline">
+              {{ article.author }}
+            </a>
           </p>
           <p class="text-sm text-gray-500">
             <a href="/" class="hover:underline">
               <time dateTime="2020-12-09T11:43:00">
-                publish_date.toString()
+                {{ article.publish_date }}
               </time>
             </a>
           </p>
@@ -123,7 +125,9 @@
         title
       </h2>
     </div>
-    <div class="mt-2 space-y-4 text-sm text-gray-700">content</div>
+    <div class="mt-2 space-y-4 text-sm text-gray-700">
+      {{ article.content }}
+    </div>
     <div class="mt-6 flex justify-between space-x-8">
       <div class="flex space-x-6">
         <span class="inline-flex items-center text-sm">
@@ -142,7 +146,7 @@
                 d="M1 8.25a1.25 1.25 0 112.5 0v7.5a1.25 1.25 0 11-2.5 0v-7.5zM11 3V1.7c0-.268.14-.526.395-.607A2 2 0 0114 3c0 .995-.182 1.948-.514 2.826-.204.54.166 1.174.744 1.174h2.52c1.243 0 2.261 1.01 2.146 2.247a23.864 23.864 0 01-1.341 5.974C17.153 16.323 16.072 17 14.9 17h-3.192a3 3 0 01-1.341-.317l-2.734-1.366A3 3 0 006.292 15H5V8h.963c.685 0 1.258-.483 1.612-1.068a4.011 4.011 0 012.166-1.73c.432-.143.853-.386 1.011-.814.16-.432.248-.9.248-1.388z"
               />
             </svg>
-            <span class="font-medium text-gray-900"> likes </span>
+            <span class="font-medium text-gray-900"> {{ article.likes }} </span>
             <span class="sr-only">likes</span>
           </button>
         </span>
@@ -164,7 +168,9 @@
                 clipRule="evenodd"
               />
             </svg>
-            <span class="font-medium text-gray-900"> replies </span>
+            <span class="font-medium text-gray-900">
+              {{ article.replies }}
+            </span>
             <span class="sr-only">replies</span>
           </button>
         </span>
@@ -187,7 +193,7 @@
                 clipRule="evenodd"
               />
             </svg>
-            <span class="font-medium text-gray-900"> views </span>
+            <span class="font-medium text-gray-900"> {{ article.views }} </span>
             <span class="sr-only">views</span>
           </button>
         </span>

@@ -6,8 +6,13 @@
       </h2>
       <div class="mt-6 flow-root">
         <ul class="-my-4 divide-y divide-gray-200">
-          <li>No Suggestion</li>
-          <app-friend-suggestion></app-friend-suggestion>
+          <li *ngIf="!friends || friends.length === 0">No Suggestion</li>
+          <ng-container *ngIf="friends && friends.length > 0">
+            <app-friend-suggestion
+              *ngFor="let friend of friends"
+              [friend]="friend"
+            ></app-friend-suggestion>
+          </ng-container>
         </ul>
       </div>
     </div>

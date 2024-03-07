@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'projects/cryptr/cryptr-angular/src/lib/auth.service';
 import { environment } from 'projects/playground/src/environments/environment';
+import { Observable } from 'rxjs/internal/Observable';
+import { ResponseData } from '../../interfaces';
 
 @Component({
   selector: 'app-home',
@@ -8,24 +10,25 @@ import { environment } from 'projects/playground/src/environments/environment';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  authenticated = false;
-  constructor(public auth: AuthService) { }
+  data: ResponseData;
+
+  constructor(public http: HttpClient) { }
 
   ngOnInit(): void {
-    this.auth.currentAuthenticationObservable().subscribe((isAuthenticated: boolean) => {
-      this.authenticated = isAuthenticated;
-    });
+    console.debug('should fetch data from backend on', environment.resource_server_url)
+    this.fetchSecuredData();
   }
 
-  signUpWithRedirect(): void {
-    this.auth.signInWithDomain();
+  securedRoute(): string {
+    const { resource_server_url } = environment;
+    return `${resource_server_url}/public`;
   }
 
-  public signInWithDomain(orgDomain?: string): void {
-    this.auth.signInWithDomain('orgDomain', { locale: 'fr' });
-  }
-
-  public signInWithEmail(): void {
-    this.auth.signInWithEmail('toto@titi.fr', { locale: 'fr' });
+  fetchSecuredData(): void {
+    this.http
+      .get<ResponseData>(this.securedRoute())
+      .subscribe((response) => {
+        this.data = response
+      })
   }
 }

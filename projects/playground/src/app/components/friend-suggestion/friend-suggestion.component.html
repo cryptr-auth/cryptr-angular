@@ -1,13 +1,17 @@
 <li class="flex items-center space-x-3 py-4">
   <div class="flex-shrink-0">
-    <img class="h-8 w-8 rounded-full" alt="France Marcoux" src="avatar" />
+    <img
+      class="h-8 w-8 rounded-full"
+      alt="{{ friend.avatar }}"
+      src="{{ friend.name }}"
+    />
   </div>
   <div class="min-w-0 flex-1">
     <p class="text-sm font-medium text-gray-900">
-      <a href="/"> name </a>
+      <a href="/"> {{ friend.name }} </a>
     </p>
     <p class="text-sm text-gray-500">
-      <a href="/"> nickname </a>
+      <a href="/" [innerText]="'@' + friend.nickname"></a>
     </p>
   </div>
   <div class="flex-shrink-0">
