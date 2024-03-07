@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from 'projects/playground/src/environments/environment';
 import { ResponseData } from '../../interfaces';
 import { AuthService } from 'projects/cryptr/cryptr-angular/src/lib/auth.service';
+import CryptrSpa from '@cryptr/cryptr-spa-js';
 
 @Component({
   selector: 'app-home',
@@ -11,10 +12,15 @@ import { AuthService } from 'projects/cryptr/cryptr-angular/src/lib/auth.service
 })
 export class HomeComponent implements OnInit {
   data: ResponseData;
+  authenticated = false;
 
   constructor(public auth: AuthService, public http: HttpClient) { }
 
   ngOnInit(): void {
+    this.cryptrListeners();
+    this.auth.currentAuthenticationObservable().subscribe((isAuthenticated: boolean) => {
+      this.authenticated = isAuthenticated;
+    });
     console.debug('should fetch data from backend on', environment.resource_server_url)
     if (this.auth.currentAuthenticationState()) {
       this.fetchSecuredData();
@@ -23,9 +29,23 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  cryptrListeners(): void {
+    window.addEventListener(CryptrSpa.events.REFRESH_INVALID_GRANT, (e) => {
+      this.logOut();
+    });
+    window.addEventListener(CryptrSpa.events.REFRESH_EXPIRED, (e) => {
+      console.error(e);
+      this.logOut();
+    });
+  }
+
+  logOut(): void {
+    this.auth.logOut(() => alert('logged out'));
+  }
+
   securedRoute(): string {
     const { resource_server_url } = environment;
-    return `${resource_server_url}/`;
+    return `${resource_server_url}/public`;
   }
 
   fetchSecuredData(): void {
