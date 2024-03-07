@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './pages/home/home.component';
-import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { AuthModule } from 'projects/cryptr/cryptr-angular/src/lib/auth.module';
@@ -23,7 +22,6 @@ import { ArticlesComponent } from './components/articles/articles.component';
     AppComponent,
     NavComponent,
     HomeComponent,
-    MyCoursesComponent,
     SidebarNavComponent,
     NewsitemComponent,
     NewsComponent,
