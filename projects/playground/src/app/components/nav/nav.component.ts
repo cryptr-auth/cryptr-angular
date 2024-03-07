@@ -54,6 +54,11 @@ export class NavComponent implements OnInit {
     });
   }
 
+  greetings(): string {
+    console.debug(`Hello ${this.user?.given_name} ${this.user?.family_name}`)
+    return `Hello ${this.user?.given_name} ${this.user?.family_name}`
+  }
+
   // GENERIC features
   redirectTo(routePath: string): void {
     this.router.navigateByUrl(routePath).then(navigated => {
