@@ -1,0 +1,18 @@
+<section aria-labelledby="new-heading" class="mt-8">
+  <div class="rounded-lg bg-white shadow">
+    <div class="p-6">
+      <h2 id="new-heading" class="text-base font-medium text-gray-900">News</h2>
+      <div class="mt-6 flow-root">
+        <ul class="-my-4 divide-y divide-gray-200">
+          <li *ngIf="!news || news.length === 0">No News</li>
+          <ng-container *ngIf="news && news.length > 0">
+            <app-news-item
+              *ngFor="let newItem of news"
+              [newItem]="newItem"
+            ></app-news-item>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -57,3 +57,4 @@ doc/
 *.env
 .angular
 .nx/
+proxy.conf.json

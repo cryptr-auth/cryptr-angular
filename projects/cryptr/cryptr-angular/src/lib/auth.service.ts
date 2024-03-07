@@ -4,7 +4,7 @@ import { BehaviorSubject, combineLatest, from, Observable, Subject } from 'rxjs'
 import { AbstractNavigator } from './abstract-navigator';
 import { Location } from '@angular/common';
 import { Tokens } from './utils/types';
-import { ActivatedRoute, Router, UrlTree } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegmentGroup, UrlSerializer, UrlTree } from '@angular/router';
 import { CryptrClientService } from './auth.client';
 import { filter, map } from 'rxjs/operators';
 import { DEFAULT_SCOPE } from './utils/constants';
@@ -35,6 +35,7 @@ export class AuthService implements OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private configFactory: AuthClientConfig,
+    private urlSerializer: UrlSerializer
   ) {
     this.checkAuthentication();
     window.addEventListener(CryptrSpa.events.REFRESH_INVALID_GRANT, (RigError) => {
@@ -100,9 +101,10 @@ export class AuthService implements OnDestroy {
    * @param targetUrl - Optional | **Default:** `window.location.href`. Where to redirect after SLO process
    * @returns process logout of session with callback call
    */
-  logOut(callback: () => void, location: undefined | globalThis.Location = window.location, targetUrl?: string): Observable<any> {
-    const target = targetUrl === undefined || targetUrl === 'undefined' ? window.location.href : targetUrl;
-    return from(this.cryptrClient.logOut(this.preLogOutCallBack(callback), location, target));
+  logOut(callback: () => void, location: undefined | globalThis.Location = window.location, targetUrl?: string, sloAfterRevoke?: boolean): Observable<any> {
+    let target = targetUrl === undefined || targetUrl === 'undefined' ? window.location.href : targetUrl;
+    target = this.sanitizeUrl(target, ['request_id'])
+    return from(this.cryptrClient.logOut(this.preLogOutCallBack(callback), location, target, sloAfterRevoke || this.cryptrClient.config.default_slo_after_revoke));
   }
 
   /** @ignore */
@@ -246,6 +248,15 @@ export class AuthService implements OnDestroy {
         }
       })
     );
+  }
+
+
+  /** @ignore */
+  private sanitizeUrl(urlString: string, queryParamsToRemove: string[]): string {
+    const url = new URL(urlString)
+    queryParamsToRemove.forEach(param => url.searchParams.delete(param))
+
+    return url.toString()
   }
 
 
