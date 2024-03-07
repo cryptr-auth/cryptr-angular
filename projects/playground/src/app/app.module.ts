@@ -10,6 +10,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { AuthModule } from 'projects/cryptr/cryptr-angular/src/lib/auth.module';
 import { AuthHttpInterceptor } from 'projects/cryptr/cryptr-angular/src/lib/auth.interceptor';
+import { SidebarNavComponent } from './components/sidebar-nav/sidebar-nav.component';
+import { NewsitemComponent } from './components/newsitem/newsitem.component';
+import { NewsComponent } from './components/news/news.component';
+import { FriendSuggestionComponent } from './components/friend-suggestion/friend-suggestion.component';
+import { FriendSuggestionsComponent } from './components/friend-suggestions/friend-suggestions.component';
+import { ArticleComponent } from './components/article/article.component';
+import { ArticlesComponent } from './components/articles/articles.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +24,13 @@ import { AuthHttpInterceptor } from 'projects/cryptr/cryptr-angular/src/lib/auth
     NavComponent,
     HomeComponent,
     MyCoursesComponent,
+    SidebarNavComponent,
+    NewsitemComponent,
+    NewsComponent,
+    FriendSuggestionComponent,
+    FriendSuggestionsComponent,
+    ArticleComponent,
+    ArticlesComponent,
   ],
   imports: [
     // CommonModule,

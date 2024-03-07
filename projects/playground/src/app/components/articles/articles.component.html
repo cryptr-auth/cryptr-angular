@@ -1,1 +1,47 @@
-<p>articles works!</p>
+<div>
+  <div class="px-4 sm:px-0">
+    <div class="sm:hidden">
+      <label class="sr-only">Select a tab</label>
+      <select
+        id="question-tabs"
+        defaultValue="recent"
+        class="block w-full rounded-md border-gray-300 text-base font-medium text-gray-900 shadow-sm focus:border-blue-600 focus:ring-blue-600"
+      >
+        <option>Recent</option>
+
+        <option>Most Liked</option>
+
+        <option>Most Answers</option>
+      </select>
+    </div>
+    <div class="hidden sm:block">
+      <nav
+        class="isolate flex divide-x divide-gray-200 rounded-lg shadow"
+        aria-label="Tabs"
+      >
+        <!-- sorting here -->
+      </nav>
+    </div>
+  </div>
+  <div class="mt-4">
+    <h1 class="sr-only">Recent questions</h1>
+    <!-- {sortedArticles && sortedArticles.length > 0 ? (
+      <ul class="space-y-4">
+        {sortedArticles.map((a: ArticleItem) => (
+          <Article key={`article-${a.id}`} article={a} />
+        ))}
+      </ul>
+    ) : ( -->
+    <ul class="space-y-4">
+      <li class="bg-white px-4 py-6 shadow sm:rounded-lg sm:p-6">
+        <article aria-labelledby="question">
+          <div>
+            <span>No Article</span>
+          </div>
+        </article>
+      </li>
+      <app-article></app-article>
+    </ul>
+    <!-- )} -->
+  </div>
+</div>

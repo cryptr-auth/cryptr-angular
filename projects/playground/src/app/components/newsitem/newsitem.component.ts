@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-newsitem',
-  standalone: true,
-  imports: [],
+  selector: 'app-news-item',
   templateUrl: './newsitem.component.html',
   styleUrl: './newsitem.component.css'
 })
-export class NewsitemComponent {
+export class NewsitemComponent implements OnInit {
+  ngOnInit(): void {
+  }
 
 }
