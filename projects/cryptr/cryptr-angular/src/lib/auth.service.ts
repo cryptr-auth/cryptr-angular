@@ -370,16 +370,15 @@ export class AuthService implements OnDestroy {
     if (isAuthenticated) {
       return true;
     } else {
-      this.signInWithDomain(null, { locale: this.locale || 'en' });
+      this.signInWithDomain(null, { locale: this.currentLocale() });
       return false;
     }
   }
 
   /** @ignore */
-  private signInWithMagicLink(stateUrl?: string): Observable<any> {
-    const { audience } = this.config();
-    const redirectUri = audience.concat(stateUrl || '');
-
-    return this.signInWithDomain(null, { locale: this.locale || 'en' });
+  private currentLocale() {
+    console.debug(this.locale)
+    let lang = this.locale.split('-')[0];
+    return ['en', 'fr'].includes(lang) ? lang : 'en';
   }
 }
