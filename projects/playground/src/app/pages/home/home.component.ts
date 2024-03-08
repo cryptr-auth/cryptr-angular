@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
   constructor(public auth: AuthService, public http: HttpClient) { }
 
   ngOnInit(): void {
-    this.cryptrListeners();
     this.auth.currentAuthenticationObservable().subscribe((isAuthenticated: boolean) => {
       this.authenticated = isAuthenticated;
     });
@@ -29,18 +28,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  cryptrListeners(): void {
-    window.addEventListener(CryptrSpa.events.REFRESH_INVALID_GRANT, (e) => {
-      this.logOut();
-    });
-    window.addEventListener(CryptrSpa.events.REFRESH_EXPIRED, (e) => {
-      console.error(e);
-      this.logOut();
-    });
-  }
-
   logOut(): void {
-    this.auth.logOut(() => alert('logged out'));
+    this.auth.logOut();
   }
 
   securedRoute(): string {

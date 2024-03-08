@@ -37,8 +37,8 @@ export class NavComponent implements OnInit {
   }
 
 
-  logOut(popupStyle = 0): void {
-    this.auth.logOut(() => alert('logged out'), window.location, this.redirectUri);
+  logOut(_popupStyle = 0): void {
+    this.auth.logOut(window.location, this.redirectUri);
   }
 
   greetings(): string {

@@ -39,10 +39,10 @@ export class AuthService implements OnDestroy {
   ) {
     this.checkAuthentication();
     window.addEventListener(CryptrSpa.events.REFRESH_INVALID_GRANT, (RigError) => {
-      this.logOut(null);
+      this.logOut();
     });
     window.addEventListener(CryptrSpa.events.REFRESH_EXPIRED, (ReError) => {
-      this.logOut(null);
+      this.logOut();
     });
   }
 
@@ -101,10 +101,19 @@ export class AuthService implements OnDestroy {
    * @param targetUrl - Optional | **Default:** `window.location.href`. Where to redirect after SLO process
    * @returns process logout of session with callback call
    */
-  logOut(callback: () => void, location: undefined | globalThis.Location = window.location, targetUrl?: string, sloAfterRevoke?: boolean): Observable<any> {
+  logOut(location: undefined | globalThis.Location = window.location, targetUrl?: string, sloAfterRevoke?: boolean): Observable<any> {
     let target = targetUrl === undefined || targetUrl === 'undefined' ? window.location.href : targetUrl;
     target = this.sanitizeUrl(target, ['request_id'])
-    return from(this.cryptrClient.logOut(this.preLogOutCallBack(callback), location, target, sloAfterRevoke || this.cryptrClient.config.default_slo_after_revoke));
+    try {
+      return from(this.cryptrClient.logOut(this.preLogOutCallBack(), location, target, sloAfterRevoke || this.cryptrClient.config.default_slo_after_revoke));
+
+    } catch (error) {
+      console.error("logout error", error)
+      return from(new Observable(o => {
+        o.next(location.reload)
+        o.complete()
+      }))
+    }
   }
 
   /** @ignore */
@@ -284,10 +293,10 @@ export class AuthService implements OnDestroy {
   }
 
   /** @ignore */
-  private preLogOutCallBack(callback: () => void): () => void {
+  private preLogOutCallBack(): () => void {
     this.updateCurrentAuthState(false);
     this.setUser(null);
-    return callback;
+    return null;
   }
 
   /** @ignore */
