@@ -1,9 +1,9 @@
-| Statements                                                            | Branches                                                         | Functions                                                            | Lines                                                            |
-| --------------------------------------------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| ![Statements](https://img.shields.io/badge/Coverage-73.33%25-red.svg) | ![Branches](https://img.shields.io/badge/Coverage-60%25-red.svg) | ![Functions](https://img.shields.io/badge/Coverage-67.86%25-red.svg) | ![Lines](https://img.shields.io/badge/Coverage-71.43%25-red.svg) |
-
 # CryptrAngular
 
-For more See our [related live Doc](https://cryptr-angular-doc.onrender.com) or [docs.cryptr.co](https://docs.cryptr.co/docs/getting-started/single-page-applications/angular/authentication)
+current version `1.4.0`
+
+⚠️ Some functions are now deprecated, [contact us](mailto:support@cryptr.co) for more information
+
+For more See our [related live Doc](https://cryptr-angular-doc.onrender.com) or [docs.cryptr.co](https://docs.cryptr.co/docs/libraries)
 
 <!-- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6. -->

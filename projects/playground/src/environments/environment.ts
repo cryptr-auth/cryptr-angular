@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   cryptrConfig: {
     audience: 'http://localhost:4200',
-    tenant_domain: 'cryptr',
+    tenant_domain: 'communitiz-app',
     client_id: '271a669b-7ee6-4ec7-b4d3-39bc0db6b33c',
     default_redirect_uri: 'http://localhost:4200',
     // region: 'us',
@@ -19,7 +19,6 @@ export const environment = {
         'http://localhost:5000/*',
       ]
     },
-    telemetry: false,
     has_ssr: true,
     dedicated_server: true,
   },

@@ -1,6 +1,6 @@
 {
   "name": "cryptr-angular",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -70,7 +70,7 @@
     "tslint": "~6.1.0",
     "typescript": "~5.2.2"
   },
-  "description": "--- For more See our [related live Doc](https://cryptr-angular-doc.onrender.com) or [docs.cryptr.co](https://docs.cryptr.co/docs/getting-started/single-page-applications/angular/authentication) ---",
+  "description": "--- For more See our [related live Doc](https://cryptr-angular-doc.onrender.com) or [docs.cryptr.co](https://docs.cryptr.co/docs/libraries) ---",
   "author": "Cryptr <thibaud@cryptr.co> (http://www.cryptr.co)",
   "license": "MIT",
   "keywords": [

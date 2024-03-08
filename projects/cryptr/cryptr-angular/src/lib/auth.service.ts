@@ -1,4 +1,4 @@
-import { Inject, Injectable, OnDestroy } from '@angular/core';
+import { Inject, Injectable, LOCALE_ID, OnDestroy } from '@angular/core';
 import CryptrSpa from '@cryptr/cryptr-spa-js';
 import { BehaviorSubject, combineLatest, from, Observable, Subject } from 'rxjs';
 import { AbstractNavigator } from './abstract-navigator';
@@ -30,6 +30,7 @@ export class AuthService implements OnDestroy {
 
   constructor(
     @Inject(CryptrClientService) private cryptrClient: Client,
+    @Inject(LOCALE_ID) private locale: string,
     private location: Location,
     private navigator: AbstractNavigator,
     private router: Router,
@@ -366,20 +367,18 @@ export class AuthService implements OnDestroy {
 
   /** @ignore */
   private defaultAuthenticationCallback(isAuthenticated: boolean, stateUrl?: string): boolean {
-    const { default_locale: defaultLocale } = this.config();
     if (isAuthenticated) {
       return true;
     } else {
-      this.signInWithDomain(null, { locale: defaultLocale || 'en' });
+      this.signInWithDomain(null, { locale: this.currentLocale() });
       return false;
     }
   }
 
   /** @ignore */
-  private signInWithMagicLink(stateUrl?: string): Observable<any> {
-    const { audience, default_locale } = this.config();
-    const redirectUri = audience.concat(stateUrl || '');
-
-    return this.signInWithDomain(null, { locale: default_locale });
+  private currentLocale(): string {
+    const LANG_INDEX = 0
+    const lang = this.locale.split('-')[LANG_INDEX];
+    return ['en', 'fr'].includes(lang) ? lang : 'en';
   }
 }
