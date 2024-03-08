@@ -104,16 +104,8 @@ export class AuthService implements OnDestroy {
   logOut(location: undefined | globalThis.Location = window.location, targetUrl?: string, sloAfterRevoke?: boolean): Observable<any> {
     let target = targetUrl === undefined || targetUrl === 'undefined' ? window.location.href : targetUrl;
     target = this.sanitizeUrl(target, ['request_id'])
-    try {
-      return from(this.cryptrClient.logOut(this.preLogOutCallBack(), location, target, sloAfterRevoke || this.cryptrClient.config.default_slo_after_revoke));
-
-    } catch (error) {
-      console.error("logout error", error)
-      return from(new Observable(o => {
-        o.next(location.reload)
-        o.complete()
-      }))
-    }
+    const executeSlo = sloAfterRevoke || this.cryptrClient.config.default_slo_after_revoke
+    return from(this.cryptrClient.logOut(this.preLogOutCallBack(), location, target, executeSlo));
   }
 
   /** @ignore */
