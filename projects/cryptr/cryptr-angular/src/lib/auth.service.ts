@@ -376,9 +376,9 @@ export class AuthService implements OnDestroy {
   }
 
   /** @ignore */
-  private currentLocale() {
-    console.debug(this.locale)
-    let lang = this.locale.split('-')[0];
+  private currentLocale(): string {
+    const LANG_INDEX = 0
+    const lang = this.locale.split('-')[LANG_INDEX];
     return ['en', 'fr'].includes(lang) ? lang : 'en';
   }
 }
