@@ -4,28 +4,31 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ReactComponent } from './pages/react/react.component';
-import { GraphqlComponent } from './pages/graphql/graphql.component';
-import { GrowthHackerComponent } from './pages/growth-hacker/growth-hacker.component';
-import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { AuthModule } from 'projects/cryptr/cryptr-angular/src/lib/auth.module';
-import { AccountAccessButtonComponent } from 'projects/cryptr/cryptr-angular/src/lib/account-access-button/account-access-button.component';
 import { AuthHttpInterceptor } from 'projects/cryptr/cryptr-angular/src/lib/auth.interceptor';
+import { SidebarNavComponent } from './components/sidebar-nav/sidebar-nav.component';
+import { NewsitemComponent } from './components/newsitem/newsitem.component';
+import { NewsComponent } from './components/news/news.component';
+import { FriendSuggestionComponent } from './components/friend-suggestion/friend-suggestion.component';
+import { FriendSuggestionsComponent } from './components/friend-suggestions/friend-suggestions.component';
+import { ArticleComponent } from './components/article/article.component';
+import { ArticlesComponent } from './components/articles/articles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    FooterComponent,
     HomeComponent,
-    ReactComponent,
-    GraphqlComponent,
-    GrowthHackerComponent,
-    MyCoursesComponent,
+    SidebarNavComponent,
+    NewsitemComponent,
+    NewsComponent,
+    FriendSuggestionComponent,
+    FriendSuggestionsComponent,
+    ArticleComponent,
+    ArticlesComponent,
   ],
   imports: [
     // CommonModule,
@@ -35,7 +38,6 @@ import { AuthHttpInterceptor } from 'projects/cryptr/cryptr-angular/src/lib/auth
     AuthModule.forRoot(environment.cryptrConfig),
   ],
   providers: [
-    AccountAccessButtonComponent,
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

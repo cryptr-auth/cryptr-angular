@@ -1,0 +1,23 @@
+<div>
+  <div class="mt-4">
+    <h1 class="sr-only">Recent questions</h1>
+    <ul class="space-y-4">
+      <li
+        *ngIf="!articles || articles.length === 0"
+        class="bg-white px-4 py-6 shadow sm:rounded-lg sm:p-6"
+      >
+        <article aria-labelledby="question">
+          <div>
+            <span>No Article</span>
+          </div>
+        </article>
+      </li>
+      <ng-container *ngIf="articles && articles.length > 0">
+        <app-article
+          *ngFor="let article of articles"
+          [article]="article"
+        ></app-article>
+      </ng-container>
+    </ul>
+  </div>
+</div>

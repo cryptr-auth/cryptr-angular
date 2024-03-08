@@ -10,13 +10,13 @@ describe('AuthConfig', () => {
         apiRequestsToSecure: ['http://localhost:5000/*']
       };
       const config: AuthConfig = {
-        audience: 'http://localhost:4200',
         tenant_domain: 'shark-academy',
         client_id: 'e8666cc0-647d-4e17-8961-27bd25159688',
-        cryptr_base_url: 'http://localhost:4000',
-        region: 'eu',
-        default_locale: 'fr',
+        audience: 'http://localhost:4200',
         default_redirect_uri: 'http://localhost:4200',
+        default_slo_after_revoke: false,
+        region: 'eu',
+        cryptr_base_url: 'http://localhost:4000',
         httpInterceptor
       };
       const factory = new AuthClientConfig(config);
@@ -38,13 +38,6 @@ describe('AuthConfig', () => {
       });
 
       expect(typeof authService.observableAuthenticated()).toBe('object');
-      authService.userAccountAccess()
-        .then(res => {
-          expect(res).toBe(undefined);
-        }).catch(err => {
-          expect(err).toBe(undefined);
-        });
-
       expect(authService.refreshTokens()).toBe(undefined);
       try {
         authService.handleRedirectCallback();
@@ -52,9 +45,7 @@ describe('AuthConfig', () => {
         expect(error).not.toBe(undefined);
       }
       expect(authService.ngOnDestroy()).not.toBe(null);
-      expect(authService.signInWithRedirect('read:data')).not.toBe(null);
-      expect(authService.signUpWithRedirect('read:data')).not.toBe(null);
-      expect(authService.logOut(null, window.location)).not.toBe(null);
+      expect(authService.logOut(window.location)).not.toBe(null);
     });
   });
 });

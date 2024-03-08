@@ -9,26 +9,22 @@ export const environment = {
   production: false,
   cryptrConfig: {
     audience: 'http://localhost:4200',
-    tenant_domain: 'cryptr',
-    // client_id: 'f407cafd-b58a-472f-b857-475a863b69b6',
-    client_id: '1abcf9f0-c641-4630-9362-2046f96b2a97',
+    tenant_domain: 'communitiz-app',
+    client_id: '271a669b-7ee6-4ec7-b4d3-39bc0db6b33c',
     default_redirect_uri: 'http://localhost:4200',
     // region: 'us',
-    cryptr_base_url: 'https://samly.howto:4443',
+    cryptr_base_url: 'https://communitiz-app.cryptr.dev',
     default_locale: 'fr',
+    default_slo_after_revoke: false,
     httpInterceptor: {
       apiRequestsToSecure: [
         'http://localhost:5000/*',
       ]
     },
-    telemetry: false,
     has_ssr: true,
-    dedicated_server: false,
-    preferedAuthMethod: 'gateway',
+    dedicated_server: true,
   },
   resource_server_url: 'http://localhost:5000',
-  idpIds: ['shark_academy_bWoMxSFWKhQt6WAm4AucGk', 'blockpulse_6Jc3TGatGmsHzexaRP5ZrE'],
-  // idpId: 'shark_academy_58BB2Evky9GkDrkpddr3w6',
   targetUrl: 'http://localhost:4200',
 };
 

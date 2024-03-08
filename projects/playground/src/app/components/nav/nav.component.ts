@@ -28,7 +28,6 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cryptrListeners();
     this.auth.currentAuthenticationObservable().subscribe((isAuthenticated: boolean) => {
       this.authenticated = isAuthenticated;
     });
@@ -37,21 +36,13 @@ export class NavComponent implements OnInit {
     });
   }
 
-  // CRYPTR BLOCK
-  cryptrListeners(): void {
-    window.addEventListener(CryptrSpa.events.REFRESH_INVALID_GRANT, (e) => {
-      this.logOut(1);
-    });
-    window.addEventListener(CryptrSpa.events.REFRESH_EXPIRED, (e) => {
-      console.error(e);
-      this.logOut(2);
-    });
+
+  logOut(_popupStyle = 0): void {
+    this.auth.logOut(window.location, this.redirectUri);
   }
 
-  logOut(popupStyle = 0): void {
-    this.auth.logOut(() => {
-      this.toggleModal(popupStyle);
-    });
+  greetings(): string {
+    return `Hello ${this.user?.given_name} ${this.user?.family_name}`
   }
 
   // GENERIC features
@@ -59,48 +50,6 @@ export class NavComponent implements OnInit {
     this.router.navigateByUrl(routePath).then(navigated => {
       this.auth.refreshTokens();
     });
-  }
 
-  toggleModal(popupStyle: number): void {
-    if (!this.showLogoutModal) {
-      this.logOutPopupStyle = popupStyle;
-    } else {
-      this.logOutPopupStyle = 0;
-      this.redirectTo(this.unauthenticatedPath);
-    }
-    this.showLogoutModal = !this.showLogoutModal;
-  }
-
-  // LOGOUT Design
-  logoutPopupTitle(): string {
-    return [
-      'You are logged out',
-      'Session closed',
-      'Session expired',
-    ][this.logOutPopupStyle];
-  }
-
-  logoutPopupDesc(): string {
-    return [
-      'See you soon',
-      'The current session has been revoked from you account. Please sign in again',
-      'Your session is no more valid. Please sign in again',
-    ][this.logOutPopupStyle];
-  }
-
-  logoutIconBg(): string {
-    return [
-      'bg-green-200',
-      'bg-red-200',
-      'bg-orange-200',
-    ][this.logOutPopupStyle];
-  }
-
-  logoutIconColor(): string {
-    return [
-      'text-green-600',
-      'text-red-600',
-      'text-orange-600',
-    ][this.logOutPopupStyle];
   }
 }

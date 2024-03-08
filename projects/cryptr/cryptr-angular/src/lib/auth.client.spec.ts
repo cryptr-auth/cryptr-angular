@@ -12,6 +12,7 @@ describe('CryptrClientFactory', () => {
         client_id: '123-xeab',
         audience: 'http://localhost:4200',
         default_redirect_uri: 'http://localhost:4200',
+        default_slo_after_revoke: false,
         cryptr_base_url: 'http://localhost:4000',
         httpInterceptor
       };
@@ -32,6 +33,7 @@ describe('CryptrClientFactory', () => {
         client_id: '123-xeab',
         audience: 'http://localhost:4200',
         default_redirect_uri: 'http://localhost:4200',
+        default_slo_after_revoke: false,
         cryptr_base_url: 'http://localhost:4000',
         httpInterceptor
       };
@@ -58,8 +60,8 @@ describe('CryptrClientFactory', () => {
         client_id: '123-xeab',
         audience: 'http://localhost:4200',
         default_redirect_uri: 'http://localhost:4200',
+        default_slo_after_revoke: false,
         cryptr_base_url: 'http://localhost:4000',
-        default_locale: 'fr',
         httpInterceptor
       };
       const factory = new AuthClientConfig(config);
@@ -78,6 +80,7 @@ describe('CryptrClientFactory', () => {
         client_id: '123-xeab',
         audience: 'http://localhost:4200',
         default_redirect_uri: 'http://localhost:4200',
+        default_slo_after_revoke: false,
         cryptr_base_url: 'http://localhost:4000',
         region: 'eu',
         httpInterceptor
@@ -98,6 +101,7 @@ describe('CryptrClientFactory', () => {
         client_id: '123-xeab',
         audience: 'http://localhost:4200',
         default_redirect_uri: 'http://localhost:4200',
+        default_slo_after_revoke: false,
         cryptr_base_url: 'http://localhost:4000',
         region: 'us',
         httpInterceptor
@@ -118,6 +122,7 @@ describe('CryptrClientFactory', () => {
         client_id: '123-xeab',
         audience: 'http://localhost:4200',
         default_redirect_uri: 'http://localhost:4200',
+        default_slo_after_revoke: false,
         cryptr_base_url: 'http://localhost:4000',
         region: 'de',
         httpInterceptor
@@ -136,9 +141,9 @@ describe('CryptrClientFactory', () => {
         client_id: '123-xeab',
         audience: 'http://localhost:4200',
         default_redirect_uri: 'http://localhost:4200',
+        default_slo_after_revoke: false,
         cryptr_base_url: 'http://localhost:4000',
         region: 'eu',
-        default_locale: 'de',
         httpInterceptor
       };
       const factory = new AuthClientConfig(config);
