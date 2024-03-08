@@ -14,10 +14,8 @@ export class SidebarNavComponent implements OnInit {
   }
 
 
-  logOut(popupStyle = 0): void {
-    this.auth.logOut(() => {
-      alert('logged out')
-    });
+  logOut(): void {
+    this.auth.logOut();
   }
 
 }

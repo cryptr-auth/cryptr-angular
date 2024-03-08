@@ -45,7 +45,7 @@ describe('AuthConfig', () => {
         expect(error).not.toBe(undefined);
       }
       expect(authService.ngOnDestroy()).not.toBe(null);
-      expect(authService.logOut(null, window.location)).not.toBe(null);
+      expect(authService.logOut(window.location)).not.toBe(null);
     });
   });
 });
