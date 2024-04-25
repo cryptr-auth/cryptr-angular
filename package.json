@@ -82,6 +82,9 @@
   "description": "--- For more See our [related live Doc](https://cryptr-angular-doc.onrender.com) or [docs.cryptr.co](https://docs.cryptr.co/docs/libraries) ---",
   "author": "Cryptr <thibaud@cryptr.co> (http://www.cryptr.co)",
   "license": "MIT",
+  "engines": {
+    "node": "20.12.2"
+  },
   "keywords": [
     "cryptr",
     "angular",
