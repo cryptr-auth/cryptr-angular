@@ -1,7 +1,7 @@
 const fs = require('fs');
 require('dotenv').config();
 
-if (process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefined && process.env.RS_URL !== undefined) {
+if (process !== undefined && process.env.PRODUCTION !== undefined && process.env.CRYPTR_CONFIG !== undefined && process.env.RS_URL !== undefined) {
   const envConfigFile = `export const environment = {
     production: ${process.env.PRODUCTION},
     cryptrConfig: ${process.env.CRYPTR_CONFIG},
