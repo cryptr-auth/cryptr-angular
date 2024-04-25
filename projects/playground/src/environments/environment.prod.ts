@@ -1,3 +1,7 @@
+if (process === undefined) {
+  throw new Error("process undefined");
+}
+
 export const environment = {
   production: true,
   cryptrConfig: {
